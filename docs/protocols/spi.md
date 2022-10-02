@@ -1,7 +1,5 @@
 # SPI
 
-
-
 ### Dump Firmware via SPI
 
 ```powershell

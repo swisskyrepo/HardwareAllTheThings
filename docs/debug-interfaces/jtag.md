@@ -1,12 +1,4 @@
----
-cover: >-
-  https://images.unsplash.com/photo-1511497584788-876760111969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3432&q=80
-coverY: 0
----
-
 # JTAG
-
-****
 
 ### Summary
 
@@ -70,6 +62,6 @@ Arduino PIN Layout
 
 ### References
 
-* JTAGulator vs. JTAGenum, Tools for Identifying JTAG Pins in IoT Devices by Dylan Ayrey - https://www.praetorian.com/blog/jtagulator-vs-jtagenum-tools-for-identifying-jtag-pins-in-iot-devices?edition=2019
-* https://just2secure.blogspot.com/2017/02/jtag-pin-identification.html
-* https://wrongbaud.github.io/jtag-hdd/
+* [JTAGulator vs. JTAGenum, Tools for Identifying JTAG Pins in IoT Devices by Dylan Ayrey](https://www.praetorian.com/blog/jtagulator-vs-jtagenum-tools-for-identifying-jtag-pins-in-iot-devices?edition=2019)
+* [JTAG PIN Identification - February 21, 2017](https://just2secure.blogspot.com/2017/02/jtag-pin-identification.html)
+* [Hardware Debugging for Reverse Engineers Part 2: JTAG, SSDs and Firmware Extraction - Posted Apr 2, 2020 by wrongbaud](https://wrongbaud.github.io/posts/jtag-hdd/)

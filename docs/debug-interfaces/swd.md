@@ -18,3 +18,8 @@ JTAG and SWD are similar and can be interfaced with each other:
 | TDO       | SWV      | JTAG Test data output / SWV trace data output |
 | TMS       | SWDIO    | JTAG test mode select / SWD data in and out   |
 | GND       | GND      | -                                             |
+
+
+## References
+
+* [Hardware Debugging for Reverse Engineers Part 1: SWD, OpenOCD and Xbox One Controllers - Posted Jan 30, 2020 by wrongbaud](https://wrongbaud.github.io/posts/stm-xbox-jtag/)

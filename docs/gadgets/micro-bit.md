@@ -1,10 +1,8 @@
 # Micro::bit
 
-
-
 ### Extract source code from firmware
 
-When the source has been build from https://makecode.microbit.org/#editor, the Javascript code is embedded into the firmware.
+When the source has been build from [https://makecode.microbit.org/#editor](https://makecode.microbit.org/#editor), the Javascript code is embedded into the firmware.
 
 ```python
 import bincopy

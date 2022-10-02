@@ -1,8 +1,6 @@
 # Bus Pirate
 
-
-
-![](https://iotmyway.files.wordpress.com/2018/05/mode-guide.png)
+![MOSI-MISO](https://iotmyway.files.wordpress.com/2018/05/mode-guide.png)
 
 ### Update Bus Pirate
 
