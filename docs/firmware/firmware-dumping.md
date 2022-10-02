@@ -14,6 +14,8 @@
 
 ### Send a new firmware into the microcontroller using serial port
 
+- avrdude
+
 ```powershell
 # send raw data firmware
 $ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:w:flash_raw.bin
@@ -23,6 +25,13 @@ $ avrdude -c usbasp -p m328p -F -U flash:r:dump.hex:i
 
 # default
 $ avrdude -c usbasp -p m328p -C /etc/avrdude.conf -U flash:w:hardcodedPassword.ino.arduino_standard.hex
+```
+
+- picotool
+
+```bash
+# extention indicates the type (bin, uf2)
+picotool load firmware.bin
 ```
 
 ### Dump firmware using debug port
@@ -49,6 +58,13 @@ exit
 
 ```powershell
 sudo openocd  -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
+```
+
+- picotool
+
+```bash
+# extention indicates the type (bin, uf2)
+picotool save firmware.bin
 ```
 
 ### Convert ihex to elf
