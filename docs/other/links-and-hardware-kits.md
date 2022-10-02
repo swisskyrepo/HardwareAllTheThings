@@ -1,7 +1,5 @@
 # Links & Hardware Kits
 
-
-
 ### Hardware Challenges & CTF
 
 * [BLE CTF](https://github.com/hackgnar/ble\_ctf)
@@ -31,4 +29,7 @@
 
 ### Hardware Kit
 
-![HW1](https://i.ibb.co/WW55LH4/Hardware-Toolkit.jpg) ![HW2](https://i.ibb.co/F3vRmgV/Hardware-Toolkit2.jpg) ![DVID1](https://github.com/Vulcainreo/DVID/raw/master/kit-contents.jpg) ![Ph0wn Basic](https://pbs.twimg.com/media/ELVWNyKWwAAPa0T?format=jpg\&name=900x900)
+![HW1](https://i.ibb.co/WW55LH4/Hardware-Toolkit.jpg) 
+![HW2](https://i.ibb.co/F3vRmgV/Hardware-Toolkit2.jpg) 
+![DVID1](https://github.com/Vulcainreo/DVID/raw/master/kit-contents.jpg) 
+![Ph0wn Basic](https://pbs.twimg.com/media/ELVWNyKWwAAPa0T?format=jpg\&name=900x900)

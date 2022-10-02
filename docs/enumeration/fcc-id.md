@@ -2,9 +2,9 @@
 
 ## Searchable FCC ID Database
 
-An FCC ID is a unique identifier assigned to a device registered with the United States Federal Communications Commission
+An FCC ID is a unique identifier assigned to a device registered with the United States Federal Communications Commission.
 
-* [https://fccid.io/](https://fccid.io/)
+* [fccid.io](https://fccid.io/)
 
 For legal sale of wireless deices in the US, manufacturers must:
 
@@ -12,5 +12,3 @@ For legal sale of wireless deices in the US, manufacturers must:
 * Provide documentation to the FCC of the lab results
 * Provide User Manuals, Documentation, and Photos relating to the device
 * [Digitally](https://fccid.io/blog/2014/11/e-label-act/) or physically label the device with the unique identifier provided by the FCC (upon approved application)
-
-\

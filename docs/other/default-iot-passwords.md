@@ -1,8 +1,6 @@
 # Default IoT Passwords
 
-
-
-IoT Device Default Password Lookup : https://www.defpass.com
+IoT Device Default Password Lookup : [https://www.defpass.com](https://www.defpass.com)
 
 ### Mirai Wordlist
 

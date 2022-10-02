@@ -1,7 +1,5 @@
 # LoRa
 
-
-
 ### LoRa with Arduino on 868.1MHZ
 
 [arduino-LoRa](https://github.com/sandeepmistry/arduino-LoRa)\

@@ -8,7 +8,7 @@ MQTT client:
 * [MQTT CLI](https://asciinema.org/a/DlPmJwXbhuAURHseamGdMy4z3/embed?speed=2\&autoplay=true)
 * [MQTT Lens](https://chrome.google.com/webstore/detail/mqttlens/hemojaaeigabkbcookmlgmdigohjobjm)
 * MQTT.fx
-* mosquitto\_tools
+* mosquitto_tools
 
 Scan an MQTT with nmap : `nmap -p 1883 -vvv --script=mqtt-subscribe -d sensors.domain.com`
 

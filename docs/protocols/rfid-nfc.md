@@ -1,7 +1,5 @@
 # RFID NFC
 
-
-
 ### Install and configuration
 
 Dependencies to install first :\

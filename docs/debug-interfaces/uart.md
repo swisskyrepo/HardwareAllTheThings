@@ -1,12 +1,4 @@
----
-cover: >-
-  https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80
-coverY: 0
----
-
 # UART
-
-****
 
 ### Summary
 
@@ -43,7 +35,7 @@ Connect to UART using an USB to TTL, then find the `/dev/ttyUSB0` device in the 
 #### Detect baudrate
 
 Standard baud rate are `110`, `300`, `600`, `1200`, `2400`, `4800`, `9600`, `14400`, `19200`, `38400`, `57600`, `115200`, `128000` and `256000`.\
-Auto-detect baud rate using the script : https://github.com/devttys0/baudrate/blob/master/baudrate.py
+Auto-detect baud rate using the script : [devttys0/baudrate/baudrate.py](https://github.com/devttys0/baudrate/blob/master/baudrate.py)
 
 #### Interact with the /dev/ttyUSB0
 
@@ -79,15 +71,16 @@ It’s an emulation of serial port over BLE. The UUID of the Nordic UART Service
 
 * **RX Characteristic** (UUID: 6E400002-B5A3-F393-E0A9-E50E24DCCA9E) : The peer can send data to the device by writing to the RX Characteristic of the service. ATT Write Request or ATT Write Command can be used. The received data is sent on the UART interface.
 * **TX Characteristic** (UUID: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E) : If the peer has enabled notifications for the TX Characteristic, the application can send data to the peer as notifications. The application will transmit all data received over UART as notifications.
-* nRF UART 2.0 - Nordic Semiconductor ASA - https://play.google.com/store/apps/details?id=com.nordicsemi.nrfUARTv2
-* Specifications - https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble\_sdk\_app\_nus\_eval.html
-* https://thejeshgn.com/2016/10/01/uart-over-bluetooth-low-energy/
+* [nRF UART 2.0 - Nordic Semiconductor ASA](https://play.google.com/store/apps/details?id=com.nordicsemi.nrfUARTv2)
+* [UART/Serial Port Emulation over BLE](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html)
+* [UART Over Bluetooth Low Energy](https://thejeshgn.com/2016/10/01/uart-over-bluetooth-low-energy/)
 
 Example with Micro::bit :
 
-* https://makecode.microbit.org/v1/98535-28913-33692-07418
-* https://support.microbit.org/support/solutions/articles/19000062330-using-the-micro-bit-bluetooth-low-energy-uart-serial-over-bluetooth-
+* [https://makecode.microbit.org/v1/98535-28913-33692-07418](https://makecode.microbit.org/v1/98535-28913-33692-07418)
+* [Using the micro:bit Bluetooth Low Energy UART (serial over Bluetooth)](https://support.microbit.org/support/solutions/articles/19000062330-using-the-micro-bit-bluetooth-low-energy-uart-serial-over-bluetooth-)
 
 ### Examples
 
-![](https://developer.android.com/things/images/raspberrypi-console.png) ![](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
+![](https://developer.android.com/things/images/raspberrypi-console.png) 
+![](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)

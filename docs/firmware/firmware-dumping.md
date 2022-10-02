@@ -1,9 +1,3 @@
----
-cover: >-
-  https://images.unsplash.com/photo-1552664730-d307ca884978?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80
-coverY: 0
----
-
 # Firmware Dumping
 
 ### Summary
@@ -148,4 +142,4 @@ sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
 
 ![](https://images.squarespace-cdn.com/content/v1/5894c269e4fcb5e65a1ed623/1581004558438-UJV08PX8O5NVAQ6Z8HXI/ke17ZwdGBToddI8pDm48kHSRIhhjdVQ3NosuzDMrTulZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s\_4yszcp2ryTI0HqTOaaUohrI8PIYASqlw8FVQsXpiBs096GedrrOfpwzeSClfgzB41Jweo/Picture2.png?format=1000w)
 
-* https://www.zerodayinitiative.com/blog/2020/2/6/mindshare-dealing-with-encrypted-router-firmware
+* [MINDSHARE: DEALING WITH ENCRYPTED ROUTER FIRMWARE](https://www.zerodayinitiative.com/blog/2020/2/6/mindshare-dealing-with-encrypted-router-firmware)

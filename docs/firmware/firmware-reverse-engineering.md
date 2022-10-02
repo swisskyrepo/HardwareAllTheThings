@@ -21,9 +21,7 @@ Prerequisite:
 
 > To load it properly in IDA, open the file, select ATMEL AVR and then select ATmega323\_L.
 
-https://thanat0s.trollprod.org/2014/01/loader-un-binaire-arduino-dans-ida/
-
-* ESP8266 : https://github.com/themadinventor/ida-xtensa
+* ESP8266 : [https://github.com/themadinventor/ida-xtensa](https://github.com/themadinventor/ida-xtensa)
 
 ### Loading bare-metal binaries into Radare2
 
@@ -70,11 +68,11 @@ jmp 0x59ae
 
 ### Loading bare-metal binaries into Ghidra
 
-* SVD-Loader for Ghidra: Simplifying bare-metal ARM reverse engineering - https://leveldown.de/blog/svd-loader/
+* SVD-Loader for Ghidra: Simplifying bare-metal ARM reverse engineering - [svd-loader/](https://leveldown.de/blog/svd-loader/)
 
 ### ESPTool
 
-ESP8266 and ESP32 serial bootloader utility : github.com/espressif/esptool
+ESP8266 and ESP32 serial bootloader utility : [espressif/esptool](https://github.com/espressif/esptool)
 
 ```powershell
 josh@ioteeth:/tmp/reversing$ ~/esptool/esptool.py image_info recovered_file
@@ -87,7 +85,7 @@ Segment 1: len 0x00568 load 0x4010f000 file_offs 0x00000008
 
 ### nRF5x Firmware disassembly tools
 
-* https://github.com/DigitalSecurity/nrf5x-tools
+* [DigitalSecurity/nrf5x-tools](https://github.com/DigitalSecurity/nrf5x-tools)
 
 ```powershell
 $ python3 nrfident.py bin firmwares/s132.bin
@@ -113,8 +111,8 @@ ROM length   :  0x5d000
 
 ### Pure disassemblers
 
-* Vavrdisasm -- vAVRdisasm will auto-recognize Atmel Generic, Intel HEX8, and Motorola S-Record files - https://github.com/vsergeev/vavrdisasm
-* ODAweb -- https://www.onlinedisassembler.com/odaweb/
+* Vavrdisasm -- vAVRdisasm will auto-recognize Atmel Generic, Intel HEX8, and Motorola S-Record files - [vsergeev/vavrdisasm](https://github.com/vsergeev/vavrdisasm)
+* [ODA - The Online Disassembler](https://www.onlinedisassembler.com/odaweb/)
 *   avr-objdump – gcc kit standard tool
 
     ```powershell
@@ -132,7 +130,7 @@ $ simulavr -P atmega128 -F 16000000 –f build-crumbuino128/ex1.1.elf
 
 ### UEFI Firmware
 
-Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc - [https://github.com/theopolis/uefi-firmware-parser](https://github.com/theopolis/uefi-firmware-parser)
+Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc - [theopolis/uefi-firmware-parser](https://github.com/theopolis/uefi-firmware-parser)
 
 ```
 sudo pip install uefi_firmware
@@ -143,3 +141,7 @@ $ uefi-firmware-parser --test ~/firmware/*
 ~/firmware/O990-A03.exe: None
 ~/firmware/O990-A03.exe.hdr: DellPFS
 ```
+
+## References
+
+* [Loader un binaire Arduino dans IDA - Posted on January 26, 2014 by thanatos](https://thanat0s.trollprod.org/2014/01/loader-un-binaire-arduino-dans-ida/)
