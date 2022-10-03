@@ -29,6 +29,15 @@ $ cd ~/.arduino15/packages/esp32/tools/mkspiffs/0.2.3
 $ ./mkspiffs -u /tmp/data -p 256 -b 8192 -s 1028096 /tmp/spiffs/bin
 ```
 
+### ESP32 Diagrams
+
+Color coded which pins can be connected from the ESP HSPI pins to an SPI flash. The pink interfaces are optional to switch to QSPI
+
+<p align="center">
+  <img src="../assets/Esp32.png" style="max-width: 400px;"><br />
+  <img src="../assets/Qspi.png" style="max-width: 400px;">
+</p>
+
 ### References
 
 * https://www.youtube.com/watch?v=Bn5zajZ4I5E
