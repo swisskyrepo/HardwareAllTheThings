@@ -1,4 +1,4 @@
-# RFID NFC
+# Radio Frequency Identification (RFID) & Near Field Communication (NFC)
 
 ### Install and configuration
 
@@ -470,6 +470,20 @@ mfoc -P 500 -O carte-vierge.dmp # Extraire les clés de chiffrement de la puce R
 mfoc -P 500 -O carte-originale.dmp # Copiez le contenu de la puce RFID d’origine dans un fichier
 nfc-mfclassic W a carte-originale.dmp carte-vierge.dmp # Ecrire le contenu de la puce originale sur la puce chinoise
 ```
+
+### Replay Attacks
+Replay attack is a technique where a malicious user could implement a device to intercept a NFC transaction and redeem it later, using other device or even in different location. 
+
+### Relay Attack
+The relay attack is a technique where a malicious user implements a man in the middle attack. The attacker(APDUer) is capable to intercept, manipulate and change the transaction in real time to take advantage of it.  
+[https://en.wikipedia.org/wiki/Relay_attack](https://en.wikipedia.org/wiki/Relay_attack)
+
+### Intro to NFC Payment Relay Attacks
+[https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/](https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/)
+
+### NFCopy85 is a 10 dollars device to make replay attacks against NFC payment systems
+
+[https://salmg.net/2019/06/16/nfcopy85/](https://salmg.net/2019/06/16/nfcopy85/)
 
 ### References
 
