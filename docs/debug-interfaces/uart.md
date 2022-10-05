@@ -2,28 +2,63 @@
 
 ### Summary
 
-* UART
+* What is it ?
+* Identifying UART Ports
 * Connect to serial port
   * Detect baudrate
   * Interact with the /dev/ttyUSB0
 * UART over BLE
 * Examples
 
-### UART
+## What is it ?
+UART stands for Universal asynchronous receiver transmitter. Used for serial communications over a computer or peripheral device serial port.
 
-> Investigations began by attaching a multimeter to the outputs and reading the voltage. Three of the outputs read 3.3V and the fourth 0.02V. The fourth pin was ground. A UART or serial interface typically consists of 4 pins, power, transmit, receive and ground it was therefore hypothesized that the pins maybe utilised for this purpose.
+UART peripherals are commonly integrated in many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel. 
 
-```powershell
-# sudo pip3 install pyserial
-VCC <-> 5V
-RX <-> TX
-TX <-> RX
-GND <-> GND
-```
+With access to the UART, a user can see bootloader and operating system logs.
 
-The ground can be found out using the continuity test in multimeter. Usually all the GROUND PINs of every component/chip of a device are connected to each other and are also connected with almost all the metal parts of the hardware. We can easily understand which are the GROUND PINs by connecting every PIN with a metal part and verifying if the current flows. The header that produces beep sound on being touched is the ground (ohmmeter).
+Generaly, the line is held high (at a logical 1 value) while UART is in idle state.
 
-The VCC can be found out using the voltage test. One of the pin is kept on the identified ground and other on any of the 3 pins. If you get a constant high voltage means that it is a VCC pin .
+We call the most common configuration 8N1 : eight data bits, no parity, and 1 stop bit.
+
+## Identifying UART Ports
+
+A UART pinout has four ports : 
+- TX (Transmit)
+- Rx (Receive)
+- Vcc (Voltage)
+- GNR (Ground)
+
+To find UART multiple solution :
+- Search on Internet
+- Labeled on PCB
+- Find candidates
+	- Use a multi-meter
+- Follow PCB traces (almost always impossible)
+
+Keep in mind that some devices emulate UART ports by programming the Generla-Purpose Input/Output (GPIO) pins if there isn't enough space on the board for dedicated hardware UART pins.
+
+### Use a multimeter
+
+#### GNR pin
+First identify the GRN pin, by using the multimeter in continuity mode. 
+
+Place the black probe on any grounded metallic surface, be it a part of the tested PCB or not. Then place the red probe on each of the ports. When you hear a beeping sound, you found a GND pin.
+
+#### VCC pin
+Turn the multimeter to the DC voltage mode in and set it up to 20V of voltage. Keep the black probe on a grounded surface. Place the red probe on a suspeted pin and turn on the device.
+
+If the multimeter measures a constant voltage of either 3.3V or 5V, you've found the VCC pin.
+
+#### Tx pin
+Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe in a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the Vcc value, you've most likely found the Tx pin.
+
+This behavior happens because, during bootup, the device sends serial data through that Tx pin for debugging purposes. Once it finishes booting, the UART line goes idle.
+
+#### Rx pin
+If you've already identified the rest of the UART pins, the nearby fourth pin is most likely the Rx pin.
+
+Otherwise, you can identify it because it has the lowest voltage fluctuation and lowest overall value of all the UART pins.
 
 ### Connect to serial port
 
