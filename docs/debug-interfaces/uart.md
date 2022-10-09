@@ -3,7 +3,7 @@
 
 * [UART](#uart)
     * [Table of contents](#table-of-contents)
-  * [What is it ?](#what-is-it)
+  * [What is it ?](#what-is-it-)
   * [Identifying UART ports](#identifying-uart-ports)
     * [Using a multimeter](#using-a-multimeter)
     * [Using a logic analyzer](#using-a-logic-analyzer)
