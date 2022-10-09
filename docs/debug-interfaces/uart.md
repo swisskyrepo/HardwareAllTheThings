@@ -1,8 +1,5 @@
 # UART
 ## Table of contents
-
-* [UART](#uart)
-  * [Table of contents](#table-of-contents)
   * [What is it ?](#what-is-it-)
   * [Identifying UART ports](#identifying-uart-ports)
     * [Using a multimeter](#using-a-multimeter)
