@@ -10,7 +10,8 @@
     * [Connection using a USB to TTL](#connection-using-a-usb-to-ttl)
     * [Detect the baud rate](#detect-the-baud-rate)
     * [Interact with UART](#interact-with-uart)
-  - [UART over BLE](#uart-over-ble)
+  * [UART over BLE](#uart-over-ble)
+   * [Examples](#examples)
 
 ## What is it ?
 
@@ -29,7 +30,7 @@ We call the most common configuration **8N1**: eight data bits, no parity, and 1
 A UART pinout has **four** ports: 
 * **TX** (Transmit)
 * **RX** (Receive)
-* **Vcc** (Voltage)
+* **VCC** (Voltage)
 * **GNR** (Ground)
 
 ![](https://re-ws.pl/wp-content/uploads/2017/09/pinout.jpg)
@@ -50,13 +51,13 @@ First identify the GRN pin, by using the multimeter in continuity mode.
 
 Place the black probe on any grounded metallic surface, be it a part of the tested PCB or not. Then place the red probe on each of the ports. When you hear a beeping sound, you found a GND pin.
 
-#### Vcc pin
+#### VCC pin
 Turn the multimeter to the DC voltage mode in and set it up to 20V of voltage. Keep the black probe on a grounded surface. Place the red probe on a suspected pin and turn on the device.
 
-If the multimeter measures a constant voltage of either 3.3V or 5V, you've found the Vcc pin.
+If the multimeter measures a constant voltage of either 3.3V or 5V, you've found the VCC pin.
 
 #### TX pin
-Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe in a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the Vcc value, you've most likely found the TX pin.
+Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe in a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the VCC value, you've most likely found the TX pin.
 
 This behavior happens because, during bootup, the device sends serial data through that TX pin for debugging purposes. Once it finishes booting, the UART line goes idle.
 
@@ -70,21 +71,36 @@ A logic analyzer is an electronic instrument that captures and displays multiple
 
 To find the UART pins we will connect the pins to a logic analyzer and look for data being transmitted.
 
-
+#### Hardware setup
 Make sure any system you're testing is **powered off** when you connect the logic analyzer's probes to it **to avoid short-circuiting**.
 
-In the settings, change the **Speed (Sample Rate)** to 50 kS/s and the **Duration** to 20 seconds. As a rule, you should sample digital signals **at least four times faster than their bandwidth**. With serial communications, which are generally very slow, a 50 kS/s sampling rate is more than enough, although sampling faster than this does no harm. As for the duration, 20 seconds is enough time for the device to power on and start transmitting data.
+ * Connect the suspected TX pin to any channel of the logic analyzer.
+ * Connect one of your logic analyzer's GND pins to the PCB that you're testing GND pins so they **share a common ground**.
 
-In the case of this device, bootloader and kernel logs are printed to this interface on startup, so we will expect to see data come across the transmit line of the UART device.2 This is what we will be looking for.
+#### Software setup
+This setup is for **Saleae based logic analyzer**, if you use a different one referer to the constructor documentation.
 
-https://medium.com/@shubhamgolam10/reverse-engineering-uart-to-gain-shell-de9019ae427a
+* Open the saleae software
+* Create a new analyzer entry by pressing a plus (+) icon and select Async Serial (this is for UART).
+* Select a serial channel (8 channels on Logic Analyser) and keep the default settings.
+* Try with popular baud rates used in IoT devices (9600, 19200, 38400, 57600, 115200). Note that when you don't know the bit rate, you can select "**Use Autobaud**" and let the software work its magic.
+* Save the configurations.
 
+If you want to modify the speed and the duration:
+* As a rule, you should sample digital signals **at least four times faster than their bandwidth**. 
+* With serial communications, which are generally very slow, a **50 kS/s** sampling rate is more than enough, although sampling faster than this does no harm.
+*  As for the duration, **20 seconds** is enough time for the device to power on and start transmitting data.
 
-!!!!!!!!!!!!!!!DO THIS PART!!!!!!!!!!
+Now try with the popular baud rates with both the suspected pins and try to compare the results. If you find any readable text with one of the pins and the text makes some sense then that’s the TX pin.
+
+![](https://miro.medium.com/max/640/1*_7i8gbB0Sw2I0QxCMQ6gRw.png)
+
+![](https://miro.medium.com/max/640/1*1Ku2G160NBczbgM-USi8kQ.png)
+
 
 ## Connect to serial port
 ### WARNING
-It's not a big deal if you confuse the UART RX and TX ports with each other, because you can easily swap the wires connecting to them without any consequences. But confusing the Vcc with the GND and connecting wires to them incorrectly **might fry the circuit**.
+It's not a big deal if you confuse the UART RX and TX ports with each other, because you can easily swap the wires connecting to them without any consequences. But confusing the VCC with the GND and connecting wires to them incorrectly **might fry the circuit**.
 
 ### Examples
 ![](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
