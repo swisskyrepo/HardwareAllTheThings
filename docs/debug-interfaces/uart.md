@@ -112,7 +112,7 @@ Typically, it will be assigned to `/dev/ttyUSB0` **if you don't have any other p
 
 Under Ubuntu or Debian, a non-root user cannot have access to serial ports such as ttyS0 or ttyUSB0 if he is not a member of the **dialout** group ! The equivalent group on Arch based distributions is **uucp**. In other words, you just have to add yourself to this group to have access.
 
-Ubuntu or Deiban: `sudo usermod -a -G dialout $USER`
+Ubuntu or Debian: `sudo usermod -a -G dialout $USER`
 
 Arch based: `sudo usermod -a -G uucp $USER`
 
