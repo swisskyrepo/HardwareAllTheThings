@@ -5,7 +5,7 @@
 ***DNP3 Clients***
 
  - [DNP3 Client Master Simulator](https://sourceforge.net/projects/dnp3-client-master-simulator/)
- -  [DNP3 Simulator](https://github.com/dnp3/dnp3-simulator)
+ - [DNP3 Simulator](https://github.com/dnp3/dnp3-simulator)
  
 **DNP3 Nmap Script**
 
