@@ -48,3 +48,7 @@ client.on_connect = on_connect
 client.connect('IP SERVER HERE', 1883, 60)
 client.publish('smarthouse/garage/door', "{'open':'true'}")
 ```
+
+### MQTT Fuzzing 
+
+* [MQTT-Fuzz](https://github.com/F-Secure/mqtt_fuzz)
