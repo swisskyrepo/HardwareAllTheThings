@@ -227,7 +227,7 @@ The first one we should run is osmo-trx-lms . This one should be ran as root to 
 sudo osmo-trx-lms
 ```
 
-![OSMO TRX LMS running](/assets/limebts/1_KbNtmYsmaCMVJinWnJdhFg.jpg)
+![OSMO TRX LMS running](../assets/limebts/1_KbNtmYsmaCMVJinWnJdhFg.jpg)
 
 The second one is the osmo-nitb which is the base station controller. This one doesn’t need to be ran as root.
 
@@ -235,7 +235,7 @@ The second one is the osmo-nitb which is the base station controller. This one d
 osmo-nitb
 ```
 
-![Osmo NITB running](/assets/limebts/1_MmIJlBChAK1XF8TzxoX80g.jpg)
+![Osmo NITB running](../assets/limebts/1_MmIJlBChAK1XF8TzxoX80g.jpg)
 
 And the last software is the osmo-bts-trx which handles the transceiver:
 
@@ -243,7 +243,7 @@ And the last software is the osmo-bts-trx which handles the transceiver:
 osmo-bts-trx
 ```
 
-![Osmo BTS TRX running](/assets/limebts/1_2il3cVVy8yFsX5hNsESyDw.jpg)
+![Osmo BTS TRX running](../assets/limebts/1_2il3cVVy8yFsX5hNsESyDw.jpg)
 
 Now your base station should be running.
 
@@ -251,17 +251,17 @@ Now your base station should be running.
 
 The best way to test is to have a custom simcard like this one:
 
-![Sysmocom Custom Simcard [http://shop.sysmocom.de/products/sysmousim-sjs1-4ff](http://shop.sysmocom.de/products/sysmousim-sjs1-4ff)](/assets/limebts/0_pKv_npHA_3DhtIQi.jpg)
+![Sysmocom Custom Simcard [http://shop.sysmocom.de/products/sysmousim-sjs1-4ff](http://shop.sysmocom.de/products/sysmousim-sjs1-4ff)](../assets/limebts/0_pKv_npHA_3DhtIQi.jpg)
 
 But since we set the BTS to *accept-all* mode, you can just go to your phone network settings and select the created network. That will work fine if you have an Android phone which allows you to select custom networks:
 
-![List of networks in an Android Phone. Here the 72470 network I just created](/assets/limebts/1_8_tklU4IBXyxERiyDkxl-w.jpg)
+![List of networks in an Android Phone. Here the 72470 network I just created](../assets/limebts/1_8_tklU4IBXyxERiyDkxl-w.jpg)
 
 Here is the network I just created with MCC 724 and MNC 70. In some simcards it is required that the MCC is the same as sim country (for example here it only shows if the network is at 724).
 
 After connecting to the network, the name should appear instead of the MCC+MNC code:
 
-![HUEBRNetwork showing in the list](/assets/limebts/1_CrDQk7YysiFXzgaOrxaTQA.jpg)
+![HUEBRNetwork showing in the list](../assets/limebts/1_CrDQk7YysiFXzgaOrxaTQA.jpg)
 
 ## Listing Subscribers
 
