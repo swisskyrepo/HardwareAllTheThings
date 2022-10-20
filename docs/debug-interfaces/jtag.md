@@ -30,35 +30,9 @@ $ avarice --program --file test.elf --part atmega128 --jtag /dev/ttyUSB0 :4444
 $ avrdude -p m128 -c jtagmkI –P /dev/ttyUSB0 -U flash:r:”/home/avr/flash.bin":r
 ```
 
-### JTAGEnum
+### Enumeration methods
 
-JTAGenum is an open source Arduino JTAGenum.ino or RaspbberyPi JTAGenum.sh (experimental) scanner. This code was built with three primary goals:
-
-* Given a large set of pins on a device determine which are JTAG lines
-* Enumerate the Instruction Register to find undocumented functionality
-
-⚠️ JTAG and device must share the same ground.
-
-Software Connection Set up:
-
-* Download the INO sketch from the github
-* Open the Arduino IDE and Load the downloaded JTAGEnum sketch
-* Choose the correct Serial Port and Board
-* Compile and Upload the sketch
-* Open the Serial Monitor
-* Set the correct baud rate
-* Enter the command to scan ("s")
-
-Arduino PIN Layout
-
-* Digital PIN 2(Black)
-* Digital PIN 3(White)
-* Digital PIN 4(Grey)
-* Digital PIN 5(Maroon)
-* Digital PIN 6(Blue)
-* GND - GREEN
-
-![](https://3.bp.blogspot.com/-OmjCNFWbnf0/WKx4NEjfb9I/AAAAAAAADy8/-qz5Of4iDbcT5mtonl6st1hVGrmsGUs4gCLcB/s640/FOUND.png)
+For enumeration methods see [Enumeration/JTAG](/enumeration/jtag/)
 
 ### References
 
