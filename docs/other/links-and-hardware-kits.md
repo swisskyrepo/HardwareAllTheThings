@@ -27,6 +27,14 @@
 * [Embedded/IoT Linux for Red-Blue Teams](https://www.pentesteracademy.com/course?id=37)
 * [From printed circuits boards to exploits (PWNING IOT DEVICES LIKE A BOSS) @virtualabs | Hack in Paris '18-](https://hackinparis.com/data/slides/2018/talks/HIP2018\_Damien\_Cauquil\_From\_Printed\_Circuit\_Boards\_To\_Exploits.pdf)
 
+### Books
+
+* [IoT Penetration Testing Cookbook: Identify vulnerabilities and secure your smart devices - Aaron Guzman, Aditya Gupta - Nov. 29 2017](https://www.amazon.ca/Penetration-Testing-Cookbook-Aaron-Guzman/dp/1787280578)
+* [The IoT Hacker's Handbook: A Practical Guide to Hacking the Internet of Things - Aditya Gupta - April 1 2019](https://www.amazon.ca/IoT-Hackers-Handbook-Practical-Internet/dp/1484242998)
+* [Practical IoT Hacking: The Definitive Guide to Attacking the Internet of Things - Fotios Chantzis, Ioannis Stais, Paulino Calderon, Evangelos Deirmentzoglou, Beau Woods](https://www.amazon.ca/Practical-IoT-Hacking-Fotios-Chantzis-ebook/dp/B085BVVSN6)
+* [Advanced Penetration Testing Hacking IoT - Richard Knowell - April 2 2019](https://www.amazon.ca/Advanced-Penetration-Testing-Hacking-IoT/dp/1092533591)
+
+
 ### Hardware Kit
 
 ![HW1](https://i.ibb.co/WW55LH4/Hardware-Toolkit.jpg) 
