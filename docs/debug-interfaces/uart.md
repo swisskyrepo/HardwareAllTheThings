@@ -26,6 +26,7 @@ We call the most common configuration **8N1**: eight data bits, no parity, and 1
 
 ## Identifying UART ports
 A UART pinout has **four** ports: 
+
 * **TX** (Transmit)
 * **RX** (Receive)
 * **VCC** (Voltage)
@@ -42,6 +43,8 @@ To find UART multiple solution:
 * Follow PCB traces (almost always impossible)
 
 Keep in mind that some devices **emulate** UART ports by programming the General-Purpose Input/Output (GPIO) pins if there isn't enough space on the board for dedicated hardware UART pins.
+
+It is adviced to capture the communication at **4 times the baudrate speed**, to avoid decoding issues.
 
 ### Using a multimeter
 #### GNR pin
@@ -76,6 +79,30 @@ Make sure any system you're testing is **powered off** when you connect the logi
  * Connect one of your logic analyzer's GND pins to the PCB that you're testing GND pins so they **share a common ground**.
 
 #### Software setup
+
+##### PulseView / Sigrok
+
+:warning: In order to make Pusleview working on Windows host, you have to use Zadig driver : https://zadig.akeo.ie/
+
+* Click run on the up left corner in order to start the capture
+* Once you get UART communication you can add "protocol decoder"
+
+![Protocol decoder in pulseview](../assets/UART_add_proto_decoder.png)
+
+* Select the right channel for TX and RX 
+* Select the baudrate, parity bit, frame size (most common, 8N1)
+* Data format, for example "ascii" if ascii chars are intended (boot sequence, stacktrace, etc.)
+
+Once you get an interesting capture, it is possible to save it decode it using **sigrok-cli**, instead of PulseView GUI :
+
+```bash
+sigrok-cli -O ascii -i ./uart.sr -P uart:baudrate=115200:rx=D0 -B uart=rx
+```
+
+![Decoding UART using sigrok-cli](../assets/UART_sigrok_dump.png)
+
+##### Saleae based logic analyzer
+
 This setup is for **Saleae based logic analyzer**, if you use a different one referer to the constructor documentation.
 
 * Open the saleae software
@@ -135,6 +162,22 @@ pip2.7 install serial
 python2.7 baudrate.py -p /dev/ttyUSB0
 ```
 
+#### Using PulseView
+
+It is possible to get baudrate using the duration of a bit periode, using PulseView or any other bus analysis tools :
+
+![1 bit period duration](../assets/UART_1bit_period.png)
+
+```python
+# https://www.cuemath.com/frequency-formula/
+>>> 1/8.003e-6 
+124953.14257153569
+```
+
+The closest common baudrate is : 115200. COnfigure the decoder and you should see ascii chars :
+
+![U-Boot string](../assets/UART_uboot_str.png)
+
 ### Interact with UART
 Different command line tools to interact with UART:
 ```powershell
@@ -142,6 +185,7 @@ cu -l /dev/ttyUSB0 -s 115200
 microcom -d -s 115200 -p /dev/ttyUSB0
 minicom -b 115200 -o -D /dev/ttyUSB0 # To exit GNU screen, type Control-A k
 screen /dev/ttyUSB0 115200
+miniterm.py /dev/ttyUSB0 115200 | tee ./stuff.log # tee command to save output, useful for parsing
 ```
 
 Script to brute force a password protected UART:
