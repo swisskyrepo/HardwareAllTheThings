@@ -44,7 +44,7 @@ To find UART multiple solution:
 
 Keep in mind that some devices **emulate** UART ports by programming the General-Purpose Input/Output (GPIO) pins if there isn't enough space on the board for dedicated hardware UART pins.
 
-It is adviced to capture the communication at **4 times the baudrate speed**, to avoid decoding issues.
+It is advised to capture the communication at **4 times the baudrate speed**, to avoid decoding issues.
 
 ### Using a multimeter
 #### GNR pin
@@ -82,7 +82,7 @@ Make sure any system you're testing is **powered off** when you connect the logi
 
 ##### PulseView / Sigrok
 
-:warning: In order to make Pusleview working on Windows host, you have to use Zadig driver : https://zadig.akeo.ie/
+:warning: In order to make Pulseview working on Windows host, you have to use Zadig driver : https://zadig.akeo.ie/
 
 * Click run on the up left corner in order to start the capture
 * Once you get UART communication you can add "protocol decoder"
