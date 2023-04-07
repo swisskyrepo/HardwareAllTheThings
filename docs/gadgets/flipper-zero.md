@@ -10,7 +10,7 @@
 
 * [Awesome FlipperZero](https://github.com/djsime1/awesome-flipperzero)
 
-#### Firmware Update
+#### Firmware Update - PC
 
 1. Update to the latest firmware using [https://flipperzero.one/update](https://flipperzero.one/update)
 2. Download and install qFlipper
@@ -20,6 +20,12 @@
 6. Unzip the downloaded .zip and copy the content into /update of the Flipper SD card (including the .dfu)
 7. On the Flipper Zero, once booted, press down, and left until you are on the 'Browser' screen. Scroll down until you see the 'update' directory and click on it.
 8. You should now see the contents you uploaded and an 'update' option. Hover over the 'update' option, click the center button on your Flipper, once again on the 'Run in App' option.
+
+#### Firmware Update - WebUpdater
+
+* [DarkFlippers/unleashed-firmware - Web Update](https://lab.flipper.net/?url=https://unleashedflip.com/fw_extra_apps/flipper-z-f7-update-unlshd-038e.tgz&channel=release-cfw&version=unlshd-038e)
+* [RogueMaster/flipperzero-firmware-wPlugins - Web Update](https://lab.flipper.net/?url=https%3A%2F%2Frogue-master.net%2F%3Ffile%3DRM0322-1504-0.79.2-22158b0.tgz&channel=RM0322-1504-0.79.2-22158b0&version=0.79.2)
+
 
 ### Videos
 
@@ -31,6 +37,6 @@
 * [Flipper Zero Hacking 101 - pingywon](https://flipper.pingywon.com/flipper/)
 * [Flipper Zero Playground - UberGuidoZ](https://github.com/UberGuidoZ/Flipper)
 * [Flashing Flipper Zero with RogueMaster CFW](https://interestingsoup.com/n00b-guide-flashing-flipper-zero-to-rougemaster/)
-
+* [Unleashed Firmware - Update firmware](https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/HowToInstall.md)
 
 
