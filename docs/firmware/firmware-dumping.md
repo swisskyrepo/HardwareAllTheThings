@@ -1,73 +1,90 @@
 # Firmware Dumping
 
-### Summary
+## Summary
 
-* Send a new firmware into the microcontroller using serial port
-* Dump firmware using debug port
-* Convert ihex to elf
-* Over-the-air updates
-* Explore firmware
-* Type of firmware
-* Check entropy
-* Unsquashfs
-* Encrypted firmware
+* [Send a new firmware into the microcontroller](#send-a-new-firmware-into-the-microcontroller)
+* [Dump firmware using debug port](#dump-firmware-using-debug-port)
+* [Convert ihex to elf](#convert-ihex-to-elf)
+* [Over-the-air updates](#over-the-air-updates)
+* [Explore firmware](#explore-firmware)
+* [Type of firmware](#type-of-firmware)
+* [Check entropy](#check-entropy)
+* [Unsquashfs](#unsquashfs)
+* [Encrypted firmware](#encrypted-firmware)
 
-### Send a new firmware into the microcontroller using serial port
 
-- avrdude
+## Send a new firmware into the microcontroller
 
-```powershell
-# send raw data firmware
-$ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:w:flash_raw.bin
+* Using [avrdudes/avrdude](https://github.com/avrdudes/avrdude)
+    ```powershell
+    # send raw data firmware
+    $ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:w:flash_raw.bin
 
-# send ihex firmware
-$ avrdude -c usbasp -p m328p -F -U flash:r:dump.hex:i
+    # send ihex firmware
+    $ avrdude -c usbasp -p m328p -F -U flash:r:dump.hex:i
 
-# default
-$ avrdude -c usbasp -p m328p -C /etc/avrdude.conf -U flash:w:hardcodedPassword.ino.arduino_standard.hex
-```
+    # default
+    $ avrdude -c usbasp -p m328p -C /etc/avrdude.conf -U flash:w:hardcodedPassword.ino.arduino_standard.hex
+    ```
+* Using [raspberrypi/picotool](https://github.com/raspberrypi/picotool)
+    ```ps1
+    # extension indicates the type (bin, uf2)
+    picotool load firmware.bin
+    ```
 
-- picotool
 
-```bash
-# extention indicates the type (bin, uf2)
-picotool load firmware.bin
-```
+## Dump firmware using debug port
 
-### Dump firmware using debug port
+* Using [avrdudes/avrdude](https://github.com/avrdudes/avrdude)
+    ```powershell
+    $ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:r:flash_raw.bin:r
+    $ avrdude -p m328p -c arduino -P /dev/ttyACM0 -b 115200 -U flash:r:flash_raw.bin:r
+    $ avrdude -p atmega328p -c arduino -P/dev/ttyACM0 -b 115200 -D -U flash:r:program.bin:r -F -v 
+    ```
 
-* avrdude
+* Using [openocd-org/openocd](https://github.com/openocd-org/openocd)
+    * Determine code space in the microcontroller (for example nRF51822 - Micro:bit), save as `dump_img.cfg`:
+        ```powershell
+        init
+        reset init
+        halt
+        dump_image image.bin 0x00000000 0x00040000
+        exit
+        ```
+    * Dump with openocd
+        ```powershell
+        sudo openocd -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
+        ```
+* Using [raspberrypi/picotool](https://github.com/raspberrypi/picotool)
+    * Build PicoTool, you will need the pico-sdk
+        ```ps1
+        # PicoSDK
+        git clone https://github.com/raspberrypi/pico-sdk.git
+        cd pico-sdk
+        git submodule update --init
 
-```powershell
-$ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:r:flash_raw.bin:r
-$ avrdude -p m328p -c arduino -P /dev/ttyACM0 -b 115200 -U flash:r:flash_raw.bin:r
-$ avrdude -p atmega328p -c arduino -P/dev/ttyACM0 -b 115200 -D -U flash:r:program.bin:r -F -v 
-```
+        # Picotool
+        cd ..
+        git clone https://github.com/raspberrypi/picotool.git
+        cd picotool
+        mkdir build
+        cd build
+        cmake -DPICO_SDK_PATH=../pico-sdk ..
+        make
+        ```
+    * Dump the program or the whole flash memory
+        ```ps1
+        sudo ./picotool save -F /tmp/out.bin
+        Saving file: [==============================]  100%
+        Wrote 73312 bytes to /tmp/out.bin
 
-* openocd
+        sudo ./picotool save --all -F /tmp/out2.bin
+        Saving file: [==============================]  100%
+        Wrote 2097152 bytes to /tmp/out2.bin
+        ```
 
-Determine code space in the microcontroller (for example nRF51822 - Micro:bit), save as `dump_img.cfg`:
 
-```powershell
-init
-reset init
-halt
-dump_image image.bin 0x00000000 0x00040000
-exit
-```
-
-```powershell
-sudo openocd  -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
-```
-
-- picotool
-
-```bash
-# extention indicates the type (bin, uf2)
-picotool save firmware.bin
-```
-
-### Convert ihex to elf
+## Convert ihex to elf
 
 > The Intel HEX is a transitional file format for microcontrollers, (E)PROMs, and other devices. The documentation states that HEXs can be converted to binary files and programmed into a configuration device.
 
@@ -107,11 +124,13 @@ cat defaultPassword.ino.arduino_standard.hex | tr -d ":" | tr -d "\n" | xxd -r -
 Inspect the assembly with `avr-objdump -m avr -D chest.hex`.\
 Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off -machine uno -bios chest.bin`
 
-### Over-the-air updates
+
+## Over-the-air updates
 
 TODO
 
-### Explore firmware
+
+## Explore firmware
 
 ```powershell
 $ binwalk -Me file.bin
@@ -133,14 +152,16 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 3708          0xE7C           ARM executable code, 16-bit (Thumb), little endian, at least 522 valid instructions
 ```
 
-### Type of firmware
+
+## Type of firmware
 
 * SREC - Motorola S-Record : All S-record file lines start with a capital S.
 * Intel HEX lines all start with a colon.
 * TI-TXT is a Texas Instruments format, usually for the MSP430 series. Memory addresses are prepended with an **@**, and data is represented in hex.
 * Raw NAND dumps
 
-### Check entropy
+
+## Check entropy
 
 High entropy = probably encrypted (or compressed). Low entropy = probably not
 
@@ -148,13 +169,15 @@ High entropy = probably encrypted (or compressed). Low entropy = probably not
 $ binwalk -E fw
 ```
 
-### Unsquashfs
+
+## Unsquashfs
 
 ```powershell
 sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
 ```
 
-### Encrypted firmware
+
+## Encrypted firmware
 
 ![](https://images.squarespace-cdn.com/content/v1/5894c269e4fcb5e65a1ed623/1581004558438-UJV08PX8O5NVAQ6Z8HXI/ke17ZwdGBToddI8pDm48kHSRIhhjdVQ3NosuzDMrTulZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s\_4yszcp2ryTI0HqTOaaUohrI8PIYASqlw8FVQsXpiBs096GedrrOfpwzeSClfgzB41Jweo/Picture2.png?format=1000w)
 
