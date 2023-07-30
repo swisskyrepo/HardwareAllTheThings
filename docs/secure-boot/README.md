@@ -1,4 +1,4 @@
-# What is Secure Boot
+# Secure Boot
 
  - Secure Boot is a **security feature implemented in modern computer systems**, primarily in those using the **Unified Extensible Firmware Interface (UEFI) firmware.**
 - Its main purpose is to ensure that **only trusted** and **authenticated software** is loaded during the boot process, protecting the system against unauthorized or malicious code that could compromise its integrity and security.
@@ -8,8 +8,6 @@
 
 ### References
 
-[**Windows UEFI Bootkit in Rust**](https://github.com/memN0ps/bootkit-rs)
-
-[**AzureDocs - Secure Boot**](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/security/fundamentals/secure-boot.md)
-
-[**Awesome UEFI Security**](https://github.com/river-li/awesome-uefi-security#documentations-book)
+* [Windows UEFI Bootkit in Rust](https://github.com/memN0ps/bootkit-rs)
+* [AzureDocs - Secure Boot](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/security/fundamentals/secure-boot.md)
+* [Awesome UEFI Security](https://github.com/river-li/awesome-uefi-security#documentations-book)
