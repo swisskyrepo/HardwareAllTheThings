@@ -1,4 +1,4 @@
-# Amiibo
+# NFC - Amiibo
 
 > Amiibo are small figurines or cards produced by Nintendo that contain Near Field Communication (NFC) chips. These chips allow the Amiibo to interact with various Nintendo gaming systems, such as the Wii U, Nintendo 3DS, and Nintendo Switch.
 
