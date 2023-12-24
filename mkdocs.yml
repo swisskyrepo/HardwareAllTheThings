@@ -48,12 +48,8 @@ edit_uri: edit/master/
 plugins:
   - search
   - git-revision-date-localized
+  - meta-descriptions
 
-# - git-committers:
-#     repository: swisskyrepo/PayloadsAllTheThings
-#     branch: main
-#     token: !ENV GH_TOKEN
-#     docs_path: docs/
 # insiders-2.12.0 ·  Plugin ·  Experimental
 # - social
 # - tags
