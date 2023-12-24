@@ -1,4 +1,6 @@
 site_name: Hardware All The Things
+site_description: 'Hardware/IOT Pentesting Wiki'
+
 theme:
   name: material
   icon:
