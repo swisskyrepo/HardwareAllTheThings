@@ -48,8 +48,9 @@ edit_uri: edit/master/
 plugins:
   - search
   - git-revision-date-localized
-  - meta-descriptions
+  - social
 
+# - meta-descriptions
 # insiders-2.12.0 ·  Plugin ·  Experimental
 # - social
 # - tags
