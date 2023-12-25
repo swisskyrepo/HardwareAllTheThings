@@ -1,5 +1,6 @@
 site_name: Hardware All The Things
 site_description: 'Hardware/IOT Pentesting Wiki'
+site_url: https://swisskyrepo.github.io/HardwareAllTheThings
 
 theme:
   name: material
