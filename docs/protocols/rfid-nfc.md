@@ -6,6 +6,7 @@
 ## Install and configuration
 
 Dependencies to install first
+
 ```ps1
 sudo apt-get install p7zip git build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4-dev perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib ncurses-dev libpcsclite-dev pcscd
 ```

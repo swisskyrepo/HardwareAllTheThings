@@ -1,8 +1,34 @@
 # SPI
 
-SPI is a serial peripheral interface. The controller selects a chip it send and receive information to and from. NOR flash chips with an SPI interface are commonly used as firmware boot chip. SPI has one read and one write line. In QSPI mode, 4 lines are used in parallel.
+Serial Peripheral Interface (SPI), is a type of communication protocol used primarily in microcontroller-based systems
+The controller selects a chip it send and receive information to and from. NOR flash chips with an SPI interface are commonly used as firmware boot chip. SPI has one read and one write line. In QSPI mode, 4 lines are used in parallel.
 
-### Dump Firmware via SPI
+SPI mainly involves four lines or wires:
+
+* MOSI (Master Out Slave In): This is the line through which the master sends data to the slave.
+* MISO (Master In Slave Out): Through this line, the slave sends data back to the master.
+* SCLK (Serial Clock): This line is like a clock ticking, controlled by the master. It helps in timing the data transfer, ensuring both master and slave are synchronized.
+* SS (Slave Select)/CS (Chip Select): When the master wants to talk to a particular slave, it uses this line to select the slave.
+
+
+## Interact via SPI
+
+![HydraBus SPI](../assets/hydra-spi.png)
+
+* Connect to HydraBus and communicate via the SPI protocol
+    ```ps1
+    screen /dev/ttyACM0 115200
+    spi
+    
+    # RDID Read Identification Sequence example
+    [ 0x9f hd:3 ]
+    
+    # Read data from the beginning of the chip
+    [ 0x03 0x00 0x00 0x00 hd:1024 ]
+    ```
+
+
+## Dump Firmware via SPI
 
 ```powershell
 sudo raspi-confi > Interface > SPI(P4)
@@ -19,7 +45,8 @@ An ESP8266 and ESP32 have several SPI busses available in hardware, SPI0 is hook
 $ python ./esptool.py read_flash --spi-connection HSPI 0 0x400000 flash_dump.bin
 ```
 
-### SPIFFS
+
+## SPIFFS
 
 ```powershell
 $ cd ~/.arduino15/packages/esp32/tools/esptool/2.3.1
@@ -29,7 +56,8 @@ $ cd ~/.arduino15/packages/esp32/tools/mkspiffs/0.2.3
 $ ./mkspiffs -u /tmp/data -p 256 -b 8192 -s 1028096 /tmp/spiffs/bin
 ```
 
-### ESP32 Diagrams
+
+## ESP32 Diagrams
 
 Color coded which pins can be connected from the ESP HSPI pins to an SPI flash. The pink interfaces (DQ1 and DQ2) are optional, they are only used in QSPI mode.
 
@@ -38,6 +66,7 @@ Color coded which pins can be connected from the ESP HSPI pins to an SPI flash. 
   <img src="https://raw.githubusercontent.com/swisskyrepo/HardwareAllTheThings/master/docs/assets/Qspi.png" style="max-width: 400px;">
 </p>
 
-### References
 
-* https://www.youtube.com/watch?v=Bn5zajZ4I5E
+## References
+
+* [Hardware Router CTF - Pen Test Partners - 9 mars 2020](https://www.youtube.com/watch?v=Bn5zajZ4I5E)

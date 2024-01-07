@@ -142,6 +142,9 @@ $ uefi-firmware-parser --test ~/firmware/*
 ~/firmware/O990-A03.exe.hdr: DellPFS
 ```
 
+
 ## References
 
 * [Loader un binaire Arduino dans IDA - Posted on January 26, 2014 by thanatos](https://thanat0s.trollprod.org/2014/01/loader-un-binaire-arduino-dans-ida/)
+* [REcon 2014 - Reverse Engineering Flash Memory For Fun and Benefit - Matt Oh](https://youtu.be/nTPfKT61730)
+* [Reverse Engineering Flash Memory for Fun and Benefit - Jeong Wook (Matt) Oh](https://www.blackhat.com/docs/us-14/materials/us-14-Oh-Reverse-Engineering-Flash-Memory-For-Fun-And-Benefit-WP.pdf)

@@ -1,19 +1,17 @@
 # Firmware Dumping
 
-## Summary
+## Flash Memory Types
 
-* [Send a new firmware into the microcontroller](#send-a-new-firmware-into-the-microcontroller)
-* [Dump firmware using debug port](#dump-firmware-using-debug-port)
-* [Convert ihex to elf](#convert-ihex-to-elf)
-* [Over-the-air updates](#over-the-air-updates)
-* [Explore firmware](#explore-firmware)
-* [Type of firmware](#type-of-firmware)
-* [Check entropy](#check-entropy)
-* [Unsquashfs](#unsquashfs)
-* [Encrypted firmware](#encrypted-firmware)
+* NOR Flash (SOIC8 package)
+    * SPI Flash
+    * Mostly error "Fault-free" memory
+    * Used for embedded device that need fast execution, but low storage capacity
+* NAND Flash (TSOP48 package)
+* eMMC Flash (BGA{153} package)
+* UFS Universal Flash Storage
 
 
-## Send a new firmware into the microcontroller
+## Flash a new firmware into the microcontroller
 
 * Using [avrdudes/avrdude](https://github.com/avrdudes/avrdude)
     ```powershell
@@ -26,6 +24,7 @@
     # default
     $ avrdude -c usbasp -p m328p -C /etc/avrdude.conf -U flash:w:hardcodedPassword.ino.arduino_standard.hex
     ```
+
 * Using [raspberrypi/picotool](https://github.com/raspberrypi/picotool)
     ```ps1
     # extension indicates the type (bin, uf2)
@@ -33,7 +32,7 @@
     ```
 
 
-## Dump firmware using debug port
+## Dump flash using debug port
 
 * Using [avrdudes/avrdude](https://github.com/avrdudes/avrdude)
     ```powershell
@@ -82,6 +81,19 @@
         Saving file: [==============================]  100%
         Wrote 2097152 bytes to /tmp/out2.bin
         ```
+
+
+## Dump Flash via SPI
+
+```ps1
+flashrom -p serprog:dev=/dev/ttyACM0,spispeed=160k -r dump_spi.bin -c "MX25L6406E/MX25L6408E"
+```
+
+* Using HydraBus: [hydrabus/hydrafw/hydra_spi_dump.py](https://github.com/hydrabus/hydrafw/blob/master/contrib/hydra_spi_dump/hydra_spi_dump.py)
+    ```ps1
+    ./hydra_spi_dump.py firmware.bin 1024 0x000000 fast
+    ```
+
 
 
 ## Convert ihex to elf
@@ -182,3 +194,8 @@ sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
 ![](https://images.squarespace-cdn.com/content/v1/5894c269e4fcb5e65a1ed623/1581004558438-UJV08PX8O5NVAQ6Z8HXI/ke17ZwdGBToddI8pDm48kHSRIhhjdVQ3NosuzDMrTulZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s\_4yszcp2ryTI0HqTOaaUohrI8PIYASqlw8FVQsXpiBs096GedrrOfpwzeSClfgzB41Jweo/Picture2.png?format=1000w)
 
 * [MINDSHARE: DEALING WITH ENCRYPTED ROUTER FIRMWARE](https://www.zerodayinitiative.com/blog/2020/2/6/mindshare-dealing-with-encrypted-router-firmware)
+
+
+## References
+
+* [Extracting Firmware from Embedded Devices (SPI NOR Flash) - Flashback Team - 9 sept. 2022](https://www.youtube.com/watch?v=nruUuDalNR0)

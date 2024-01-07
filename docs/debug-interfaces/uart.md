@@ -1,5 +1,7 @@
 # UART
+
 ## Table of contents
+
   * [What is it ?](#what-is-it-)
   * [Identifying UART ports](#identifying-uart-ports)
     * [Using a multimeter](#using-a-multimeter)
@@ -14,6 +16,7 @@
    * [Examples](#examples)
 
 ## What is it ?
+
 UART stands for Universal asynchronous receiver transmitter. Used for serial communications over a computer or peripheral device serial port.
 
 UART peripherals are commonly integrated in many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel. 
@@ -25,6 +28,7 @@ Generally, the line is held high (at a logical 1 value) while UART is in idle st
 We call the most common configuration **8N1**: eight data bits, no parity, and 1 stop bit.
 
 ## Identifying UART ports
+
 A UART pinout has **four** ports: 
 
 * **TX** (Transmit)
