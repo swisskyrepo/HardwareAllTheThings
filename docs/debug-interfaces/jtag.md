@@ -1,12 +1,13 @@
 # JTAG
 
-### Summary
+## Summary
 
 * JTAG Pins
 * JTAGEnum
 * References
 
-### JTAG Pins
+
+## JTAG Pins
 
 > Allows testing, debugging, firmware manipulation and boundary scanning
 
@@ -30,11 +31,13 @@ $ avarice --program --file test.elf --part atmega128 --jtag /dev/ttyUSB0 :4444
 $ avrdude -p m128 -c jtagmkI –P /dev/ttyUSB0 -U flash:r:”/home/avr/flash.bin":r
 ```
 
-### Enumeration methods
+
+## Enumeration methods
 
 For enumeration methods see [Enumeration/JTAG](/enumeration/jtag/)
 
-### References
+
+## References
 
 * [JTAGulator vs. JTAGenum, Tools for Identifying JTAG Pins in IoT Devices by Dylan Ayrey](https://www.praetorian.com/blog/jtagulator-vs-jtagenum-tools-for-identifying-jtag-pins-in-iot-devices?edition=2019)
 * [JTAG PIN Identification - February 21, 2017](https://just2secure.blogspot.com/2017/02/jtag-pin-identification.html)

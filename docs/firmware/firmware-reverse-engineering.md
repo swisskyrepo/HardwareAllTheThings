@@ -1,18 +1,8 @@
 # Firmware Reverse Engineering
 
-### Summary
+## Loading bare-metal binaries into IDA
 
-* Loading bare-metal binaries into IDA
-* Loading bare-metal binaries into Radare2
-* Loading bare-metal binaries into Ghidra
-* ESPTool
-* nRF5x Firmware disassembly tools
-* Pure disassemblers
-* Simulating AVR
-
-### Loading bare-metal binaries into IDA
-
-Prerequisite:
+Requirements:
 
 * The **load address** is the address in memory that the binary is being executed from.
 * The **entry point** is the location within the binary where the processor starts executing.
@@ -23,7 +13,8 @@ Prerequisite:
 
 * ESP8266 : [https://github.com/themadinventor/ida-xtensa](https://github.com/themadinventor/ida-xtensa)
 
-### Loading bare-metal binaries into Radare2
+
+## Loading bare-metal binaries into Radare2
 
 Radare2 can disassemble `avr`, `arduino` natively
 
@@ -66,11 +57,23 @@ jmp 0x373a
 jmp 0x59ae
 ```
 
-### Loading bare-metal binaries into Ghidra
+
+## Loading bare-metal binaries into Ghidra
+
+SVD-Loader for Ghidra automates the entire generation of peripheral structs and memory maps for over 650 different microcontrollers
 
 * SVD-Loader for Ghidra: Simplifying bare-metal ARM reverse engineering - [svd-loader/](https://leveldown.de/blog/svd-loader/)
 
-### ESPTool
+**Usage**
+
+* Load a binary file
+* Open it in the code-browser, do not analyze it
+* Run the SVD-Loader Script
+* Select an SVD file
+* Analyze the file
+
+
+## ESPTool
 
 ESP8266 and ESP32 serial bootloader utility : [espressif/esptool](https://github.com/espressif/esptool)
 
@@ -83,7 +86,8 @@ Entry point: 4010f29c
 Segment 1: len 0x00568 load 0x4010f000 file_offs 0x00000008
 ```
 
-### nRF5x Firmware disassembly tools
+
+## nRF5x Firmware disassembly tools
 
 * [DigitalSecurity/nrf5x-tools](https://github.com/DigitalSecurity/nrf5x-tools)
 
@@ -109,7 +113,8 @@ ROM address  :  0x23000
 ROM length   :  0x5d000
 ```
 
-### Pure disassemblers
+
+## Pure disassemblers
 
 * Vavrdisasm -- vAVRdisasm will auto-recognize Atmel Generic, Intel HEX8, and Motorola S-Record files - [vsergeev/vavrdisasm](https://github.com/vsergeev/vavrdisasm)
 * [ODA - The Online Disassembler](https://www.onlinedisassembler.com/odaweb/)
@@ -120,7 +125,8 @@ ROM length   :  0x5d000
     $ avr-objdump -m avr -D main.hex > main.hex.dis
     ```
 
-### Simulating AVR
+
+## Simulating AVR
 
 > Programs compiled for Arduino can be simulated using AVR Studio or the newer Atmel Studio. I have used the former along with hapsim. Hapsim works by hooking into AVR Studio and can simulate peripherals like the UART, LCD etc.
 
@@ -128,7 +134,8 @@ ROM length   :  0x5d000
 $ simulavr -P atmega128 -F 16000000 –f build-crumbuino128/ex1.1.elf
 ```
 
-### UEFI Firmware
+
+## UEFI Firmware
 
 Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc - [theopolis/uefi-firmware-parser](https://github.com/theopolis/uefi-firmware-parser)
 

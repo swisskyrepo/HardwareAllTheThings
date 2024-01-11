@@ -18,6 +18,6 @@ Our goal is to foster a community-driven platform where individuals can share, l
 We believe in the power of community and collective knowledge. Therefore, we warmly invite you to contribute your unique payloads, bypass techniques, and innovative strategies to enrich our repository. 
 Your contributions help keep this project alive and kicking, ensuring that we can continue to bring you the latest and greatest in hardware and IoT security.
 
+You can also share the project and contribute with a Github Sponsorship.    
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Hardware%20All%20The%20Things,%20a%20curated%20collection%20of%20valuable%20payloads%20and%20bypass%20techniques%20tailored%20for%20Hardware%20and%20IoT%20Security%20-%20by%20@pentest_swissky&url=https://swisskyrepo.github.io/HardwareAllTheThings/)
-
 [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/swisskyrepo)](https://github.com/sponsors/swisskyrepo)

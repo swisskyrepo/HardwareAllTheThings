@@ -9,9 +9,11 @@ There are several tools and ways to enumerate JTAG pins. Here are few:
 * [Using an Arduino Pro Micro](#jtagenum-with-arduino-or-raspberry-pi)
 * [Using an Raspberry Pi Pico](#searching-jtag-pins-with-raspberry-pi-pico)
 
+
 ## Searching JTAG pins with Raspberry PI Pico
 
 * Raspberry Pi Pico: [https://github.com/racerxdl/JTAGscan](https://github.com/racerxdl/JTAGscan) made by [szymonh](https://github.com/szymonh/) adapted to RP2040 by [racerxdl](https://github.com/racerxdl/JTAGscan)
+
 
 ### How does it work?
 
@@ -22,6 +24,7 @@ It has two approaches:
 * Try reading `IDCODE` - Only requires TMS, TCK and TDO so it's faster. Unfortunately not all devices support `IDCODE` command (although most of them do). This doesn't find the TDI pin.
 * Shifting bits in `BYPASS` mode. This can find all pins, but it is slower (since not only you have one more pin to iterate over, but also need to shift "enough" bits through the JTAG Chain).
 
+
 ### Hardware suggestions
 
 Any raspberry pi pico board should work fine for scanning JTAG ports. Make sure you check the VCC of the target to see if it is 3.3V. Being other voltage level will require a level-shifter to avoid damage.
@@ -30,6 +33,7 @@ It is also recommended to use series 33 Ohm resistors in series with every teste
 
 ![RP2040 Board with 33 Ohm series resistor](../assets/rp2040-jtagscan-resistors.png)
 
+
 ### Programming the PiPico
 
 1. Go to `Releases` and download the `jtagscan-xxxx.zip`
@@ -37,6 +41,7 @@ It is also recommended to use series 33 Ohm resistors in series with every teste
 3. Plug your raspberry pi pico in the USB port while pressing the **BOOT** button (to enable bootloader)
 4. A new "disk" should appear in your machine. Drag the `uf2` file to the disk
 5. The raspberry pi pico should reboot and be recognized as a usb-serial converter
+
 
 ### Using
 
@@ -108,7 +113,8 @@ Arduino PIN Layout
 
 ![](https://3.bp.blogspot.com/-OmjCNFWbnf0/WKx4NEjfb9I/AAAAAAAADy8/-qz5Of4iDbcT5mtonl6st1hVGrmsGUs4gCLcB/s640/FOUND.png)
 
-### References
+
+## References
 
 * [JTAGulator vs. JTAGenum, Tools for Identifying JTAG Pins in IoT Devices by Dylan Ayrey](https://www.praetorian.com/blog/jtagulator-vs-jtagenum-tools-for-identifying-jtag-pins-in-iot-devices?edition=2019)
 * [JTAG PIN Identification - February 21, 2017](https://just2secure.blogspot.com/2017/02/jtag-pin-identification.html)

@@ -1,10 +1,13 @@
 # Raspberry Pi
 
-### Raspberrypi As Poor Man’s Hardware Hacking Tool
+## GPIO Header
 
-* SPI – Serial Peripheral Interface
-* I2C – Inter-IC Communication
-* Debugger – JTAG/SWD
+![Raspberry PI GPIO Header](../assets/rpi-gpio.png)
+
+
+## Tools
+
+* [raspi-sec-tool](https://github.com/arunmagesh/raspi-sec-tool) - using Raspberry pi as hacking tool
 
 
 ## References

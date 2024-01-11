@@ -1,20 +1,5 @@
 # UART
 
-## Table of contents
-
-  * [What is it ?](#what-is-it-)
-  * [Identifying UART ports](#identifying-uart-ports)
-    * [Using a multimeter](#using-a-multimeter)
-    * [Using a logic analyzer](#using-a-logic-analyzer)
-  * [Connect to serial port](#connect-to-serial-port)
-    * [WARNING](#warning)
-    * [Examples](#examples)
-    * [Connection using a USB to TTL](#connection-using-a-usb-to-ttl)
-    * [Detect the baud rate](#detect-the-baud-rate)
-    * [Interact with UART](#interact-with-uart)
-  * [UART over BLE](#uart-over-ble)
-   * [Examples](#examples)
-
 ## What is it ?
 
 UART stands for Universal asynchronous receiver transmitter. Used for serial communications over a computer or peripheral device serial port.
@@ -26,6 +11,7 @@ With access to the UART, a user can see bootloader and operating-system logs.
 Generally, the line is held high (at a logical 1 value) while UART is in idle state.
 
 We call the most common configuration **8N1**: eight data bits, no parity, and 1 stop bit.
+
 
 ## Identifying UART ports
 
@@ -51,36 +37,46 @@ Keep in mind that some devices **emulate** UART ports by programming the General
 It is advised to capture the communication at **4 times the baudrate speed**, to avoid decoding issues.
 
 ### Using a multimeter
+
 #### GNR pin
+
 First identify the GRN pin, by using the multimeter in continuity mode. 
 
 Place the black probe on any grounded metallic surface, be it a part of the tested PCB or not. Then place the red probe on each of the ports. When you hear a beeping sound, you found a GND pin.
 
 #### VCC pin
+
 Turn the multimeter to the DC voltage mode in and set it up to 20V of voltage. Keep the black probe on a grounded surface. Place the red probe on a suspected pin and turn on the device.
 
 If the multimeter measures a constant voltage of either 3.3V or 5V, you've found the VCC pin.
 
 #### TX pin
+
 Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe in a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the VCC value, you've most likely found the TX pin.
 
 This behavior happens because, during bootup, the device sends serial data through that TX pin for debugging purposes. Once it finishes booting, the UART line goes idle.
 
 #### Rx pin
+
 If you've already identified the rest of the UART pins, the nearby fourth pin is most likely the RX pin.
 
 Otherwise, you can identify it because it has the lowest voltage fluctuation and lowest overall value of all the UART pins.
 
+
 ### Using a logic analyzer
+
 A logic analyzer is an electronic instrument that captures and displays multiple signals from a digital system or digital circuit.
 
 To find the UART pins we will connect the pins to a logic analyzer and look for data being transmitted.
 
+
 #### Hardware setup
+
 Make sure any system you're testing is **powered off** when you connect the logic analyzer's probes to it **to avoid short-circuiting**.
 
  * Connect the suspected TX pin to any channel of the logic analyzer.
  * Connect one of your logic analyzer's GND pins to the PCB that you're testing GND pins so they **share a common ground**.
+
 
 #### Software setup
 
@@ -128,30 +124,35 @@ Now try with the popular baud rates with both the suspected pins and try to comp
 
 
 ## Connect to serial port
+
 ### WARNING
 It's not a big deal if you confuse the UART RX and TX ports with each other, because you can easily swap the wires connecting to them without any consequences. But confusing the VCC with the GND and connecting wires to them incorrectly **might fry the circuit**.
 
 ### Examples
+
 ![](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
 
 ![](https://vanhunteradams.com/Protocols/UART/uart_hardware.png)
 
 ### Connection using a USB to TTL
+
 Once the ports are connected, plug the adapter into your computer. You now need to find the **device file descriptor**. To do that enter the following command : `sudo dmesg`.
 
 Typically, it will be assigned to `/dev/ttyUSB0` **if you don't have any other peripheral devices attached**.
 
 Under Ubuntu or Debian, a non-root user cannot have access to serial ports such as ttyS0 or ttyUSB0 if he is not a member of the **dialout** group ! The equivalent group on Arch based distributions is **uucp**. In other words, you just have to add yourself to this group to have access.
 
-Ubuntu or Debian: `sudo usermod -a -G dialout $USER`
+* Ubuntu or Debian: `sudo usermod -a -G dialout $USER`
+* Arch based: `sudo usermod -a -G uucp $USER`
 
-Arch based: `sudo usermod -a -G uucp $USER`
 
 ### Detect the baud rate
+
 #### Most common baud rate
 The most common baud rates for UART are `9600`, `19200`, `38400`, `57600` and `115200`.
 
 A table of other used but less common baud rates can be found here:  [Here](https://lucidar.me/en/serialib/most-used-baud-rates-table/)
+
 
 #### Autodetect the baud rate using a script
 Link: [baudrate.py](https://github.com/devttys0/baudrate/blob/master/baudrate.py)
@@ -165,6 +166,7 @@ pip2.7 install serial
 # Run the script on "/dev/ttyUSB0"
 python2.7 baudrate.py -p /dev/ttyUSB0
 ```
+
 
 #### Using PulseView
 
@@ -183,6 +185,7 @@ The closest common baudrate is : 115200. COnfigure the decoder and you should se
 ![U-Boot string](../assets/UART_uboot_str.png)
 
 ### Interact with UART
+
 Different command line tools to interact with UART:
 ```powershell
 cu -l /dev/ttyUSB0 -s 115200
@@ -210,6 +213,7 @@ with open('/home/audit/Documents/IOT/passwords.lst', 'r') as f:
         print("Result: {}".format(s.readline()))
         time.sleep(10)
 ```
+
 
 ## UART over BLE
 

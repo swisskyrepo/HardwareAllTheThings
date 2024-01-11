@@ -19,6 +19,7 @@
     $ avrdude -p m328p -c usbasp -P /dev/ttyUSB0 -b 9600 -U flash:w:flash_raw.bin
 
     # send ihex firmware
+    $ avrdude -c arduino -p atmega328p -P /dev/ttyUSB* -b115200 -u -V -U flash:w:CHALLENGE.hex
     $ avrdude -c usbasp -p m328p -F -U flash:r:dump.hex:i
 
     # default
@@ -54,6 +55,7 @@
         ```powershell
         sudo openocd -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
         ```
+
 * Using [raspberrypi/picotool](https://github.com/raspberrypi/picotool)
     * Build PicoTool, you will need the pico-sdk
         ```ps1
@@ -85,15 +87,23 @@
 
 ## Dump Flash via SPI
 
-```ps1
-flashrom -p serprog:dev=/dev/ttyACM0,spispeed=160k -r dump_spi.bin -c "MX25L6406E/MX25L6408E"
-```
+
+* Using [flashrom/flashroom](https://github.com/flashrom/flashrom)
+    ```ps1
+    sudo apt-get install build-essential pciutils usbutils libpci-dev libusb-dev libftdi1 libftdi-dev zlib1g-dev subversion libusb-1.0-0-dev
+    svn co svn://flashrom.org/flashrom/trunk flashrom
+    cd flashrom
+    make
+
+    flashrom -p ft232_spi:type:232h -r spidump.bin
+    flashrom -p linux_spi:dev=/dev/spidev0.0,spispeed=512 -r spi_dump.bin
+    flashrom -p serprog:dev=/dev/ttyACM0,spispeed=160k -r dump_spi.bin -c "MX25L6406E/MX25L6408E"
+    ```
 
 * Using HydraBus: [hydrabus/hydrafw/hydra_spi_dump.py](https://github.com/hydrabus/hydrafw/blob/master/contrib/hydra_spi_dump/hydra_spi_dump.py)
     ```ps1
     ./hydra_spi_dump.py firmware.bin 1024 0x000000 fast
     ```
-
 
 
 ## Convert ihex to elf
@@ -137,32 +147,53 @@ Inspect the assembly with `avr-objdump -m avr -D chest.hex`.\
 Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off -machine uno -bios chest.bin`
 
 
-## Over-the-air updates
-
-TODO
-
-
 ## Explore firmware
 
-```powershell
-$ binwalk -Me file.bin
-$ strings file.bin
+* strings
+    ```ps1
+    $ strings file.bin
 
-$ strings -e l file.bin
-The strings -e flag specifies the encoding of the characters. -el specifies little-endian characters 16-bits wide (e.g. UTF-16)
+    $ strings -e l file.bin
+    The strings -e flag specifies the encoding of the characters. -el specifies little-endian characters 16-bits wide (e.g. UTF-16)
 
-$ strings -tx file.bin
-The -t flag will return the offset of the string within the file. -tx will return it in hex format, T-to in octal and -td in decimal. 
+    $ strings -tx file.bin
+    The -t flag will return the offset of the string within the file. -tx will return it in hex format, T-to in octal and -td in decimal.
+    ```
 
-$ dd if=firmware.bin of=firmware.chunk bs=1 skip=$((0x200)) count=$((0x400-0x200))
-If we wanted to run it a little faster, we could increase the block size:
-$ dd if=firmware.bin of=firmware.chunk bs=$((0x100)) skip=$((0x200/0x100)) count=$(((0x400-0x200)/0x100))
+* dd
+    ```ps1
+    $ dd if=firmware.bin of=firmware.chunk bs=1 skip=$((0x200)) count=$((0x400-0x200))
+    If we wanted to run it a little faster, we could increase the block size:
+    $ dd if=firmware.bin of=firmware.chunk bs=$((0x100)) skip=$((0x200/0x100)) count=$(((0x400-0x200)/0x100))
+    ```
 
-$ binwalk -Y dump.elf 
-DECIMAL       HEXADECIMAL     DESCRIPTION
---------------------------------------------------------------------------------
-3708          0xE7C           ARM executable code, 16-bit (Thumb), little endian, at least 522 valid instructions
-```
+* binwalk
+    ```powershell
+    $ binwalk -Me file.bin
+    $ binwalk -Y dump.elf 
+    DECIMAL       HEXADECIMAL     DESCRIPTION
+    --------------------------------------------------------------------------------
+    3708          0xE7C           ARM executable code, 16-bit (Thumb), little endian, at least 522 valid instructions
+    ```
+
+* Unsquashfs
+    ```powershell
+    sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
+    ```
+
+
+## Write new firmware
+
+* Repack firmware
+    ```ps1
+    mksquashfs4 squashfs-root myrootfs {options}
+    dd if=myrootfs of=dump/bin bs=1 seek=<offset> conv=notrunc
+    ```
+
+* Flashrom write
+    ```ps1
+    flashrom -p ft2232_spi:type=232H -w dump.bin
+    ```
 
 
 ## Type of firmware
@@ -182,11 +213,6 @@ $ binwalk -E fw
 ```
 
 
-## Unsquashfs
-
-```powershell
-sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
-```
 
 
 ## Encrypted firmware
@@ -196,6 +222,12 @@ sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
 * [MINDSHARE: DEALING WITH ENCRYPTED ROUTER FIRMWARE](https://www.zerodayinitiative.com/blog/2020/2/6/mindshare-dealing-with-encrypted-router-firmware)
 
 
+## Over-the-air updates
+
+TODO
+
+
 ## References
 
 * [Extracting Firmware from Embedded Devices (SPI NOR Flash) - Flashback Team - 9 sept. 2022](https://www.youtube.com/watch?v=nruUuDalNR0)
+* [Real Hardware Hacking for S$30 or Less - Joe FitzPatrick - 31 march 2020](https://youtu.be/wVPochUgTvw)
