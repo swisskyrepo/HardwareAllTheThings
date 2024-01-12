@@ -32,6 +32,12 @@
 * [From printed circuits boards to exploits (PWNING IOT DEVICES LIKE A BOSS) @virtualabs | Hack in Paris '18-](https://hackinparis.com/data/slides/2018/talks/HIP2018\_Damien\_Cauquil\_From\_Printed\_Circuit\_Boards\_To\_Exploits.pdf)
 
 
+## Twitch & Streaming
+
+* [Twitch/virtualabs](https://www.twitch.tv/virtualabs)
+* [VirtuVOD - VOD of twitch.tv/virtualabs](https://www.youtube.com/@VirtuVOD)
+
+
 ## Books
 
 * [IoT Penetration Testing Cookbook: Identify vulnerabilities and secure your smart devices - Aaron Guzman, Aditya Gupta - Nov. 29 2017](https://www.amazon.ca/Penetration-Testing-Cookbook-Aaron-Guzman/dp/1787280578)
