@@ -34,8 +34,9 @@
 
 ## Twitch & Streaming
 
-* [Twitch/virtualabs](https://www.twitch.tv/virtualabs)
-* [VirtuVOD - VOD of twitch.tv/virtualabs](https://www.youtube.com/@VirtuVOD)
+* [Twitch - virtualabs](https://www.twitch.tv/virtualabs)
+* [Youtube - VirtuVOD - VOD of twitch.tv/virtualabs](https://www.youtube.com/@VirtuVOD)
+* [Youtube - WHID We Hack In Disguise](https://www.youtube.com/@whid_ninja)
 
 
 ## Books

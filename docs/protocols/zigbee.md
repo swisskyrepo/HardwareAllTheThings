@@ -8,7 +8,7 @@
 * [riverloopsec/killerbee](https://github.com/riverloopsec/killerbee) - IEEE 802.15.4/ZigBee Security Research Toolkit
 
 
-## ZigBee Default Trust Center Link Key
+## Default Trust Center Link Key
 
 Zigbee includes several layers of security, including AES-128 encryption, to ensure that data is transmitted securely across the network.
 
@@ -21,6 +21,7 @@ For the profile "Home Automation" the default Trust Center Link Key is : `ZigBee
 You can use it in Wireshark: Edit > Preferences > Protocols > Zigbee NWK, then "New" and write the key in hex format.
 
 Example: [CVE-2020-28952 - Athom Homey Static and Well-known Keys](https://yougottahackthat.com/blog/1260/athom-homey-security-static-and-well-known-keys-cve-2020-28952)
+
 
 ## References
 

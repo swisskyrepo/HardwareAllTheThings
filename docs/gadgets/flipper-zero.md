@@ -2,7 +2,7 @@
 
 ![FlipperZero](../assets/image_flipper_cover.png)
 
-## **Firmwares**
+## Firmwares
 
 * [Flipper Zero Firmware](https://github.com/flipperdevices/flipperzero-firmware)
 * [Flipper Zero Unleashed Firmware](https://github.com/Eng1n33r/flipperzero-firmware)
@@ -32,9 +32,15 @@
 * [Flipper Zero: Want some good news? - Penthertz](https://www.youtube.com/watch?v=tB0eYatvu0k)
 * [Flipper Zero: is this for you? Follow our 1st tests! - Penthertz](https://www.youtube.com/watch?v=W5YYObSBUno)
 
+
 ## Tutorials and Resources
 
 * [Flipper Zero Hacking 101 - pingywon](https://flipper.pingywon.com/flipper/)
 * [Flipper Zero Playground - UberGuidoZ](https://github.com/UberGuidoZ/Flipper)
 * [Flashing Flipper Zero with RogueMaster CFW](https://interestingsoup.com/n00b-guide-flashing-flipper-zero-to-rougemaster/)
 * [Unleashed Firmware - Update firmware](https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/HowToInstall.md)
+
+
+## References
+
+* [The Ultimate Guide / CheatSheet to Flipper Zero - Ilias Mavropoulos - 17/01/2024](https://infosecwriteups.com/the-ultimate-guide-cheatsheet-to-flipper-zero-d4c42d79d32c)
