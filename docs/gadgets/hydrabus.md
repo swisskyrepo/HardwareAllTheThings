@@ -7,26 +7,31 @@
 
 Support many extensions:
 
-- HydraNFC
-- HydraFlash
+- [HydraNFC](https://swisskyrepo.github.io/HardwareAllTheThings/gadgets/hydranfc/)
+- [HydraFlash](https://swisskyrepo.github.io/HardwareAllTheThings/gadgets/hydraflash/)
 - HydraLINCAN
 
 External interactions:
 
-- UART
-- I2C
-- CAN/LIN Bus
-- SUMP
-- JTAG
-- SPI Bus
-- SD/SDIO
-- USB Bus
-- ADC / DAC (Analog / Digital)
-- GPIO
-- NFC
-- Wiegand
-- NAND flash
-- 1-wire,2-wire,3-wire
+- [Bus interaction commands](https://github.com/hydrabus/hydrafw/wiki/Bus-interaction-commands)
+- [Trigger mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-Trigger-guide)
+- [ADC guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-ADC-guide)
+- [DAC guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-DAC-guide)
+- [PWM guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-PWM-guide)
+- [GPIO guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-GPIO-guide)
+- [SPI guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-SPI-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-Binary-SPI-mode-guide)
+- [I2C guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-I2C-guide) / [binary mode]()
+- [1-wire guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-1-wire-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-binary-1-Wire-mode-guide)
+- [2-wire guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-2wire-guide)
+- [3-wire guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-3wire-guide)
+- [UART guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-UART-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-binary-UART-mode-guide)
+- [CAN guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-CAN-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-Binary-CAN-mode-guide)
+- [JTAG guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-JTAG-guide)
+- [NAND Flash guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-NAND-Flash-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-binary-NAND-Flash-mode-guide)
+- [Wiegand guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-Wiegand-guide)
+- [LIN guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-LIN-guide)
+- [SMARTCARD guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-SMARTCARD-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-binary-SMARTCARD-mode-guide)
+- [NFC guide](https://github.com/hydrabus/hydrafw/wiki/HydraFW-HydraNFC-v1-guide) / [binary mode](https://github.com/hydrabus/hydrafw/wiki/HydraFW-binary-NFC-Reader-mode-guide)
 
 
 ## Firmware
@@ -39,6 +44,7 @@ External interactions:
 ## Commands
 
 * Basic info: `show system`
+
     ```ps1> show system
     HydraFW (HydraBus) v0.11-1-g4d74500 2023-05-09
     sysTime: 0x000d82dd.
