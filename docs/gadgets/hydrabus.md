@@ -40,6 +40,30 @@ External interactions:
 * [hydrabus/hydrafw_hydranfc_shield_v2](https://github.com/hydrabus/hydrafw_hydranfc_shield_v2) - HydraFW dedicated to HydraBus v1 / HydraNFC Shield v2
 * [bvernoux/blackmagic](https://github.com/bvernoux/blackmagic) - In application debugger for ARM Cortex microcontrollers
 
+### Firmware Update
+
+Detailed steps: [hydrafw/Getting-Started-with-HydraBus-flash-and-use-hydrafw-on-linux](https://github.com/hydrabus/hydrafw/wiki/Getting-Started-with-HydraBus-flash-and-use-hydrafw-on-linux)
+
+1. Install `dfu-util`
+    ```ps1
+    git clone git://git.code.sf.net/p/dfu-util/dfu-util dfu-util
+    cd dfu-util
+    ./autogen.sh
+    ./configure
+    sudo make install
+    ```
+
+2. Download the latest release of the firmware
+    ```ps1
+    wget https://github.com/hydrabus/hydrafw/releases/download/v0.11/build_HydraFW_v0.11-12-ga6019f4_HydraBus_HydraNFC.zip
+    wget https://raw.githubusercontent.com/hydrabus/hydrafw/master/utils/udev-rules/09-hydrabus.rules -O ~/hydrafw/09-hydrabus.rules
+    ```
+
+3. Keep pressing `UBTN` button at `PowerON/RESET` in order to enter `USB DFU`
+4. Connect the MicroUSB cable from your PC to HydraBus
+5. Check Linux detection for HydraBus in DFU mode: `sudo dfu-util -l`
+6. Flash the firmware: `sudo dfu-util -i 0 -a 0 -d 0483:df11 -D ./build/hydrafw.dfu`
+
 
 ## Commands
 
@@ -88,3 +112,4 @@ Examples:
 * [BlackAlps17: Hydrabus: Lowering the entry fee to the IoT bugfest - Benjamin Vernoux -  2 dec. 2017](https://www.youtube.com/watch?v=theYbzPhYH8)
 * [HydraBus - An Open Source Platform - RMLL Sec 2017](https://archives.pass-the-salt.org/RMLL%20Security%20Tracks/2017/slides/RMLL-Sec-2017-hydrabus.pdf)
 * [Ph0wn, my first IoT CTF - Part 3 - Sebastien Andrivet - Dec. 19, 2018](https://sebastien.andrivet.com/en/posts/ph0wn-my-first-iot-ctf-part-3/)
+* [Getting Started with HydraBus flash and use hydrafw on linux - Benjamin Vernoux - 05/02/2024](https://github.com/hydrabus/hydrafw/wiki/Getting-Started-with-HydraBus-flash-and-use-hydrafw-on-linux)
