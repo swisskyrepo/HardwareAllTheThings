@@ -87,7 +87,6 @@
 
 ## Dump Flash via SPI
 
-
 * Using [flashrom/flashroom](https://github.com/flashrom/flashrom)
     ```ps1
     sudo apt-get install build-essential pciutils usbutils libpci-dev libusb-dev libftdi1 libftdi-dev zlib1g-dev subversion libusb-1.0-0-dev
@@ -211,8 +210,6 @@ High entropy = probably encrypted (or compressed). Low entropy = probably not
 ```powershell
 $ binwalk -E fw
 ```
-
-
 
 
 ## Encrypted firmware
