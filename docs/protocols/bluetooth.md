@@ -1,20 +1,34 @@
 # Bluetooth
 
+## Tools
+
+* [bettercap/bettercap](https://github.com/bettercap/bettercap)
+* [expliot_framework/expliot](https://expliot.readthedocs.io/en/latest/index.html)
+* [hackgnar/bleah](https://github.com/hackgnar/bleah)
+* [bluez/gatttool](https://manpages.debian.org/unstable/bluez/gatttool.1.en.html)
+* [securing/gattacker](https://github.com/securing/gattacker)
+
+
 ## Bluetooth configuration
 
-Configuration for Kali Linux
+Requirements and configuration for Kali Linux.
 
 ```powershell
 $ sudo apt-get install bluetooth blueman bluez
 $ sudo systemctl start bluetooth
 $ sudo hciconfig hci0 up
+```
 
+Enumerate Bluetooth devices
+
+```powershell
 $ sudo hcitool lescan
 00:1A:7D:DA:71:06 Ph0wn Beacon
 25:55:84:20:73:70 (unknown)
 ```
 
-`apt` doesn't have a recent version of bluez, recompile it with the following lines.
+> [!CAUTION]
+> `apt` doesn't have a recent version of bluez, recompile it with the following lines.
 
 ```powershell
 wget https://www.kernel.org/pub/linux/bluetooth/bluez-5.18.tar.xz
@@ -25,6 +39,7 @@ sudo apt-get install libglib2.0-dev libdbus-1-dev libusb-dev libudev-dev libical
 make -j8 && sudo make install
 sudo cp attrib/gatttool /usr/local/bin/
 ```
+
 
 ## BLE - Enumerate services and characteristics
 
@@ -78,18 +93,28 @@ Read data with gatttool
 ```powershell
 $ sudo gatttool -b $MAC -I
 [00:1A:7D:DA:71:06][LE]> connect
+```
 
-# list characteristics
-[00:1A:7D:DA:71:06][LE]> characteristics
-handle: 0x000b, char properties: 0x0a, char value handle: 0x000c, uuid: 4b796c6f-5265-6e49-7342-61644a656469
+* List characteristics
 
-# read characteristic at char handle
-[00:1A:7D:DA:71:06][LE]> char-read-hnd 0x000c
-Characteristic value/descriptor: 44 65 63 72 79 70 74 20 74 68 65 20 6d 65 73 73 61 67 65 2c 20 77 72 69 74 65 20 74 68 65 20 64 65 63 72 79 70 74 65 64 20 76 61 6c 75 65 20 61 6e 64 20 72 65 61 64 20 62 61 63 6b 20 74 68 65 20 72 65 73 70 6f 6e 73 65 20 74 6f 20 66 6c 61 67 2e 20 45 6e 63 72 79 70 74 65 64 20 6d 65 73 73 61 67 65 3a 20 63 34 64 33 32 38 36 35 37 61 39 64 62 33 64 66 65 39 31 64 33 36 36 36 62 39 34 31 62 33 36 31
+    ```powershell
+    [00:1A:7D:DA:71:06][LE]> characteristics
+    handle: 0x000b, char properties: 0x0a, char value handle: 0x000c, uuid: 4b796c6f-5265-6e49-7342-61644a656469
+    ```
 
-# one liner
+* Read characteristic at char handle
+
+    ```powershell
+    [00:1A:7D:DA:71:06][LE]> char-read-hnd 0x000c
+    Characteristic value/descriptor: 44 65 63 72 79 70 74 20 74 68 65 20 6d 65 73 73 61 67 65 2c 20 77 72 69 74 65 20 74 68 65 20 64 65 63 72 79 70 74 65 64 20 76 61 6c 75 65 20 61 6e 64 20 72 65 61 64 20 62 61 63 6b 20 74 68 65 20 72 65 73 70 6f 6e 73 65 20 74 6f 20 66 6c 61 67 2e 20 45 6e 63 72 79 70 74 65 64 20 6d 65 73 73 61 67 65 3a 20 63 34 64 33 32 38 36 35 37 61 39 64 62 33 64 66 65 39 31 64 33 36 36 36 62 39 34 31 62 33 36 31
+    ```
+
+One liner to read a characteristic
+
+```powershell
 $ gatttool -b $MAC --char-read -a 0x002a|awk -F':' '{print $2}'|tr -d ' '|xxd -r -p;printf '\n'
 ```
+
 
 ## BLE - Read notification/indication
 
@@ -144,6 +169,7 @@ ubertooth-btle -U 1 -A 38 -f  -c bulb_38.pcap
 ubertooth-btle -U 2 -A 39 -f  -c bulb_39.pcap
 ```
 
+
 ### Using Micro::Bit
 
 * [WEAPONIZING THE BBC MICRO:BIT - DAMIEN CAUQUIL / VIRTUALABS - DEF CON 25 - JULY 28, 2017](https://media.defcon.org/DEF%20CON%2025/DEF%20CON%2025%20presentations/DEF%20CON%2025%20-%20Damien-Cauquil-Weaponizing-the-BBC-MicroBit.pdf)
@@ -163,9 +189,13 @@ $ adb pull /sdcard/oem_log/btsnoop/<your log file>.log
 ## Challenges
 
 * [BLE HackMe](https://www.microsoft.com/store/apps/9N7PNVS9J1B7) - works with nRF Connect (Android), 
+* [hackgnar/ble_ctf](https://github.com/hackgnar/ble_ctf) - A Bluetooth low energy capture the flag
 
 
 ## References
 
 * [A Practical Introduction to Bluetooth Low Energy security without any special hardware - Slawomir Jasek - 19 November 2020](https://www.smartlockpicking.com/slides/HITB_Cyberweek_2020_A_Practical_Introduction_To_BLE_Security.pdf)
 * [Denial of Pleasure: Attacking Unusual BLE Targets with a Flipper Zero - Matteo Mandolini & Luca Bongiorni](https://www.whid.ninja/blog/denial-of-pleasure-attacking-unusual-ble-targets-with-a-flipper-zero)
+* [BLE CTF - wiki.elvis.science - Embedded Lab Vienna for IOT & Security](https://wiki.elvis.science/index.php?title=BLE_CTF)
+* [BLUETOOTH LOW ENERGY CTF - WRITE UP - ECLECTIC KOALA](https://blog.tclaverie.eu/posts/bluetooth-low-energy-ctf---write-up/)
+* [BLECTF, a "Capture The Flag" hardware platform based on Bluetooth Low Energy BLE + Write-Up - Hacker de Cabecera  febrero 04, 2020](https://www.hackerdecabecera.com/2020/02/blectf-capture-flag-hardware-platafom.html)

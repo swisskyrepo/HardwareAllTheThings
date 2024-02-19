@@ -1,14 +1,29 @@
 # ESP32
 
+![ESP32](../assets/esp32-pinout.png)
+
+
 ## Tools
 
 * [espressif/esptool](https://github.com/espressif/esptool) - Espressif SoC serial bootloader utility
 * [jmswrnr/esp32knife](https://github.com/jmswrnr/esp32knife) - Tools for ESP32 firmware dissection
-
+* [scientifichackers/ampy](https://github.com/scientifichackers/ampy) - Utility to interact with a MicroPython board over a serial connection
+* [ESPWebTool](https://esp.huhn.me/) - Flash your ESP32 or ESP8266 through your browser.
 
 ## Flashing
 
 The ESP32 microprocessor uses the Xtensa instruction set, use `Tensilica Xtensa 32-bit little-endian` in Ghidra.
+
+* Flash a new firmware with `espressif/esptool`
+    ```ps1
+    esptool.py -p /dev/ttyUSB0 -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size 2MB --flash_freq 40m 0x1000 build/bootloader/bootloader.bin 0x8000 build/partition_table/partition-table.bin 0x10000 build/ble_ctf.bin
+    esptool.py -p /dev/ttyS5 -b 115200 --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x8000 build/partition_table/partition-table.bin 0x1000 build/bootloader/bootloader.bin 0x10000 build/esp32-wifi-penetration-tool.bin
+    ```
+
+* Flash a new firmware with `scientifichackers/ampy` (MicroPython)
+    ```ps1
+    ampy --port /dev/ttyUSB0 put bla.py
+    ```
 
 * Dump the flash
     ```ps1
@@ -27,7 +42,9 @@ The ESP32 microprocessor uses the Xtensa instruction set, use `Tensilica Xtensa 
     esptool -p COM7 -b 115200 write_flash 0x10000 ./patched.part.3.factory.fixed
     ```
 
+
 ## References
 
 * [ESP32-reversing - BlackVS](https://github.com/BlackVS/ESP32-reversing)
-
+* [ESP32 Wi-Fi Penetration Tool - GitHub - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://github.com/risinek/esp32-wifi-penetration-tool)
+* [ESP32 Wi-Fi Penetration Tool - Documentation - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://risinek.github.io/esp32-wifi-penetration-tool/)

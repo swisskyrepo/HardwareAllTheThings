@@ -7,8 +7,8 @@
 * [Flipper Zero Firmware](https://github.com/flipperdevices/flipperzero-firmware)
 * [Flipper Zero Unleashed Firmware](https://github.com/Eng1n33r/flipperzero-firmware)
 * [Flipper Zero FW RogueMaster](https://github.com/RogueMaster/flipperzero-firmware-wPlugins)
+* [Flipper Zero Xtreme-Firmware](https://github.com/Flipper-XFW/Xtreme-Firmware)
 
-* [Awesome FlipperZero](https://github.com/djsime1/awesome-flipperzero)
 
 ### Firmware Update - PC
 
@@ -25,6 +25,11 @@
 
 * [DarkFlippers/unleashed-firmware - Web Update](https://lab.flipper.net/?url=https://unleashedflip.com/fw_extra_apps/flipper-z-f7-update-unlshd-038e.tgz&channel=release-cfw&version=unlshd-038e)
 * [RogueMaster/flipperzero-firmware-wPlugins - Web Update](https://lab.flipper.net/?url=https%3A%2F%2Frogue-master.net%2F%3Ffile%3DRM0322-1504-0.79.2-22158b0.tgz&channel=RM0322-1504-0.79.2-22158b0&version=0.79.2)
+
+
+## GPIO
+
+![GPIO Flipper](../assets/flipper-gpio.png)
 
 
 ## Videos
@@ -44,3 +49,4 @@
 ## References
 
 * [The Ultimate Guide / CheatSheet to Flipper Zero - Ilias Mavropoulos - 17/01/2024](https://infosecwriteups.com/the-ultimate-guide-cheatsheet-to-flipper-zero-d4c42d79d32c)
+* [djsime1/Awesome FlipperZero - 🐬 A collection of awesome resources for the Flipper Zero device](https://github.com/djsime1/awesome-flipperzero)
