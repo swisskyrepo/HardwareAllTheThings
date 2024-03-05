@@ -139,7 +139,7 @@ $ simulavr -P atmega128 -F 16000000 –f build-crumbuino128/ex1.1.elf
 
 Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc - [theopolis/uefi-firmware-parser](https://github.com/theopolis/uefi-firmware-parser)
 
-```
+```ps1
 sudo pip install uefi_firmware
 $ uefi-firmware-parser --test ~/firmware/*
 ~/firmware/970E32_1.40: UEFIFirmwareVolume
@@ -152,6 +152,7 @@ $ uefi-firmware-parser --test ~/firmware/*
 
 ## References
 
+* [GreHack22 - SecureDUO - chrisrdlg](https://github.com/chrisrdlg/gh22_SecureDuo)
 * [Loader un binaire Arduino dans IDA - Posted on January 26, 2014 by thanatos](https://thanat0s.trollprod.org/2014/01/loader-un-binaire-arduino-dans-ida/)
 * [REcon 2014 - Reverse Engineering Flash Memory For Fun and Benefit - Matt Oh](https://youtu.be/nTPfKT61730)
 * [Reverse Engineering Flash Memory for Fun and Benefit - Jeong Wook (Matt) Oh](https://www.blackhat.com/docs/us-14/materials/us-14-Oh-Reverse-Engineering-Flash-Memory-For-Fun-And-Benefit-WP.pdf)

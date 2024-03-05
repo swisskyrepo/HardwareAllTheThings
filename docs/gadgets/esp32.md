@@ -10,6 +10,13 @@
 * [scientifichackers/ampy](https://github.com/scientifichackers/ampy) - Utility to interact with a MicroPython board over a serial connection
 * [ESPWebTool](https://esp.huhn.me/) - Flash your ESP32 or ESP8266 through your browser.
 
+
+## Firmwares
+
+* [risinek/esp32-wifi-penetration-tool](https://github.com/risinek/esp32-wifi-penetration-tool) - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks. 
+* [justcallmekoko/ESP32Marauder](https://github.com/justcallmekoko/ESP32Marauder) - A suite of WiFi/Bluetooth offensive and defensive tools for the ESP32 
+
+
 ## Flashing
 
 The ESP32 microprocessor uses the Xtensa instruction set, use `Tensilica Xtensa 32-bit little-endian` in Ghidra.
