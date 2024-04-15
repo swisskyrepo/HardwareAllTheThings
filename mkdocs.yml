@@ -29,8 +29,12 @@ theme:
   features:
     - content.code.copy
     - content.action.edit
+    - content.action.view
+    - content.tooltips
     - navigation.tracking
     - navigation.top
+    - search.share
+    - search.suggest
 
 extra_css:
     - custom.css
@@ -41,7 +45,6 @@ markdown_extensions:
       custom_checkbox: true
   - tables
   - admonition
-  - callouts
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
