@@ -55,3 +55,4 @@ The ESP32 microprocessor uses the Xtensa instruction set, use `Tensilica Xtensa 
 * [ESP32-reversing - BlackVS](https://github.com/BlackVS/ESP32-reversing)
 * [ESP32 Wi-Fi Penetration Tool - GitHub - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://github.com/risinek/esp32-wifi-penetration-tool)
 * [ESP32 Wi-Fi Penetration Tool - Documentation - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://risinek.github.io/esp32-wifi-penetration-tool/)
+* [Hacking a Smart Home Device - @jmswrnr - 03 Feb 2024](https://jmswrnr.com/blog/hacking-a-smart-home-device)
