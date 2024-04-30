@@ -8,6 +8,7 @@
 * [Flipper Zero Unleashed Firmware](https://github.com/Eng1n33r/flipperzero-firmware)
 * [Flipper Zero FW RogueMaster](https://github.com/RogueMaster/flipperzero-firmware-wPlugins)
 * [Flipper Zero Xtreme-Firmware](https://github.com/Flipper-XFW/Xtreme-Firmware)
+* [Flipper Zero Momentum-Firmware](https://github.com/Next-Flip/Momentum-Firmware)
 
 
 ### Firmware Update - PC
@@ -36,7 +37,7 @@
 
 * [Flipper Zero: Want some good news? - Penthertz](https://www.youtube.com/watch?v=tB0eYatvu0k)
 * [Flipper Zero: is this for you? Follow our 1st tests! - Penthertz](https://www.youtube.com/watch?v=W5YYObSBUno)
-
+* [Flipper Zero: french collection video on the Flipper Zero, tutorial and explain](https://www.youtube.com/playlist?list=PLq_UnUtYZ15eoAiElH4T2XEB29iwZSi5a)
 
 ## Tutorials and Resources
 
@@ -44,6 +45,7 @@
 * [Flipper Zero Playground - UberGuidoZ](https://github.com/UberGuidoZ/Flipper)
 * [Flashing Flipper Zero with RogueMaster CFW](https://interestingsoup.com/n00b-guide-flashing-flipper-zero-to-rougemaster/)
 * [Unleashed Firmware - Update firmware](https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/HowToInstall.md)
+
 
 
 ## References
