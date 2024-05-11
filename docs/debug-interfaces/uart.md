@@ -186,33 +186,43 @@ The closest common baudrate is : 115200. COnfigure the decoder and you should se
 
 ### Interact with UART
 
-Different command line tools to interact with UART:
-```powershell
-cu -l /dev/ttyUSB0 -s 115200
-microcom -d -s 115200 -p /dev/ttyUSB0
-minicom -b 115200 -o -D /dev/ttyUSB0 # To exit GNU screen, type Control-A k
-screen /dev/ttyUSB0 115200
-miniterm.py /dev/ttyUSB0 115200 | tee ./stuff.log # tee command to save output, useful for parsing
-```
+* Command line tools to interact with UART:
 
-Script to brute force a password protected UART:
-```python
-import serial, time
-port = "/dev/ttyUSB0"
-baud = 115200
-s = serial.Serial(port)
-s.baudrate = baud
+    ```powershell
+    cu -l /dev/ttyUSB0 -s 115200
+    microcom -d -s 115200 -p /dev/ttyUSB0
+    minicom -b 115200 -o -D /dev/ttyUSB0 # To exit GNU screen, type Control-A k
+    screen /dev/ttyUSB0 115200
+    ```
 
-with open('/home/audit/Documents/IOT/passwords.lst', 'r') as f:
-    lines = f.readlines()
+* Brute force a password protected UART:
 
-    for pwd in lines:
-        a = s.write(pwd.strip())
-        print("Pwd: {}".format(pwd.strip()))
-        print("Sent {} bytes".format(a))
-        print("Result: {}".format(s.readline()))
-        time.sleep(10)
-```
+    ```python
+    import serial, time
+    port = "/dev/ttyUSB0"
+    baud = 115200
+    s = serial.Serial(port)
+    s.baudrate = baud
+
+    with open('/home/audit/Documents/IOT/passwords.lst', 'r') as f:
+        lines = f.readlines()
+
+        for pwd in lines:
+            a = s.write(pwd.strip())
+            print("Pwd: {}".format(pwd.strip()))
+            print("Sent {} bytes".format(a))
+            print("Result: {}".format(s.readline()))
+            time.sleep(10)
+    ```
+
+* Interact with HydraBus
+
+    ```ps1
+    uart1> scan
+    uart1> show
+    uart1> speed 38400
+    uart1> bridge
+    ```
 
 
 ## UART over BLE

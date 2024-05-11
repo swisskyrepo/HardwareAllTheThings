@@ -22,6 +22,12 @@ I2C (Inter-Integrated Circuit), pronounced "I-squared-C" or "I-two-C", is a popu
     sudo make install
     ```
 
+* HydraBus
+    ```ps1
+    i2c1> show pins
+    i2c1> scan
+    ```
+
 
 ## Read / Write
 

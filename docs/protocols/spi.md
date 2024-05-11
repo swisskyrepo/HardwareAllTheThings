@@ -30,11 +30,15 @@ SPI mainly involves four lines or wires:
 
 ## Dump Firmware via SPI
 
+Dump using a Raspberry Pi
+
 ```powershell
 sudo raspi-confi > Interface > SPI(P4)
-NOTE: might need a press/hold the reset button
+# NOTE: might need a press/hold the reset button
+
 # check
 sudo flashrom -p linux spi:dev=/dev/spidev0.0,spispeed=1000
+
 # dump
 sudo flashrom -p linux spi:dev=/dev/spidev0.0,spispeed=1000 -r dump.bin
 ```
@@ -43,6 +47,12 @@ An ESP8266 and ESP32 have several SPI busses available in hardware, SPI0 is hook
 
 ```powershell
 $ python ./esptool.py read_flash --spi-connection HSPI 0 0x400000 flash_dump.bin
+```
+
+Dump with HydraBus
+
+```ps1
+flashrom --programmer serprog:dev=/dev/ttyACM0,spispeed=2M -c "MX25L12833F" --progress -r /tmp/image.bin
 ```
 
 

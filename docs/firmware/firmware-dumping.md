@@ -180,6 +180,12 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
     sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
     ```
 
+* [onekey-sec/jefferson](https://github.com/onekey-sec/jefferson/) - JFFS2 filesystem extraction tool
+    ```ps1
+    pip install jefferson
+    jefferson filesystem.img -d outdir
+    jefferson file.jffs2 -d jffs2
+    ```
 
 ## Write new firmware
 
@@ -197,10 +203,10 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
 
 ## Type of firmware
 
-* SREC - Motorola S-Record : All S-record file lines start with a capital S.
-* Intel HEX lines all start with a colon.
-* TI-TXT is a Texas Instruments format, usually for the MSP430 series. Memory addresses are prepended with an **@**, and data is represented in hex.
-* Raw NAND dumps
+* `SREC` - Motorola S-Record : All S-record file lines start with a capital S.
+* `Intel HEX` lines all start with a colon.
+* `TI-TXT` is a Texas Instruments format, usually for the MSP430 series. Memory addresses are prepended with an **@**, and data is represented in hex.
+* `Raw` NAND dumps
 
 
 ## Check entropy

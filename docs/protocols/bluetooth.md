@@ -177,12 +177,15 @@ ubertooth-btle -U 2 -A 39 -f  -c bulb_39.pcap
 
 ### Using Android HCI
 
-Enable the Bluetooth HCI log on the device via Developer Options—also from the SDK, there is a helpful tool called the **Bluetooth HCI snoop log** (available after version 4.4)
+Enable the Bluetooth HCI log on the device via Developer Options.
 
 > It works like a hook in the stack to capture all the HCI packets in a file. For most Android devices, the log file is at `/sdcard/btsnoop_hci.log` or `/sdcard/oem_log/btsnoop/`
 
 ```powershell
+$ adb devices
 $ adb pull /sdcard/oem_log/btsnoop/<your log file>.log
+$ adb pull /sdcard/btsnoop_hci.log
+$ adb bugreport filename
 ```
 
 

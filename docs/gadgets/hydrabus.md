@@ -87,14 +87,14 @@ Detailed steps: [hydrafw/Getting-Started-with-HydraBus-flash-and-use-hydrafw-on-
 
 | Value | Description |
 |-------|-------------|
-| [	 | Chip select (CS) active (low) |
-| ]	 | CS disable (high) |
-| r	 | Read one byte by sending dummy byte (0xff). r:1...255 for bulk reads |
-| hd | Read one byte by sending dummy byte (0xff). hd:1...4294967295 for bulk reads. Displays a hexdump of the result |
-| w	 | Followed by values to write byte(s). w:1...255 for bulk writes |
-| 0b | Write this binary value. Format is 0b00000000 for a byte, but partial bytes are also fine: 0b1001 |
-| 0	 | Write this Octal value. Format is prefixed by a 0 (values from 000 to 077) |
-| "  | Write an ASCII-encoded string |
+| [	    | Chip select (CS) active (low) |
+| ]	    | CS disable (high) |
+| r	    | Read one byte by sending dummy byte (0xff). r:1...255 for bulk reads |
+| hd    | Read one byte by sending dummy byte (0xff). hd:1...4294967295 for bulk reads. Displays a hexdump of the result |
+| w	    | Followed by values to write byte(s). w:1...255 for bulk writes |
+| 0b    | Write this binary value. Format is 0b00000000 for a byte, but partial bytes are also fine: 0b1001 |
+| 0	    | Write this Octal value. Format is prefixed by a 0 (values from 000 to 077) |
+| "     | Write an ASCII-encoded string |
 | 0h/0x | Write this HEX value. Format is 0h01 or 0x01. Partial bytes are fine: 0xA. A-F can be lower-case or capital letters |
 | 0-255	| Write this decimal value. Any number not preceded by 0x, 0h, or 0b is interpreted as a decimal value |
 
