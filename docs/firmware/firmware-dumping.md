@@ -148,7 +148,7 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
 
 ## Explore firmware
 
-* strings
+* [unix/strings](#)
     ```ps1
     $ strings file.bin
 
@@ -159,14 +159,14 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
     The -t flag will return the offset of the string within the file. -tx will return it in hex format, T-to in octal and -td in decimal.
     ```
 
-* dd
+* [unix/dd](#)
     ```ps1
     $ dd if=firmware.bin of=firmware.chunk bs=1 skip=$((0x200)) count=$((0x400-0x200))
     If we wanted to run it a little faster, we could increase the block size:
     $ dd if=firmware.bin of=firmware.chunk bs=$((0x100)) skip=$((0x200/0x100)) count=$(((0x400-0x200)/0x100))
     ```
 
-* binwalk
+* [ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk)
     ```powershell
     $ binwalk -Me file.bin
     $ binwalk -Y dump.elf 
@@ -175,9 +175,15 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
     3708          0xE7C           ARM executable code, 16-bit (Thumb), little endian, at least 522 valid instructions
     ```
 
-* Unsquashfs
+* [squashfs-tools/unsquashfs](#)
     ```powershell
     sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
+    ```
+
+* [onekey-sec/unblob](https://github.com/onekey-sec/unblob)
+    ```ps1
+    docker run --rm --pull always -v /path/to/extract-dir/on/host:/data/output -v /path/to/files/on/host:/data/input ghcr.io/onekey-sec/unblob:latest /data/input/path/to/file
+    docker run --rm --pull always ghcr.io/onekey-sec/unblob:latest --help
     ```
 
 * [onekey-sec/jefferson](https://github.com/onekey-sec/jefferson/) - JFFS2 filesystem extraction tool

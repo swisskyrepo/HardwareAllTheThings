@@ -9,6 +9,7 @@
 * [jmswrnr/esp32knife](https://github.com/jmswrnr/esp32knife) - Tools for ESP32 firmware dissection
 * [scientifichackers/ampy](https://github.com/scientifichackers/ampy) - Utility to interact with a MicroPython board over a serial connection
 * [ESPWebTool](https://esp.huhn.me/) - Flash your ESP32 or ESP8266 through your browser.
+* [tenable/esp32_image_parser](https://github.com/tenable/esp32_image_parser) - A toolkit for helping you reverse engineer ESP32 firmware.
 
 
 ## Firmwares
