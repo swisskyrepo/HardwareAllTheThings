@@ -22,6 +22,7 @@
 7. On the Flipper Zero, once booted, press down, and left until you are on the 'Browser' screen. Scroll down until you see the 'update' directory and click on it.
 8. You should now see the contents you uploaded and an 'update' option. Hover over the 'update' option, click the center button on your Flipper, once again on the 'Run in App' option.
 
+
 ### Firmware Update - WebUpdater
 
 * [DarkFlippers/unleashed-firmware - Web Update](https://lab.flipper.net/?url=https://unleashedflip.com/fw_extra_apps/flipper-z-f7-update-unlshd-038e.tgz&channel=release-cfw&version=unlshd-038e)
@@ -39,6 +40,7 @@
 * [Flipper Zero: is this for you? Follow our 1st tests! - Penthertz](https://www.youtube.com/watch?v=W5YYObSBUno)
 * [Flipper Zero: french collection video on the Flipper Zero, tutorial and explain](https://www.youtube.com/playlist?list=PLq_UnUtYZ15eoAiElH4T2XEB29iwZSi5a)
 
+
 ## Tutorials and Resources
 
 * [Flipper Zero Hacking 101 - pingywon](https://flipper.pingywon.com/flipper/)
@@ -47,8 +49,8 @@
 * [Unleashed Firmware - Update firmware](https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/HowToInstall.md)
 
 
-
 ## References
 
 * [The Ultimate Guide / CheatSheet to Flipper Zero - Ilias Mavropoulos - 17/01/2024](https://infosecwriteups.com/the-ultimate-guide-cheatsheet-to-flipper-zero-d4c42d79d32c)
 * [djsime1/Awesome FlipperZero - 🐬 A collection of awesome resources for the Flipper Zero device](https://github.com/djsime1/awesome-flipperzero)
+* [Reading NFC cards - Flipper Docs](https://docs.flipper.net/nfc/read)

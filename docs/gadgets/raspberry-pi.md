@@ -13,3 +13,4 @@
 ## References
 
 * [Raspberry Pi As Poor Man’s Hardware Hacking Tool - Arun-Magesh - December 14, 2018](https://payatu.com/using-rasberrypi-as-poor-mans-hardware-hacking-tool)
+* [Hardware Hacking with a Raspberry Pi - Configuring the PiFex - voidstarsec - JULY 2024](https://voidstarsec.com/blog/pifex-config)

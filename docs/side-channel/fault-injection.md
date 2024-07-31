@@ -59,3 +59,4 @@ Here is a practical example, putting a cable between MOSI and Chip Select :
 * [Solving rhme fiesta from Riscure Hardware CTF 2016 with EM Fault Injection - Dangling Pointr - 2020, Oct 11](https://pedro-javierf.github.io/devblog/rhmefaultinjection/)
 * [Hardware Power Glitch Attack (Fault Injection) - rhme2 Fiesta (FI 100) - LiveOverflow -  16 june 2017](https://www.youtube.com/watch?v=6Pf3pY3GxBM)
 * [pin2pwn: How to Root an Embedded Linux Box with a Sewing Needle - Brad Dixon - Carve Systems - DEFCON 24](https://media.defcon.org/DEF%20CON%2024/DEF%20CON%2024%20presentations/DEF%20CON%2024%20-%20Brad-Dixon-Pin2Pwn-How-to-Root-An-Embedded-Linux-Box-With-A-Sewing-Needle-UPDATED.pdf)
+* [Replicant: Reproducing a Fault Injection Attack on the Trezor One - Voidstar - AUGUST 2022](https://voidstarsec.com/blog/replicant-part-1)
