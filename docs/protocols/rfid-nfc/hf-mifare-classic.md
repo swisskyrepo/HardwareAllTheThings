@@ -4,6 +4,31 @@
 
 New method for Proxmark : `hf mf autopwn`
 
+
+### Dictionary attack
+
+Common keys to try against the card when attempting a dictionnary attack.
+
+| Key | Description |
+| ---- | ---- |  
+| FFFFFFFFFFFF | Default key | 
+| 000000000000 | Blank key | 
+| A396EFA4E24F | FM11RF08S universal backdoor key | 
+| A31667A8CEC1 | FM11RF08 older backdoor key | 
+
+More keys and dictionnaries can be found at the following links:
+
+* [RfidResearchGroup/proxmark3/dictionaries](https://github.com/RfidResearchGroup/proxmark3/tree/master/client/dictionaries)
+* [ikarus23/MifareClassicTool/std.keys](https://github.com/ikarus23/MifareClassicTool/blob/master/Mifare%20Classic%20Tool/app/src/main/assets/key-files/std.keys)
+* [ikarus23/MifareClassicTool/extended-std.keys](https://github.com/ikarus23/MifareClassicTool/blob/master/Mifare%20Classic%20Tool/app/src/main/assets/key-files/extended-std.keys)
+
+```powershell
+hf mf chk *1 ? t # Default keys
+hf mf chk *1 ? d default_keys.dic
+hf mf chk 0 A default_keys.dic # Dictionary attack with file: default_keys.dic
+```
+
+
 ### Darkside attack (PRNG Weak)
 
 **Proxmark method**
@@ -150,16 +175,6 @@ hf 14a raw -p -c a0 00
 hf 14a raw -p -c de ad be ef 22 08 04 00 46 59 25 58 49 10 23 02
 ```
 
-### Key Bruteforce/Dictionary attack
-
-* [ikarus23/MifareClassicTool/std.keys](https://github.com/ikarus23/MifareClassicTool/blob/master/Mifare%20Classic%20Tool/app/src/main/assets/key-files/std.keys)
-* [ikarus23/MifareClassicTool/extended-std.keys](https://github.com/ikarus23/MifareClassicTool/blob/master/Mifare%20Classic%20Tool/app/src/main/assets/key-files/extended-std.keys)
-
-```powershell
-hf mf chk *1 ? t # Default keys
-hf mf chk *1 ? d default_keys.dic
-hf mf chk 0 A default_keys.dic # Dictionary attack with file: default_keys.dic
-```
 
 ### Write and read sectors
 
@@ -275,3 +290,4 @@ Again, watch out to have correct BCC and avoid Cascading Tag (0x88) as first byt
 * [Coffee, NFC, Exploit, Coffee again - ari_ - 14 NOVEMBER 2017](http://arishitz.net/coffee-nfc-exploit-coffee-again/)
 * [ACR122U, mfcuk, and mfoc: Cracking MIFARE Classic on Arch Linux - Linus Karlsson - 2014-08-18](https://linuskarlsson.se/blog/acr122u-mfcuk-and-mfoc-cracking-mifare-classic-on-arch-linux/)
 * [Reading NFC cards - Flipper Docs](https://docs.flipper.net/nfc/read)
+* [MIFARE Classic: exposing the static encrypted nonce variant - Philippe Teuwen](https://eprint.iacr.org/2024/1275.pdf)
