@@ -146,7 +146,32 @@ Inspect the assembly with `avr-objdump -m avr -D chest.hex`.\
 Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off -machine uno -bios chest.bin`
 
 
-## Explore firmware
+## Explore Filesystem
+
+
+### Common Filesystem
+
+* **SquashFS** : It is a compressed read-only filesystem commonly used in Linux-based Firmware. It provides a good flexibility because it supports creating writable overlay filesystems, allowing changes to be made to the filesystem at runtime.
+* **CramFS** (Compressed ROM Filesystem) : Simple read-only filesystem, that supports compression.
+* **ROMFS** (Read-Only Memory Filedystem) : Simple filesystem that is strictly read-only, and do not provide compression support.
+* **YAFFS/YAFFS2** (Yet Another Flash Filesystem) : This filesystem is specifically designed for NAND Flash memory. In particular, it incorporates ECC management for ensuring data integrity. Filesystem integrity is also maintained by storing metadata redundantly.
+* **JFFS/JFFS2** (Journalized Flash Filesystem) : This filesystem is also designed for NAND Flash memory. JFFS utilizes a journaling mechanism to track changes to the filesystem, ensuring data consistency and integrity even in the event of sudden power loss or system crashes. It also supports ECC.
+* **UBIFS** (Unsorted Block Image Filesystem) : UBIFS is a successor to JFFS2 and is optimized for NAND flash memory. It offers improved performance, reliability, and scalability, with features such as compression, encryption, and fast mounting. UBIFS supports multiple partitions.
+
+
+| Filesystem | RO/RW | Magic                 | Tool | 
+| ---------- | --- | ----------------------- | ------------ | 
+| SquashFS   | RO  | sqsh, hsqs, qshs, sqsl  | unsquashfs, 7zip | 
+| JFFS(2)    | RW  | 0x07C0 (v1), 0x72b6(v2) | jefferson | 
+| YAFFS(2)   | RW  | 0x5941ff53              |  unyaffs | 
+| CramFS     | RO  | 0x28cd3d45              |  uncramfs, 7zip | 
+| UBIFS      | RW  | 0x06101831              |  ubi_reader | 
+| RomFS      | RO  | 0x7275                  | /  | 
+| CPIO       | RO  | "070707"                | cpio, 7zip | 
+
+
+
+### Tools 
 
 * [unix/strings](#)
     ```ps1
@@ -175,15 +200,15 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
     3708          0xE7C           ARM executable code, 16-bit (Thumb), little endian, at least 522 valid instructions
     ```
 
-* [squashfs-tools/unsquashfs](#)
-    ```powershell
-    sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
-    ```
-
 * [onekey-sec/unblob](https://github.com/onekey-sec/unblob)
     ```ps1
     docker run --rm --pull always -v /path/to/extract-dir/on/host:/data/output -v /path/to/files/on/host:/data/input ghcr.io/onekey-sec/unblob:latest /data/input/path/to/file
     docker run --rm --pull always ghcr.io/onekey-sec/unblob:latest --help
+    ```
+
+* [squashfs-tools/unsquashfs](https://github.com/plougher/squashfs-tools)
+    ```powershell
+    sudo unsquashfs -f -d /media/seagate /tmp/file.squashfs
     ```
 
 * [onekey-sec/jefferson](https://github.com/onekey-sec/jefferson/) - JFFS2 filesystem extraction tool
@@ -192,6 +217,21 @@ Emulate : `qemu-system-avr -S -s -nographic -serial tcp::5678,server=on,wait=off
     jefferson filesystem.img -d outdir
     jefferson file.jffs2 -d jffs2
     ```
+
+* [whataday/unyaffs](https://github.com/whataday/unyaffs) - YAFFS2 filesystem extraction tool
+    ```ps1
+    unyaffs [-l <layout>] [-t] [-v] [-V] <image_file_name> [<base dir>]
+        -l <layout>      set flash memory layout
+            layout=0: detect chunk and spare size (default)
+            layout=1:  2K chunk,  64 byte spare size
+            layout=2:  4K chunk, 128 byte spare size
+            layout=3:  8K chunk, 256 byte spare size
+            layout=4: 16K chunk, 512 byte spare size
+        -t               list image contents
+        -v               verbose output
+        -V               print version
+    ```
+
 
 ## Write new firmware
 

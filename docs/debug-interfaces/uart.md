@@ -149,13 +149,16 @@ Under Ubuntu or Debian, a non-root user cannot have access to serial ports such 
 ### Detect the baud rate
 
 #### Most common baud rate
+
 The most common baud rates for UART are `9600`, `19200`, `38400`, `57600` and `115200`.
 
 A table of other used but less common baud rates can be found here:  [Here](https://lucidar.me/en/serialib/most-used-baud-rates-table/)
 
 
 #### Autodetect the baud rate using a script
-Link: [baudrate.py](https://github.com/devttys0/baudrate/blob/master/baudrate.py)
+
+* [devttys0/baudrate.py](https://github.com/devttys0/baudrate/blob/master/baudrate.py)
+
 ```bash
 # Download the script
 wget https://raw.githubusercontent.com/devttys0/baudrate/master/baudrate.py
@@ -180,7 +183,7 @@ It is possible to get baudrate using the duration of a bit periode, using PulseV
 124953.14257153569
 ```
 
-The closest common baudrate is : 115200. COnfigure the decoder and you should see ascii chars :
+The closest common baudrate is : 115200. Configure the decoder and you should see ascii chars :
 
 ![U-Boot string](../assets/UART_uboot_str.png)
 
@@ -233,6 +236,7 @@ It’s an emulation of serial port over BLE. The UUID of the Nordic UART Service
 	* The peer can send data to the device by writing to the RX Characteristic of the service. ATT Write Request or ATT Write Command can be used. The received data is sent on the UART interface.
 * **TX Characteristic (UUID: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E)** :
 	* If the peer has enabled notifications for the TX Characteristic, the application can send data to the peer as notifications. The application will transmit all data received over UART as notifications.
+
 
 ### Examples
 * [nRF UART 2.0 - Nordic Semiconductor ASA](https://play.google.com/store/apps/details?id=com.nordicsemi.nrfUARTv2)
