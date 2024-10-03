@@ -49,6 +49,20 @@
 * [Unleashed Firmware - Update firmware](https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/HowToInstall.md)
 
 
+## IOC
+
+[MAC addresses](https://standards-oui.ieee.org/oui/oui.txt) from IEEE for Flipper Zero: `0C:FA:22:XX:XX:XX`.   
+This applies to Bluetooth, Ethernet, WiFi interfaces.
+
+```ps1
+0C-FA-22   (hex)     FLIPPER DEVICES INC
+0CFA22     (base 16) FLIPPER DEVICES INC
+                     2803 Philadelphia Pike Suite B #551
+                     Claymont    19703
+                     US
+```
+
+
 ## References
 
 * [The Ultimate Guide / CheatSheet to Flipper Zero - Ilias Mavropoulos - 17/01/2024](https://infosecwriteups.com/the-ultimate-guide-cheatsheet-to-flipper-zero-d4c42d79d32c)

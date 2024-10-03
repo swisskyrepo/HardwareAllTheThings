@@ -3,6 +3,12 @@
 ![ESP32](../assets/esp32-pinout.png)
 
 
+* [ESP32 datasheet: esp32_datasheet_en.pdf](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
+* [Xtensa®Instruction Set Architecture (ISA)](https://0x04.net/~mwk/doc/xtensa.pdf)
+
+ESP32 and ESP8266 share almost the same architecture.
+
+
 ## Tools
 
 * [espressif/esptool](https://github.com/espressif/esptool) - Espressif SoC serial bootloader utility
@@ -57,3 +63,9 @@ The ESP32 microprocessor uses the Xtensa instruction set, use `Tensilica Xtensa 
 * [ESP32 Wi-Fi Penetration Tool - GitHub - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://github.com/risinek/esp32-wifi-penetration-tool)
 * [ESP32 Wi-Fi Penetration Tool - Documentation - Exploring possibilities of ESP32 platform to attack on nearby Wi-Fi networks](https://risinek.github.io/esp32-wifi-penetration-tool/)
 * [Hacking a Smart Home Device - @jmswrnr - 03 Feb 2024](https://jmswrnr.com/blog/hacking-a-smart-home-device)
+* [Reversing ESP8266 Firmware (Part 1) - Bored Pentester - 26th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-1/)
+* [Reversing ESP8266 Firmware (Part 2) - Bored Pentester - 25th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-2/)
+* [Reversing ESP8266 Firmware (Part 3) - Bored Pentester - 25th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-3/)
+* [Reversing ESP8266 Firmware (Part 4) - Bored Pentester - 25th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-4/)
+* [Reversing ESP8266 Firmware (Part 5) - Bored Pentester - 25th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-5/)
+* [Reversing ESP8266 Firmware (Part 6) - Bored Pentester - 25th October 2018](https://boredpentester.com/reversing-esp8266-firmware-part-6/)
