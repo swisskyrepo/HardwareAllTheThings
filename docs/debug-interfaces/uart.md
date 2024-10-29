@@ -1,12 +1,12 @@
 # UART
 
-## What is it ?
+## What is it?
 
 UART stands for Universal asynchronous receiver transmitter. Used for serial communications over a computer or peripheral device serial port.
 
-UART peripherals are commonly integrated in many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel. 
+UART peripherals are commonly integrated into many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel. 
 
-With access to the UART, a user can see bootloader and operating-system logs.
+With access to the UART, a user can see the bootloader and operating system logs.
 
 Generally, the line is held high (at a logical 1 value) while UART is in idle state.
 
@@ -20,14 +20,14 @@ A UART pinout has **four** ports:
 * **TX** (Transmit)
 * **RX** (Receive)
 * **VCC** (Voltage)
-* **GNR** (Ground)
+* **GND** (Ground)
 
 ![](https://re-ws.pl/wp-content/uploads/2017/09/pinout.jpg)
 
-To find UART multiple solution:
-* Search on Internet
-* Labeled on PCB
-* Find candidates
+To find UART there are multiple solutions:
+* Search the Internet
+* Check the PCB for pin labels
+* Find likely candidates
 	* Using a multimeter
 	* Using a logic analyzer
 * Follow PCB traces (almost always impossible)
@@ -40,19 +40,19 @@ It is advised to capture the communication at **4 times the baudrate speed**, to
 
 #### GNR pin
 
-First identify the GRN pin, by using the multimeter in continuity mode. 
+First, identify the GND pin by using the multimeter in continuity mode. 
 
 Place the black probe on any grounded metallic surface, be it a part of the tested PCB or not. Then place the red probe on each of the ports. When you hear a beeping sound, you found a GND pin.
 
 #### VCC pin
 
-Turn the multimeter to the DC voltage mode in and set it up to 20V of voltage. Keep the black probe on a grounded surface. Place the red probe on a suspected pin and turn on the device.
+Turn the multimeter to the DC voltage mode and set it up to 20V of voltage. Keep the black probe on a grounded surface. Place the red probe on a suspected pin and turn on the device.
 
 If the multimeter measures a constant voltage of either 3.3V or 5V, you've found the VCC pin.
 
 #### TX pin
 
-Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe in a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the VCC value, you've most likely found the TX pin.
+Keep the multimeter mode at DC voltage of 20V or less, and leave the black probe on a grounded surface. Move the red probe to the suspected pin and power cycle the device. If the voltage fluctuates for a few seconds and then stabilizes at the VCC value, you've most likely found the TX pin.
 
 This behavior happens because, during bootup, the device sends serial data through that TX pin for debugging purposes. Once it finishes booting, the UART line goes idle.
 
@@ -82,18 +82,18 @@ Make sure any system you're testing is **powered off** when you connect the logi
 
 ##### PulseView / Sigrok
 
-:warning: In order to make Pulseview working on Windows host, you have to use Zadig driver : https://zadig.akeo.ie/
+:warning: In order to make Pulseview work on Windows host, you have to use Zadig driver: https://zadig.akeo.ie/
 
-* Click run on the up left corner in order to start the capture
-* Once you get UART communication you can add "protocol decoder"
+* Click run on the top left corner in order to start the capture
+* Once you get UART communication, you can add a "protocol decoder"
 
 ![Protocol decoder in pulseview](../assets/UART_add_proto_decoder.png)
 
 * Select the right channel for TX and RX 
-* Select the baudrate, parity bit, frame size (most common, 8N1)
+* Select the baudrate, parity bit, and frame size (most common, 8N1)
 * Data format, for example "ascii" if ascii chars are intended (boot sequence, stacktrace, etc.)
 
-Once you get an interesting capture, it is possible to save it decode it using **sigrok-cli**, instead of PulseView GUI :
+Once you get an interesting capture, it is possible to save it and decode it using **sigrok-cli**, instead of PulseView GUI :
 
 ```bash
 sigrok-cli -O ascii -i ./uart.sr -P uart:baudrate=115200:rx=D0 -B uart=rx
@@ -101,12 +101,12 @@ sigrok-cli -O ascii -i ./uart.sr -P uart:baudrate=115200:rx=D0 -B uart=rx
 
 ![Decoding UART using sigrok-cli](../assets/UART_sigrok_dump.png)
 
-##### Saleae based logic analyzer
+##### Saleae-based logic analyzer
 
-This setup is for **Saleae based logic analyzer**, if you use a different one referer to the constructor documentation.
+This setup is for **Saleae-based logic analyzer** if you use a different one, refer to the constructor documentation.
 
-* Open the saleae software
-* Create a new analyzer entry by pressing a plus (+) icon and select Async Serial (this is for UART).
+* Open the Saleae software
+* Create a new analyzer entry by pressing the plus (+) icon and selecting Async Serial (this is for UART).
 * Select a serial channel (8 channels on Logic Analyser) and keep the default settings.
 * Try with popular baud rates used in IoT devices (9600, 19200, 38400, 57600, 115200). Note that when you don't know the bit rate, you can select "**Use Autobaud**" and let the software work its magic.
 * Save the configurations.
@@ -136,14 +136,14 @@ It's not a big deal if you confuse the UART RX and TX ports with each other, bec
 
 ### Connection using a USB to TTL
 
-Once the ports are connected, plug the adapter into your computer. You now need to find the **device file descriptor**. To do that enter the following command : `sudo dmesg`.
+Once the ports are connected, plug the adapter into your computer. You now need to find the **device file descriptor**. To do that, enter the following command: `sudo dmesg`.
 
 Typically, it will be assigned to `/dev/ttyUSB0` **if you don't have any other peripheral devices attached**.
 
-Under Ubuntu or Debian, a non-root user cannot have access to serial ports such as ttyS0 or ttyUSB0 if he is not a member of the **dialout** group ! The equivalent group on Arch based distributions is **uucp**. In other words, you just have to add yourself to this group to have access.
+Under Ubuntu or Debian, a non-root user cannot have access to serial ports such as ttyS0 or ttyUSB0 if he is not a member of the **dialout** group! The equivalent group on Arch-based distributions is **uucp**. In other words, you just have to add yourself to this group to have access.
 
 * Ubuntu or Debian: `sudo usermod -a -G dialout $USER`
-* Arch based: `sudo usermod -a -G uucp $USER`
+* Arch-based: `sudo usermod -a -G uucp $USER`
 
 
 ### Detect the baud rate
