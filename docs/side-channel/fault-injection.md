@@ -48,7 +48,7 @@ print(ser.read(3))
     gpio glitch trigger PB0 pin PC15 length 100 offsets 191200
     gpio glitch trigger PB0 pin PC15 length 100 offsets 191300
     ```
-
+* [Fiesta - Riscure Hardware CTF 2016](https://github.com/hydrabus/rhme-2016/blob/master/FaultInjection/Fiesta.md)
 * [Hardware Power Glitch Attack (Fault Injection) - rhme2 Fiesta (FI 100)](https://youtu.be/6Pf3pY3GxBM) - solved using a [custom code](https://gist.github.com/LiveOverflow/cad0e905691ab5a8a2474d483a604d67) running on a Xilinx FPGA
 * [AVR Glitch: Modifying Code Execution Paths Using Only Voltage](https://flawed.net.nz/2017/01/29/avr-glitch-modifying-code-execution-paths-using-only-voltage/)
 * [Hextree Glitch Tag](https://1bitsquared.de/products/glitch-tag) - The Hextree GlitchTag is a "totally not AirTag inspired" board for the nRF52832 microcontroller. It is intended as a target for the Hextree Faultier. It gives access to all pins that you need to learn basic fault-injection, including glitch characterization and so on. It also allows you to reproduce LimitedResult's APPROTECT bypass (that was also used to hack the AirTags) without needing to microsolder!
