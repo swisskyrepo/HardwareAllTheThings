@@ -4,7 +4,7 @@
 
 UART stands for Universal asynchronous receiver transmitter. Used for serial communications over a computer or peripheral device serial port.
 
-UART peripherals are commonly integrated into many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel. 
+UART peripherals are commonly integrated into many embedded devices. UART communication makes use of baud rate to maintain synchronism between two devices. The baud rate is the rate at which information is transferred in a communication channel.
 
 With access to the UART, a user can see the bootloader and operating system logs.
 
@@ -12,24 +12,24 @@ Generally, the line is held high (at a logical 1 value) while UART is in idle st
 
 We call the most common configuration **8N1**: eight data bits, no parity, and 1 stop bit.
 
-
 ## Identifying UART ports
 
-A UART pinout has **four** ports: 
+A UART pinout has **four** ports:
 
 * **TX** (Transmit)
 * **RX** (Receive)
 * **VCC** (Voltage)
 * **GND** (Ground)
 
-![](https://re-ws.pl/wp-content/uploads/2017/09/pinout.jpg)
+![uart-pin](https://re-ws.pl/wp-content/uploads/2017/09/pinout.jpg)
 
 To find UART there are multiple solutions:
+
 * Search the Internet
 * Check the PCB for pin labels
 * Find likely candidates
-	* Using a multimeter
-	* Using a logic analyzer
+    * Using a multimeter
+    * Using a logic analyzer
 * Follow PCB traces (almost always impossible)
 
 Keep in mind that some devices **emulate** UART ports by programming the General-Purpose Input/Output (GPIO) pins if there isn't enough space on the board for dedicated hardware UART pins.
@@ -40,7 +40,7 @@ It is advised to capture the communication at **4 times the baudrate speed**, to
 
 #### GNR pin
 
-First, identify the GND pin by using the multimeter in continuity mode. 
+First, identify the GND pin by using the multimeter in continuity mode.
 
 Place the black probe on any grounded metallic surface, be it a part of the tested PCB or not. Then place the red probe on each of the ports. When you hear a beeping sound, you found a GND pin.
 
@@ -62,34 +62,31 @@ If you've already identified the rest of the UART pins, the nearby fourth pin is
 
 Otherwise, you can identify it because it has the lowest voltage fluctuation and lowest overall value of all the UART pins.
 
-
 ### Using a logic analyzer
 
 A logic analyzer is an electronic instrument that captures and displays multiple signals from a digital system or digital circuit.
 
 To find the UART pins we will connect the pins to a logic analyzer and look for data being transmitted.
 
-
 #### Hardware setup
 
 Make sure any system you're testing is **powered off** when you connect the logic analyzer's probes to it **to avoid short-circuiting**.
 
- * Connect the suspected TX pin to any channel of the logic analyzer.
- * Connect one of your logic analyzer's GND pins to the PCB that you're testing GND pins so they **share a common ground**.
-
+* Connect the suspected TX pin to any channel of the logic analyzer.
+* Connect one of your logic analyzer's GND pins to the PCB that you're testing GND pins so they **share a common ground**.
 
 #### Software setup
 
 ##### PulseView / Sigrok
 
-:warning: In order to make Pulseview work on Windows host, you have to use Zadig driver: https://zadig.akeo.ie/
+:warning: In order to make Pulseview work on Windows host, you have to use Zadig driver: <https://zadig.akeo.ie/>
 
 * Click run on the top left corner in order to start the capture
 * Once you get UART communication, you can add a "protocol decoder"
 
 ![Protocol decoder in pulseview](../assets/UART_add_proto_decoder.png)
 
-* Select the right channel for TX and RX 
+* Select the right channel for TX and RX
 * Select the baudrate, parity bit, and frame size (most common, 8N1)
 * Data format, for example "ascii" if ascii chars are intended (boot sequence, stacktrace, etc.)
 
@@ -112,27 +109,28 @@ This setup is for **Saleae-based logic analyzer** if you use a different one, re
 * Save the configurations.
 
 If you want to modify the speed and the duration:
-* As a rule, you should sample digital signals **at least four times faster than their bandwidth**. 
+
+* As a rule, you should sample digital signals **at least four times faster than their bandwidth**.
 * With serial communications, which are generally very slow, a **50 kS/s** sampling rate is more than enough, although sampling faster than this does no harm.
-*  As for the duration, **20 seconds** is enough time for the device to power on and start transmitting data.
+* As for the duration, **20 seconds** is enough time for the device to power on and start transmitting data.
 
 Now try with the popular baud rates with both the suspected pins and try to compare the results. If you find any readable text with one of the pins and the text makes some sense then that’s the TX pin.
 
-![](https://miro.medium.com/max/640/1*_7i8gbB0Sw2I0QxCMQ6gRw.png)
+![logic-analyzer](https://miro.medium.com/max/640/1*_7i8gbB0Sw2I0QxCMQ6gRw.png)
 
-![](https://miro.medium.com/max/640/1*1Ku2G160NBczbgM-USi8kQ.png)
-
+![logic-analyzer-output](https://miro.medium.com/max/640/1*1Ku2G160NBczbgM-USi8kQ.png)
 
 ## Connect to serial port
 
 ### WARNING
+
 It's not a big deal if you confuse the UART RX and TX ports with each other, because you can easily swap the wires connecting to them without any consequences. But confusing the VCC with the GND and connecting wires to them incorrectly **might fry the circuit**.
 
 ### Examples
 
-![](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
+![usb-uart-wires](https://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
 
-![](https://vanhunteradams.com/Protocols/UART/uart_hardware.png)
+![usb-uart-connect](https://vanhunteradams.com/Protocols/UART/uart_hardware.png)
 
 ### Connection using a USB to TTL
 
@@ -145,7 +143,6 @@ Under Ubuntu or Debian, a non-root user cannot have access to serial ports such 
 * Ubuntu or Debian: `sudo usermod -a -G dialout $USER`
 * Arch-based: `sudo usermod -a -G uucp $USER`
 
-
 ### Detect the baud rate
 
 #### Most common baud rate
@@ -153,7 +150,6 @@ Under Ubuntu or Debian, a non-root user cannot have access to serial ports such 
 The most common baud rates for UART are `9600`, `19200`, `38400`, `57600` and `115200`.
 
 A table of other used but less common baud rates can be found here:  [Here](https://lucidar.me/en/serialib/most-used-baud-rates-table/)
-
 
 #### Autodetect the baud rate using a script
 
@@ -169,7 +165,6 @@ pip2.7 install serial
 # Run the script on "/dev/ttyUSB0"
 python2.7 baudrate.py -p /dev/ttyUSB0
 ```
-
 
 #### Using PulseView
 
@@ -227,18 +222,17 @@ The closest common baudrate is : 115200. Configure the decoder and you should se
     uart1> bridge
     ```
 
-
 ## UART over BLE
 
 It’s an emulation of serial port over BLE. The UUID of the Nordic UART Service is `6E400001-B5A3-F393-E0A9-E50E24DCCA9E`. This service exposes two characteristics: one for transmitting and one for receiving.
 
 * **RX Characteristic (UUID: 6E400002-B5A3-F393-E0A9-E50E24DCCA9E)** :
-	* The peer can send data to the device by writing to the RX Characteristic of the service. ATT Write Request or ATT Write Command can be used. The received data is sent on the UART interface.
+    * The peer can send data to the device by writing to the RX Characteristic of the service. ATT Write Request or ATT Write Command can be used. The received data is sent on the UART interface.
 * **TX Characteristic (UUID: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E)** :
-	* If the peer has enabled notifications for the TX Characteristic, the application can send data to the peer as notifications. The application will transmit all data received over UART as notifications.
+    * If the peer has enabled notifications for the TX Characteristic, the application can send data to the peer as notifications. The application will transmit all data received over UART as notifications.
 
+## References
 
-### Examples
 * [nRF UART 2.0 - Nordic Semiconductor ASA](https://play.google.com/store/apps/details?id=com.nordicsemi.nrfUARTv2)
 * [UART/Serial Port Emulation over BLE](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html)
 * [UART Over Bluetooth Low Energy](https://thejeshgn.com/2016/10/01/uart-over-bluetooth-low-energy/)
