@@ -1,6 +1,11 @@
 # MQTT
 
-### Discovery
+## Discovery
+
+MQTT is a lightweight messaging protocol often used in IoT (Internet of Things) applications.
+
+* 1883: Default port for MQTT.
+* 8883: Default port for MQTT over TLS/SSL.
 
 MQTT client:
 
@@ -10,15 +15,19 @@ MQTT client:
 * MQTT.fx
 * mosquitto_tools
 
-Scan an MQTT with nmap : `nmap -p 1883 -vvv --script=mqtt-subscribe -d sensors.domain.com`
+   ```powershell
+   mosquitto_sub -h sensors.domain.com -t '#'
+   mosquitto_sub -h sensors.domain.com -t '+'
+   mosquitto_sub -h sensors.domain.com -t "/sensor/"
+   ```
 
-```powershell
-mosquitto_sub -h sensors.domain.com -t '#'
-mosquitto_sub -h sensors.domain.com -t '+'
-mosquitto_sub -h sensors.domain.com -t "/sensor/"
+Scan an MQTT with nmap :
+
+```ps1
+nmap -p 1883 -vvv --script=mqtt-subscribe -d sensors.domain.com
 ```
 
-### Explore MQTT
+## Explore MQTT
 
 Connect and subscribe to every topics using the `#` keyword.
 
@@ -49,6 +58,6 @@ client.connect('IP SERVER HERE', 1883, 60)
 client.publish('smarthouse/garage/door', "{'open':'true'}")
 ```
 
-### MQTT Fuzzing 
+## MQTT Fuzzing
 
 * [MQTT-Fuzz](https://github.com/F-Secure/mqtt_fuzz)

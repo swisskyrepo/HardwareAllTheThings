@@ -1,12 +1,12 @@
 # Modbus
 
-### Discovery
+## Discovery
 
-**Modbus Client:** 
+**Modbus Client:**
 
- - [QModBus](https://sourceforge.net/projects/qmodbus/)
- - [pymodbus](https://github.com/riptideio/pymodbus)
- - [Modbus Tools](https://www.modbustools.com/) 
+- [QModBus](https://sourceforge.net/projects/qmodbus/)
+- [pymodbus](https://github.com/riptideio/pymodbus)
+- [Modbus Tools](https://www.modbustools.com/)
 
 **Modbus Discover Nmap Script:**
 
@@ -29,13 +29,15 @@ client.close()
 
 **Modbus Pentesting:**
 
- - [smod](https://github.com/0x0mar/smod)
+- [smod](https://github.com/0x0mar/smod)
 
-**Modbus Slave Simulator**
+## Modbus Simulators
 
- - [Diagslave](https://www.modbusdriver.com/diagslave.html) 
- - [ModbusPal](https://modbuspal.sourceforge.net/) 
+**Modbus Slave Simulator**:
 
-**Modbus Master Simulator**
+- [Diagslave](https://www.modbusdriver.com/diagslave.html)
+- [ModbusPal](https://modbuspal.sourceforge.net/)
 
- - [modpoll](https://www.modbusdriver.com/modpoll.html)
+**Modbus Master Simulator**:
+
+- [modpoll](https://www.modbusdriver.com/modpoll.html)
