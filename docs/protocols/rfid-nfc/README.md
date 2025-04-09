@@ -13,7 +13,6 @@ Around 13.56 MHz.
 * **MIFARE Plus**: announced as a replacement of MIFARE Classic. The Plus subfamily brings the new level of security up to 128-bit AES encryption.
 * **MIFARE DESFire**: those tags come pre-programmed with a general purpose DESFire operating system which offers a simple directory structure and files, and are the type of MIFARE offering the highest security levels.
 
-
 ### Low Frequency
 
 Usually around 125 kHz.
@@ -22,11 +21,9 @@ Usually around 125 kHz.
 * EM410X
 * Indala
 
-
 ## Replay Attacks
 
-Replay attack is a technique where a malicious user could implement a device to intercept a NFC transaction and redeem it later, using other device or even in different location. 
-
+Replay attack is a technique where a malicious user could implement a device to intercept a NFC transaction and redeem it later, using other device or even in different location.
 
 ## Relay Attack
 
@@ -34,7 +31,6 @@ The relay attack is a technique where a malicious user implements a man in the m
 
 * NFC Payment Relay Attacks - [intro-to-nfc-payment-relay-attacks/](https://salmg.net/2018/12/01/intro-to-nfc-payment-relay-attacks/)
 * NFCopy85 is a 10 dollars device to make replay attacks against NFC payment systems - [nfcopy85](https://salmg.net/2019/06/16/nfcopy85/)
-
 
 ## References
 

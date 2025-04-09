@@ -30,7 +30,6 @@ EM410x Tag ID: 23004d4dee
 Proxmark> lf em4x em410xsim 23004d4dee
 ```
 
-
 ## HID : Examples - Card
 
 ### HID card format
@@ -93,7 +92,6 @@ c <cardnumber>    :  (optional) cardnumber to start with, max 65535
 d <delay>         :  delay betweens attempts in ms. Default 1000ms
 v                 :  verbose logging, show all tries
 ```
-
 
 ## References
 

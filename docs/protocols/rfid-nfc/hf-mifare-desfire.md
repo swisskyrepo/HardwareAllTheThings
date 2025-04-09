@@ -14,7 +14,6 @@ The memory organization of DESFire supports up to 28 applications on the card an
 * Applications
     * Files
 
-
 ### Applications
 
 ```ps1
@@ -25,7 +24,6 @@ hf mfdes getaids --no-auth # this command can return a simple AID list if it is 
 ```
 
 Each application has an individual set of up to 14 application keys (can be AES-128 or DES keys)
-
 
 ### Files
 
@@ -41,14 +39,14 @@ Each file has it’s own **Communication Mode**:
 * **MACed**: like in Plain mode the communication is is readable but secured by an appended MAC
 * **Encrypted**: the communication is not visible be anyone, but only who posses the used key is been able to read the data.
 
-**Dump files**
+**Dump files**:
 
 ```ps1
 hf mfdes lsfiles --aid 123456 -t aes # file list for application 123456 with aes key
 hf mfdes dump --aid 123456 # shows files and their contents from application 123456
 ```
 
-**Read/Write files**
+**Read/Write files**:
 
 Read
 
@@ -57,7 +55,7 @@ hf mfdes read --aid 123456 --fid 01 # autodetect file type (with hf mfdes getfil
 hf mfdes read --aid 123456 --fid 01 --type record --offset 000000 --length 000001 # read one last record from a record file
 ```
 
-Read via ISO command set
+**Read via ISO command set**:
 
 ```ps1
 hf mfdes read --aid 123456 --fileisoid 1000 --type data -c iso # select application via native command and then read file via ISO
@@ -66,7 +64,7 @@ hf mfdes read --appisoid 0102 --fileisoid 1100 --type record -c iso --offset 000
 hf mfdes read --appisoid 0102 --fileisoid 1100 --type record -c iso --offset 000005 --length 000000 # read all the records (from 5 to 1) from file ID 1100 via ISO command set
 ```
 
-Write
+**Write**:
 
 ```ps1
 hf mfdes write --aid 123456 --fid 01 -d 01020304 # autodetect file type (with hf mfdes getfilesettings) and write data with offset 0
@@ -77,24 +75,26 @@ hf mfdes write --aid 123456 --fid 01 --type record -d 01020304 # write data to a
 hf mfdes write --aid 123456 --fid 01 --type record -d 01020304 --updaterec 0 # update record 0 (latest) in the record file.
 ```
 
-Write via iso command set
+**Write via iso command set**:
 
 ```ps1
 hf mfdes write --appisoid 1234 --fileisoid 1000 --type data -c iso -d 01020304 # write data to std/backup file via ISO command set
 hf mfdes write --appisoid 1234 --fileisoid 2000 --type record -c iso -d 01020304 # send record to record file via ISO command set
 ```
 
-
 ## Default Keys
 
 Changing the default keys is a crucial step in the deployment of MIFARE DESFire cards to prevent unauthorized cloning and access.
 
 * Default AES key
-    ```
+
+    ```ps1
     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
     ```
+
 * Default DES key
-    ```
+
+    ```ps1
     00 00 00 00 00 00 00 00
     ```
 
@@ -119,7 +119,6 @@ hf mfdes auth -n 0 -t des -k 1122334455667788 --aid 123456 # try application 123
 hf mfdes auth -n 0 -t aes --save # try PICC AES master key and save the configuration to defaults if authentication succeeds
 ```
 
-
 ## UID check
 
 The UID of the modifiable MIFARE DESFire® Compatible UID tags consists of two parts: the UID itself and the BCC. The BCC is a checksum value calculated from the UID. If the BCC is incorrect, the tag will be rejected by the reader.
@@ -131,9 +130,9 @@ hf 14a raw -s -c 02 00 ab 00 00 00 07 xx xx xx xx xx xx xx xx xx
 For MIFARE DESFire cards, Flipper Zero is able to emulate only the UID.
 
 UID rewritable cards:
-- [LAB 401 - MODIFIABLE MIFARE DESFIRE® COMPATIBLE UID](https://lab401.com/fr/products/desfire-compatible-emulator-uid-modifiable)
-- [LAB 401 - MIFARE DESFIRE® COMPATIBLE MODIFIABLE UID / ATQA / SAK / ATS / APDU](https://lab401.com/products/mifare-desfire-ev2-compatible-modifiable-uid-atqa-sak-ats-apdu)
 
+* [LAB 401 - MODIFIABLE MIFARE DESFIRE® COMPATIBLE UID](https://lab401.com/fr/products/desfire-compatible-emulator-uid-modifiable)
+* [LAB 401 - MIFARE DESFIRE® COMPATIBLE MODIFIABLE UID / ATQA / SAK / ATS / APDU](https://lab401.com/products/mifare-desfire-ev2-compatible-modifiable-uid-atqa-sak-ats-apdu)
 
 ## References
 

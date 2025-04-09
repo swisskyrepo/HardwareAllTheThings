@@ -1,16 +1,14 @@
 # ZigBee
 
-> Zigbee is a specification for a suite of high-level communication protocols using low-power digital radios. It's designed for use in areas like home automation, medical data collection, industrial control systems, and other applications that require secure and reliable wireless communication. 
+> Zigbee is a specification for a suite of high-level communication protocols using low-power digital radios. It's designed for use in areas like home automation, medical data collection, industrial control systems, and other applications that require secure and reliable wireless communication.
 
 Zigbee is an IEEE 802.15.4-based, wireless networking standard, which is basically used for two-way communication between sensors and control systems. Zigbee is a short-range wireless communication standard like Bluetooth and Wi-Fi while covering a range of 10 to 100 meters.
-
 
 ## Tools
 
 * [riverloopsec/killerbee](https://github.com/riverloopsec/killerbee) - IEEE 802.15.4/ZigBee Security Research Toolkit
 * [APIMote](https://www.attify-store.com/products/apimote) - The ApiMote is a ZigBee security research hardware intended for researchers, students, utility companies, etc. to use for learning about and evaluating the security of IEEE 802.15.4/ZigBee systems as authorized.
 * [Cognosec/SecBee](https://github.com/Cognosec/SecBee) (archived) - SecBee is a ZigBee security testing tool developed by Cognosec to test ZigBee implementations for security issues
-
 
 ## Default Trust Center Link Key
 
@@ -25,7 +23,6 @@ For the profile "Home Automation" the default Trust Center Link Key is : `ZigBee
 You can use it in Wireshark: Edit > Preferences > Protocols > Zigbee NWK, then "New" and write the key in hex format.
 
 Example: [CVE-2020-28952 - Athom Homey Static and Well-known Keys](https://yougottahackthat.com/blog/1260/athom-homey-security-static-and-well-known-keys-cve-2020-28952)
-
 
 ## References
 

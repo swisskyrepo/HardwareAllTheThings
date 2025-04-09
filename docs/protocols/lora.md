@@ -1,6 +1,6 @@
 # LoRa
 
-### LoRa with Arduino on 868.1MHZ
+## LoRa with Arduino on 868.1MHZ
 
 [arduino-LoRa](https://github.com/sandeepmistry/arduino-LoRa)\
 use 868.1MHZ with SpreadFactor 10
@@ -37,7 +37,7 @@ void loop() {
 }
 ```
 
-### Bruteforce all the EU frequencies and the SpreadFactor
+## Bruteforce all the EU frequencies and the SpreadFactor
 
 ```c
 #include <SPI.h>
@@ -81,7 +81,7 @@ void loop() {
       int j;
       for(j=7; j <= 12; j++)
       {
-      	
+       
         // loop on spreading factor is finish, set new freq
         LoRa.setSpreadingFactor(i);
         delay(5000);
@@ -91,7 +91,7 @@ void loop() {
 }
 ```
 
-### Display RSSI of the packet
+## Display RSSI of the packet
 
 > The Received Signal Strength Indication (RSSI) is the received signal power in milliwatts and is measured in dBm.
 

@@ -1,6 +1,6 @@
 # HF - Vigik
 
-Vigik is essentially a rebranded version of MIFARE Classic because it uses the same underlying technology and standards. 
+Vigik is essentially a rebranded version of MIFARE Classic because it uses the same underlying technology and standards.
 
 * [cjbrigato/kigiv-for-proxmark3](https://github.com/cjbrigato/kigiv-for-proxmark3/releases) - KIGIV stands for Reverse VIGIK, the French Residential and Postal/State services Residential Security system.
 
@@ -28,7 +28,6 @@ Usually the key A is `0x314b49474956` ("1KIGIV")
 | France Telecom             | 0x7ac          | Any day  | Any time  |
 | EDF-GDF                    | 0x7ad          | Any day  | Any time  |
 
-
 ### Public Keys
 
 ```ps1
@@ -42,7 +41,6 @@ Usually the key A is `0x314b49474956` ("1KIGIV")
 "EDF-GDF", 0x07AD, "35b248888647e8dea50311cc50135195fc5a35d9477dbf5ed59d4b52cabc8eb68b0778106613cb30bec07103b8f11f97cbcb2bd089ab84b458c508270795f50100ea40aefd7fb77329bc1c71b0889ad0872c4882483911e9799e7720c5cfee2721dc79585e7a4002e8b3dc63a391a936c07f4ff84bffcfcd218af8d2db9351b3"
 ```
 
-
 ## References
 
-* []()
+* [VIGIK® - Vigik - 2017](https://www.vigik.com/presentation-de-vigik)

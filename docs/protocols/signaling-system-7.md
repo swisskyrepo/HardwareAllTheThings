@@ -1,4 +1,4 @@
-# SS7 - Signaling System No. 7 
+# SS7 - Signaling System No. 7
 
 ## Tools
 
@@ -6,13 +6,11 @@
 * [0xc0decafe/ss7MAPer](https://github.com/0xc0decafe/ss7MAPer) - SS7 MAP (pen-)testing toolkit
 * [SigPloiter/SigPloit](https://github.com/SigPloiter/SigPloit) - SigPloit: Telecom Signaling Exploitation Framework - SS7, GTP, Diameter & SIP
 
-
 ## SMS 2FA Interception
 
 SS7 plays a part in the transportation of SMS messages. An attacker may be able to register a victims `MSISDN` (mobile number) on a fake `MSC` (Mobile Switching Centre), the victims operator's `HLR` (Home Location Register) that works as a kind of telephone directory for `MSISDNs`, operators and SMS service centres (`SMSC`) will set the new location for the Victim’s `MSISDN`.
 
 When, for this example the victims Bank sends them a 2FA authentication token the MSC transfers the SMS to the `SMSC` the real `MSMSC` asks the victims operator's `HLR` for the victims location, the `HLR` replies with the attacker operated `MSC`. The real operator's `SMSC` transfers the SMS to the fake `MSC` operated by the attack.
-
 
 ## SMS Spoofing
 
@@ -20,11 +18,9 @@ One of the simplest and most accessible attacks is SMS spoofing, which doesn't r
 
 SMS spoofing attacks can be carried out with minimal cost by using an SMS gateway service, many of which are accessible on the clear web. According to SOS Intelligence, most of these services lack abuse monitoring or prevention mechanisms. As a result, it’s possible to send spoofed messages to a victim—much like phishing emails—prompting them to take action, often at little to no cost.
 
-
 ## Location Tracking
 
 Within the SS7 network of a network operator it may be possible to request the `LAC` (Location Area Code) and `Cell ID` and with that information get a reasonably good location for a victim. However, this may require the prior knowledge of the subscribers `IMEI` (International Equipment Identity) or/and `IMSI` (International Mobile Subscriber Identity) – A `MSISDN` alone may not be sufficient to be able to query this information.
-
 
 ## References
 

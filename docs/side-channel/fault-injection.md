@@ -11,8 +11,7 @@ Most of the time the goal is one of the following:
 * Bypass secure boot
 * Gain code-execution by glitching memcpy
 
-
-**Tools**
+**Tools**:
 
 * [Faultier](https://1bitsquared.de/products/faultier) [FW](https://github.com/hextreeio/faultier/releases/tag/0.1.32)
 * [PicoGlitcher v1.1](https://www.tindie.com/products/faulty-hardware/picoglitcher-v11/)
@@ -20,8 +19,7 @@ Most of the time the goal is one of the following:
 * [ChipWhisperer-Pro](https://rtfm.newae.com/Capture/ChipWhisperer-Pro/)
 * [ChipWhisperer-Husky](https://rtfm.newae.com/Capture/ChipWhisperer-Husky/)
 
-
-**Voltage Glitching with Crowbars**
+**Voltage Glitching with Crowbars**:
 
 ```py
 import faultier
@@ -40,42 +38,39 @@ ft.glitch(delay = 1000, pulse = 1)
 print(ser.read(3))
 ```
 
-
-**Challenges**
+**Challenges**:
 
 * [Fiasco - Riscure Hardware CTF 2016](https://github.com/hydrabus/rhme-2016/blob/master/FaultInjection/Fiasco.md) - solved using HydraBus + Custom Board with MOSFET
+
     ```ps1
     gpio glitch trigger PB0 pin PC15 length 100 offsets 191200
     gpio glitch trigger PB0 pin PC15 length 100 offsets 191300
     ```
+
 * [Fiesta - Riscure Hardware CTF 2016](https://github.com/hydrabus/rhme-2016/blob/master/FaultInjection/Fiesta.md)
 * [Hardware Power Glitch Attack (Fault Injection) - rhme2 Fiesta (FI 100)](https://youtu.be/6Pf3pY3GxBM) - solved using a [custom code](https://gist.github.com/LiveOverflow/cad0e905691ab5a8a2474d483a604d67) running on a Xilinx FPGA
 * [AVR Glitch: Modifying Code Execution Paths Using Only Voltage](https://flawed.net.nz/2017/01/29/avr-glitch-modifying-code-execution-paths-using-only-voltage/)
 * [Hextree Glitch Tag](https://1bitsquared.de/products/glitch-tag) - The Hextree GlitchTag is a "totally not AirTag inspired" board for the nRF52832 microcontroller. It is intended as a target for the Hextree Faultier. It gives access to all pins that you need to learn basic fault-injection, including glitch characterization and so on. It also allows you to reproduce LimitedResult's APPROTECT bypass (that was also used to hack the AirTags) without needing to microsolder!
 
-
 ## Electromagnetic Fault
 
 Electromagnetic Fault Injection is an advanced technique used in hardware security and testing, where electromagnetic pulses are used to induce faults in electronic devices
 
-**Tools**   
+**Tools**:
 
 * Create a custom Electromagnetic fault injection tool: [Dirt cheap Electromagnetic Fault Injection](https://pedro-javierf.github.io/devblog/dirtcheapemfaultinjection/)
 
-
-**Challenges**
+**Challenges**:
 
 * [Fiesta - Riscure Hardware CTF 2016 - pedro-javierf](https://pedro-javierf.github.io/devblog/rhmefaultinjection/) - solved using a custom EMFI
-
 
 ## Clock Glitch
 
 This technique involves momentarily disrupting or altering the clock signal of a device to induce errors or malfunctions in its operation.
 
-**Challenges**
+**Challenges**:
 
 * [Fiesta - Riscure Hardware CTF 2016 - jcldf](https://twitter.com/jcldf/status/1235859271176171521) - solved using a clock glitch
-
 
 ## Pin2pwn
 
@@ -90,7 +85,6 @@ The MCU will not be able to get data from the external flash and then show a sta
 Here is a practical example, putting a cable between MOSI and Chip Select :
 
 ![SPI flash example](../assets/pin2pwn_practical_example.png)
-
 
 ## References
 

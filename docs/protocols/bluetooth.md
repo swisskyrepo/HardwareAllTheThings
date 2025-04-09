@@ -8,15 +8,14 @@
 * [bluez/gatttool](https://manpages.debian.org/unstable/bluez/gatttool.1.en.html)
 * [securing/gattacker](https://github.com/securing/gattacker)
 
-
 ## Bluetooth configuration
 
 Requirements and configuration for Kali Linux.
 
 ```powershell
-$ sudo apt-get install bluetooth blueman bluez
-$ sudo systemctl start bluetooth
-$ sudo hciconfig hci0 up
+sudo apt-get install bluetooth blueman bluez
+sudo systemctl start bluetooth
+sudo hciconfig hci0 up
 ```
 
 Enumerate Bluetooth devices
@@ -40,12 +39,12 @@ make -j8 && sudo make install
 sudo cp attrib/gatttool /usr/local/bin/
 ```
 
-
 ## BLE - Enumerate services and characteristics
 
 > BLE is based on specification called General Attribute profile (GATT), that defines how communication/data transfer between client and server.
 
 * Using [bettercap/bettercap](https://github.com/bettercap/bettercap)
+
     ```powershell
     sudo bettercap -eval "net.recon off; events.stream off; ble.recon on"
     ble.show
@@ -53,6 +52,7 @@ sudo cp attrib/gatttool /usr/local/bin/
     ```
 
 * Using [expliot_framework/expliot](https://expliot.readthedocs.io/en/latest/index.html)
+
     ```powershell
     # List of Services
     run ble.generic.scan -a <mac address> -s
@@ -61,6 +61,7 @@ sudo cp attrib/gatttool /usr/local/bin/
     ```
 
 * Using [hackgnar/bleah](https://github.com/hackgnar/bleah)
+
     ```powershell
     sudo bleah -b $MAC -e
     ```
@@ -84,7 +85,6 @@ $ gatttool -b $MAC --characteristics
 handle = 0x0002, char properties = 0x20, char value handle = 0x0003, uuid = 00002a05-0000-1000-8000-00805f9b34fb
 handle = 0x0015, char properties = 0x02, char value handle = 0x0016, uuid = 00002a00-0000-1000-8000-00805f9b34fb
 ```
-
 
 ## BLE - Read data
 
@@ -112,27 +112,27 @@ $ sudo gatttool -b $MAC -I
 One liner to read a characteristic
 
 ```powershell
-$ gatttool -b $MAC --char-read -a 0x002a|awk -F':' '{print $2}'|tr -d ' '|xxd -r -p;printf '\n'
+gatttool -b $MAC --char-read -a 0x002a|awk -F':' '{print $2}'|tr -d ' '|xxd -r -p;printf '\n'
 ```
-
 
 ## BLE - Read notification/indication
 
 ```powershell
-$ gatttool -b $MAC -a 0x0040 --char-write-req --value=0100 --listen
-$ gatttool -b $MAC -a 0x0044 --char-write-req --value=0200 --listen
+gatttool -b $MAC -a 0x0040 --char-write-req --value=0100 --listen
+gatttool -b $MAC -a 0x0044 --char-write-req --value=0200 --listen
 ```
-
 
 ## BLE - Write data
 
 * Using [bettercap/bettercap](https://github.com/bettercap/bettercap)
+
     ```powershell
     ble.recon on
     ble.write 04:52:de:ad:be:ef 234bfbd5e3b34536a3fe723620d4b78d ffffffffffffffff
     ```
 
-* Using [bluez/gatttool](#)
+* Using [bluez/gatttool](https://manpages.debian.org/unstable/bluez/gatttool.1.en.html)
+
     ```powershell
     $ gatttool -b $MAC --char-write-req -a 0x002c -n $(echo -n "12345678901234567890"|xxd -ps)
 
@@ -146,16 +146,14 @@ $ gatttool -b $MAC -a 0x0044 --char-write-req --value=0200 --listen
     Characteristic value/descriptor: 43 6f 6e [...] 2e
     ```
 
-
 ## Bluetooth MAC
 
 Change the Bluetooth MAC address
 
 ```powershell
-$ bdaddr -r 11:22:33:44:55:66
-$ gatttool -I -b E8:77:6D:8B:09:96 -t random
+bdaddr -r 11:22:33:44:55:66
+gatttool -I -b E8:77:6D:8B:09:96 -t random
 ```
-
 
 ## Sniff Bluetooth communication
 
@@ -169,11 +167,9 @@ ubertooth-btle -U 1 -A 38 -f  -c bulb_38.pcap
 ubertooth-btle -U 2 -A 39 -f  -c bulb_39.pcap
 ```
 
-
 ### Using Micro::Bit
 
 * [WEAPONIZING THE BBC MICRO:BIT - DAMIEN CAUQUIL / VIRTUALABS - DEF CON 25 - JULY 28, 2017](https://media.defcon.org/DEF%20CON%2025/DEF%20CON%2025%20presentations/DEF%20CON%2025%20-%20Damien-Cauquil-Weaponizing-the-BBC-MicroBit.pdf)
-
 
 ### Using Android HCI
 
@@ -182,18 +178,16 @@ Enable the Bluetooth HCI log on the device via Developer Options.
 > It works like a hook in the stack to capture all the HCI packets in a file. For most Android devices, the log file is at `/sdcard/btsnoop_hci.log` or `/sdcard/oem_log/btsnoop/`
 
 ```powershell
-$ adb devices
-$ adb pull /sdcard/oem_log/btsnoop/<your log file>.log
-$ adb pull /sdcard/btsnoop_hci.log
-$ adb bugreport filename
+adb devices
+adb pull /sdcard/oem_log/btsnoop/<your log file>.log
+adb pull /sdcard/btsnoop_hci.log
+adb bugreport filename
 ```
-
 
 ## Challenges
 
-* [BLE HackMe](https://www.microsoft.com/store/apps/9N7PNVS9J1B7) - works with nRF Connect (Android), 
+* [BLE HackMe](https://www.microsoft.com/store/apps/9N7PNVS9J1B7) - works with nRF Connect (Android),
 * [hackgnar/ble_ctf](https://github.com/hackgnar/ble_ctf) - A Bluetooth low energy capture the flag
-
 
 ## References
 

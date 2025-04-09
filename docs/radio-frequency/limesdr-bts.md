@@ -2,12 +2,10 @@
 
 **DISCLAIMER**: This procedure is highly illegal basically anywhere in the world. Be sure to run this in a closed RF environment (also know as Faraday Cage)
 
-
 * [Running a GSM Station with osmo network-in-a-box (sms/audio)](#running-a-gsm-station-with-osmo-network-in-a-box)
 * Running a GSM Station with full osmo (sms/audio/data) [TODO]
 
-
-### Running a GSM Station with osmo network-in-a-box
+## Running a GSM Station with osmo network-in-a-box
 
 For this example we will use the Osmocom GSM Stack in the NITB (Network in the box) mode. In this mode the phones connected to you BTS will be able to call each other and send SMS messages. There is also the Interconnect mode in which the BSC (Base Station Controller) connects to a ISDN or IPBX (for example Asterisk) to manage the connected phones. You can check the different modes here: [https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes](https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes)
 
@@ -59,7 +57,7 @@ It should do everything that is needed to update
 
 There are few files that need to be created. Let’s first start with the OpenBSC config file *openbsc.cfg*:
 
-```
+```ps1
 !
 ! OpenBSC configuration saved from vty
 !   !
@@ -127,9 +125,10 @@ network
    timeslot 7
     phys_chan_config TCH/F
 ```
+
 There are several parameters here, but I will only describe the ones you might want to change:
 
-```
+```ps1
 network country code 901
 mobile network code 70
 short name HUEHUE
@@ -147,7 +146,7 @@ Be careful setting these settings specially with a **accept-all** policy. If you
 
 That **openbsc.cfg** file will be used by **osmo-nitb** software. The next file is **osmo-bts.cfg**
 
-```
+```ps1
 !
 ! OsmoBTS configuration example
 !!
@@ -190,7 +189,7 @@ bts 0
 
 The only importante parameter here to take care is **band**. Make sure is the same as in *openbsc.cfg* file. The next one is *osmo-trx.cfg* which will be used by *osmo-trx-lms:*
 
-```
+```ps1
 log stderr
  logging filter all 1
  logging color 1
@@ -215,7 +214,7 @@ trx
   rx-path LNAW
 ```
 
-There are not much to change here. If you’re using a multi-port LimeSDR (like LimeSDR USB or PCIe) you can change the parameter *tx-path* and *rx-path *to the desired paths.
+There are not much to change here. If you’re using a multi-port LimeSDR (like LimeSDR USB or PCIe) you can change the parameter *tx-path* and *rx-path*to the desired paths.
 
 ## Running the software stack
 
@@ -373,6 +372,7 @@ This one is pretty simple to use:
 ```bash
 python sms_broadcast.py "source number" "message"
 ```
+
 This will send an SMS to **all** connected devices as it was the *source number*.
 
 Another option is to target a single user:

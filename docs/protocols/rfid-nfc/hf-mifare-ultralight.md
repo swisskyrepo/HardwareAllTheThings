@@ -24,7 +24,6 @@ pm3 --> hf 14a raw -p -c a20059982120
 hf 14a sim 2 <7-byte tag>
 ```
 
-
 ## References
 
-* []()
+* [MIFARE® Ultralight® - NXP](https://www.nxp.com/products/rfid-nfc/mifare-hf/mifare-ultralight:MC_53452)
