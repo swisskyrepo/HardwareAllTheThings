@@ -6,7 +6,6 @@
 * JTAGEnum
 * References
 
-
 ## JTAG Pins
 
 > Allows testing, debugging, firmware manipulation and boundary scanning
@@ -31,11 +30,9 @@ $ avarice --program --file test.elf --part atmega128 --jtag /dev/ttyUSB0 :4444
 $ avrdude -p m128 -c jtagmkI –P /dev/ttyUSB0 -U flash:r:”/home/avr/flash.bin":r
 ```
 
-
 ## Enumeration methods
 
 For enumeration methods see [Enumeration/JTAG](/enumeration/jtag/)
-
 
 ## References
 

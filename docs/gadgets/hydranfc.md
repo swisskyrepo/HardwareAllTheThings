@@ -11,7 +11,6 @@
 * Sniffer mode in an autonomous/stand-alone mode
 * Real-time ISO14443A sniffer mode
 
- 
 ## Firmware
 
 * [hydrabus/hydrafw_hydranfc_shield_v2](https://github.com/hydrabus/hydrafw_hydranfc_shield_v2) - HydraFW dedicated to HydraBus v1 / HydraNFC Shield v2
@@ -24,7 +23,6 @@ NFCv2> nfc-all
 NFCv2> show
 NFCv2> nfc-all scan
 ```
-
 
 ## References
 

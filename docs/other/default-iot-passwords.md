@@ -1,10 +1,10 @@
 # Default IoT Passwords
 
-IoT Device Default Password Lookup : [https://www.defpass.com](https://www.defpass.com)
+IoT Device Default Password Lookup : [defpass.com](https://www.defpass.com)
 
-### Mirai Wordlist
+## Mirai Wordlist
 
-Seclist Mirai Wordlist : https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Malware/mirai-botnet.txt
+Seclist Mirai Wordlist : [danielmiessler/SecLists/master/Passwords/Malware/mirai-botnet.txt](https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Malware/mirai-botnet.txt)
 
 ```powershell
 root xc3511

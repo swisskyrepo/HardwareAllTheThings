@@ -3,6 +3,7 @@
 ## Sigrok / Pulseview
 
 * [Sigrok wiki > Downloads](https://sigrok.org/wiki/Downloads)
+
     ```ps1
     sigrok/kali-rolling 0.3 all
     Logic analyzer and protocol decoder software suite (metapackage)
@@ -15,13 +16,11 @@
 
 * [Logic 2 Software](https://support.saleae.com/logic-software/sw-download)
 
-
 ## Interact
 
 ```ps1
 screen /dev/ttyUSB0 19200
 ```
-
 
 ## References
 

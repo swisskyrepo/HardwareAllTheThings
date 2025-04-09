@@ -13,7 +13,6 @@ Requirements:
 
 * ESP8266 : [https://github.com/themadinventor/ida-xtensa](https://github.com/themadinventor/ida-xtensa)
 
-
 ## Loading bare-metal binaries into Radare2
 
 Radare2 can disassemble `avr`, `arduino` natively
@@ -57,21 +56,19 @@ jmp 0x373a
 jmp 0x59ae
 ```
 
-
 ## Loading bare-metal binaries into Ghidra
 
 SVD-Loader for Ghidra automates the entire generation of peripheral structs and memory maps for over 650 different microcontrollers
 
 * SVD-Loader for Ghidra: Simplifying bare-metal ARM reverse engineering - [svd-loader/](https://leveldown.de/blog/svd-loader/)
 
-**Usage**
+**Usage**:
 
 * Load a binary file
 * Open it in the code-browser, do not analyze it
 * Run the SVD-Loader Script
 * Select an SVD file
 * Analyze the file
-
 
 ## ESPTool
 
@@ -85,7 +82,6 @@ Entry point: 4010f29c
 1 segments
 Segment 1: len 0x00568 load 0x4010f000 file_offs 0x00000008
 ```
-
 
 ## nRF5x Firmware disassembly tools
 
@@ -113,27 +109,24 @@ ROM address  :  0x23000
 ROM length   :  0x5d000
 ```
 
-
 ## Pure disassemblers
 
 * Vavrdisasm -- vAVRdisasm will auto-recognize Atmel Generic, Intel HEX8, and Motorola S-Record files - [vsergeev/vavrdisasm](https://github.com/vsergeev/vavrdisasm)
 * [ODA - The Online Disassembler](https://www.onlinedisassembler.com/odaweb/)
-*   avr-objdump – gcc kit standard tool
+* avr-objdump – gcc kit standard tool
 
     ```powershell
-    $ avr-objdump -l -t -D -S main.bin > main.bin.dis
-    $ avr-objdump -m avr -D main.hex > main.hex.dis
+    avr-objdump -l -t -D -S main.bin > main.bin.dis
+    avr-objdump -m avr -D main.hex > main.hex.dis
     ```
-
 
 ## Simulating AVR
 
 > Programs compiled for Arduino can be simulated using AVR Studio or the newer Atmel Studio. I have used the former along with hapsim. Hapsim works by hooking into AVR Studio and can simulate peripherals like the UART, LCD etc.
 
 ```powershell
-$ simulavr -P atmega128 -F 16000000 –f build-crumbuino128/ex1.1.elf
+simulavr -P atmega128 -F 16000000 –f build-crumbuino128/ex1.1.elf
 ```
-
 
 ## UEFI Firmware
 
@@ -148,7 +141,6 @@ $ uefi-firmware-parser --test ~/firmware/*
 ~/firmware/O990-A03.exe: None
 ~/firmware/O990-A03.exe.hdr: DellPFS
 ```
-
 
 ## References
 

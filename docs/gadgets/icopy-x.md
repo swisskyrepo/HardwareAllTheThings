@@ -7,13 +7,11 @@ iCopy-X is a "super" automated handheld RFID copier based on Proxmark3. iCopy-X 
     * [iCopy-X-Community/icopyx-community-pm3](https://github.com/iCopy-X-Community/icopyx-community-pm3) - Scrap repo for various tests
     * [iCopy-X-Community/icopyx-teardown](https://github.com/iCopy-X-Community/icopyx-teardown)
 
-
 ## Update
 
 Latest firmware: `1.0.90 2022-08-16`
 
 * [icopy-x.com/otasys](https://icopy-x.com/otasys/index.php)
-
 
 **Step 1**: Enter the device S/N (found under the “About” menu) on the website and download the upgrade package to your PC.
 
@@ -24,7 +22,6 @@ Latest firmware: `1.0.90 2022-08-16`
 **Step 4**: Press "Ok" on the second page of the "About" menu on the iCopy-X to start the automatic upgrade.
 
 **TIP**: Ensure that the serial number has been entered correctly before starting as this could cause the upgrade to fail.
-
 
 ## PC Mode
 
@@ -38,7 +35,6 @@ COM Port (Check Device Manager, numbers only):  4
 [=] Communicating with PM3 over USB-CDC
 [usb] pm3 -->
 ```
-
 
 ## References
 

@@ -4,11 +4,9 @@
 
 ![Raspberry PI GPIO Header](../assets/rpi-gpio.png)
 
-
 ## Tools
 
 * [raspi-sec-tool](https://github.com/arunmagesh/raspi-sec-tool) - using Raspberry pi as hacking tool
-
 
 ## References
 

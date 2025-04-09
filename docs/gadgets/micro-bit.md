@@ -1,8 +1,8 @@
 # Micro::bit
 
-### Extract source code from firmware
+## Extract source code from firmware
 
-When the source has been build from [https://makecode.microbit.org/#editor](https://makecode.microbit.org/#editor), the Javascript code is embedded into the firmware.
+When the source has been build from [makecode.microbit.org](https://makecode.microbit.org/#editor), the Javascript code is embedded into the firmware.
 
 ```python
 import bincopy
@@ -44,29 +44,27 @@ for i in range(200):
         continue
 ```
 
-### Extract firmware using SWD
+## Extract firmware using SWD
 
-#### Connection
+### Connection
 
 Solder wires on SWD pins:
 
-![](https://i.ibb.co/FJZ3sr3/upload-c19e00cea2e28464c0fb9d4e8f6a6963.png)
+![swd-wire](https://i.ibb.co/FJZ3sr3/upload-c19e00cea2e28464c0fb9d4e8f6a6963.png)
 
 Connect to an ST-LINK v2:
 
-![](https://i.ibb.co/KrSJVKc/upload-2a0191d652b242e1762f75379af2b23c.png)
+![swd-connect](https://i.ibb.co/KrSJVKc/upload-2a0191d652b242e1762f75379af2b23c.png)
 
-#### OpenOCD profile
+### OpenOCD profile
 
-Official datasheet of the nRF51822:
-
-> https://infocenter.nordicsemi.com/pdf/nRF51822\_PS\_v3.1.pdf
+Official datasheet of the nRF51822: [nRF51822_PS_v3.4.pdf](https://docs.nordicsemi.com/bundle/nRF51-Series/resource/nRF51822_PS_v3.4.pdf)
 
 Code section size:
 
-![](https://i.ibb.co/Zz2wnry/upload-b2444a535e41dacbf5da5fd22dc66d50.png)
+![memory-map](https://i.ibb.co/Zz2wnry/upload-b2444a535e41dacbf5da5fd22dc66d50.png)
 
-![](https://i.ibb.co/z7hgFqg/upload-feec06938e6d30aa212088c38227086e.png)
+![chip-variant](https://i.ibb.co/z7hgFqg/upload-feec06938e6d30aa212088c38227086e.png)
 
 > hex(1024\*256) = 0x40000 => 0x00040000
 
@@ -79,10 +77,10 @@ exit
 ```
 
 ```bash
-$ sudo openocd  -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
+sudo openocd  -f /home/maki/tools/hardware/openocd/tcl/interface/stlink-v2-1.cfg -f /home/maki/tools/hardware/openocd/tcl/target/nrf51.cfg -f dump_fw.cfg
 ```
 
-#### Python code
+### Python code
 
 Content of `image.dd` file:
 

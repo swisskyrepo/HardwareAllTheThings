@@ -2,15 +2,14 @@
 
 ![BusPirate](../assets/image_bus_pirate.png)
 
-
 ## Firmwares
 
 * [BusPirate/Bus_Pirate](https://github.com/BusPirate/Bus_Pirate)
+
     ```powershell
     cd Bus_Pirate/package/BPv4-firmware/pirate-loader-v4-source/pirate-loader_lnx
     sudo ./pirate-loader_lnx --dev=/dev/ttyACM0 --hex=../BPv4-firmware-v6.3-r2151.hex
     ```
-
 
 ## Examples
 
@@ -23,7 +22,6 @@ sudo flashrom -p buspirate_spi:dev=/dev/ttyUSB0
 # Dump firmware using a bus pirate (SPI)
 sudo flashrom -p Buspirate_spi:dev=/dev/ttyUSB0,spispeed=1M -c (Chip name)  -r (Name.bin)
 ```
-
 
 ## References
 

@@ -10,19 +10,17 @@
 > **Warning**
 > It is MANDATORY to buy a “USB 3 Type A male to USB 3 Type A male cable” (the cable shall have Power+Data with USB2 and USB3 SS signals)
 
-
 ## Firmware Flashing
 
-**Linux**
+**Linux**:
 
 * [How to build flash and use examples on Linux with shell](https://github.com/hydrausb3/hydrausb3_fw/wiki/how-to-build-flash-and-use-examples-on-linux)
 * [How to build flash and use examples on Linux with Eclipse IDE](https://github.com/hydrausb3/hydrausb3_fw/wiki/how-to-build-flash-and-use-examples-on-linux-Eclipse-IDE)
 
-**Windows** (requires MSYS2/MINGW64)
+**Windows** (requires MSYS2/MINGW64):
 
 * [How to build flash and use examples on Windows with MSYS2/MINGW64 shell](https://github.com/hydrausb3/hydrausb3_fw/wiki/how-to-build-flash-and-use-examples-on-windows)
 * [How to build flash and use examples on Windows with Eclipse IDE](https://github.com/hydrausb3/hydrausb3_fw/wiki/how-to-build-flash-and-use-examples-on-windows-Eclipse-IDE)
-
 
 ## References
 

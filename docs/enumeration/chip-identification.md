@@ -1,10 +1,9 @@
 # Chip identification
 
 * Google dork: `filetype:pdf <reference number>`
-* https://datasheetspdf.com
-* https://www.alldatasheet.com
-* https://www.datasheets360.com
-
+* [datasheetspdf.com](https://datasheetspdf.com)
+* [alldatasheet.com](https://www.alldatasheet.com)
+* [datasheets360.com](https://www.datasheets360.com)
 
 ## EM/RF shield
 

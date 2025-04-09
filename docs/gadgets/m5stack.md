@@ -4,7 +4,6 @@
 
 ![Evil-M5Core2](https://raw.githubusercontent.com/7h30th3r0n3/Evil-M5Core2/main/Github-Img/menu-1.jpg)
 
-
 ## Features
 
 * **WiFi Network Scanning**: Identify and display nearby WiFi networks.
@@ -16,7 +15,6 @@
 * **Karma Attack**: Try a simple Karma Attack on a captured probe.
 * **Automated Karma Attack**: Try Karma Attack on near probe automatically
 
-
 ## Firmwares
 
 * Firmware: [7h30th3r0n3/Evil-M5Core2](https://github.com/7h30th3r0n3/Evil-M5Core2)
@@ -25,7 +23,6 @@
 
 * `M5Stack` boards manager
 * `M5Unified` library
-
 
 **Install**:
 
@@ -36,7 +33,6 @@
 * Place SD file content needed on the SD card. (IMG startup and sites folder)
 * Upload the script to your `M5Core2` device.
 * Restart the device if needed.
-
 
 ## References
 
