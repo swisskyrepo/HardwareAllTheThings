@@ -92,7 +92,7 @@ For newest MIFARE Classic and MIFARE Plus SL1
 
 **Proxmark method**:
 
-:warning: NOTE: These hardware changes resulted in the Proxmark 3 Easy being incapable of performing several of the Proxmark's advanced features, including the Mifare Hard-Nested attacks. In other word you need a real Proxmark, not a cheap chinese copy.
+:warning: NOTE: The Proxmark 3 Easy with 256K flash is incapable of performing several of the Proxmark's features, including the Mifare Hard-Nested attacks. You need to make sure your Proxmark 3 have 512K AVR microcontroller for full function.
 
 ```powershell
 # find a default key
