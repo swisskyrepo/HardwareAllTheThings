@@ -2,6 +2,7 @@
 
 ## Tools
 
+* [whad-team/whad-client](https://github.com/whad-team/whad-client)
 * [bettercap/bettercap](https://github.com/bettercap/bettercap)
 * [expliot_framework/expliot](https://expliot.readthedocs.io/en/latest/index.html)
 * [hackgnar/bleah](https://github.com/hackgnar/bleah)
@@ -196,3 +197,4 @@ adb bugreport filename
 * [BLE CTF - wiki.elvis.science - Embedded Lab Vienna for IOT & Security](https://wiki.elvis.science/index.php?title=BLE_CTF)
 * [BLUETOOTH LOW ENERGY CTF - WRITE UP - ECLECTIC KOALA](https://blog.tclaverie.eu/posts/bluetooth-low-energy-ctf---write-up/)
 * [BLECTF, a "Capture The Flag" hardware platform based on Bluetooth Low Energy BLE + Write-Up - Hacker de Cabecera  febrero 04, 2020](https://www.hackerdecabecera.com/2020/02/blectf-capture-flag-hardware-platafom.html)
+* [WHAD - documentation - Damien Cauquil, Romain Cayre - 2024](https://whad.readthedocs.io/en/stable/)
