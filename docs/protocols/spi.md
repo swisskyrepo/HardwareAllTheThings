@@ -1,4 +1,4 @@
-# SPI
+# SPI - Serial Peripheral Interface
 
 Serial Peripheral Interface (SPI), is a type of communication protocol used primarily in microcontroller-based systems
 The controller selects a chip it send and receive information to and from. NOR flash chips with an SPI interface are commonly used as firmware boot chip. SPI has one read and one write line. In QSPI mode, 4 lines are used in parallel.

@@ -58,7 +58,9 @@ Electromagnetic Fault Injection is an advanced technique used in hardware securi
 
 **Tools**:
 
-* Create a custom Electromagnetic fault injection tool: [Dirt cheap Electromagnetic Fault Injection](https://pedro-javierf.github.io/devblog/dirtcheapemfaultinjection/)
+* [findus](https://pypi.org/project/findus/) - Library to perform fault injection attacks with the PicoGlitcher, Chipwhisperer Husky or Chipwhisperer Pro
+* [emfindus](https://pypi.org/project/emfindus/) - Add-on library to findus to perform electromagnetic fault injection (emfi) attacks with the ChipSHOUTER
+* [Dirt cheap Electromagnetic Fault Injection](https://pedro-javierf.github.io/devblog/dirtcheapemfaultinjection/)
 
 **Challenges**:
 
@@ -88,11 +90,15 @@ Here is a practical example, putting a cable between MOSI and Chip Select :
 
 ## References
 
-* [rhme-2016 write-up Fault Injection - hydrabus](https://github.com/hydrabus/rhme-2016/tree/master/FaultInjection)
-* [Solving rhme fiesta from Riscure Hardware CTF 2016 with EM Fault Injection - Dangling Pointr - 2020, Oct 11](https://pedro-javierf.github.io/devblog/rhmefaultinjection/)
+* [Attacking the STM32F4 with the PicoGlitcher - Matthias Kesenheimer - December 15, 2024](https://mkesenheimer.github.io/blog/glitching-the-stm32f4.html)
+* [Fault Injection using Crowbars on Embedded Systems - Colin O'Flynn](https://eprint.iacr.org/2016/810.pdf)
+* [Glitching the Raspberry Pico with a Raspberry Pico - Matthias Kesenheimer - February 9, 2025](https://mkesenheimer.github.io/blog/glitching-the-rp2350.html)
 * [Hardware Power Glitch Attack (Fault Injection) - rhme2 Fiesta (FI 100) - LiveOverflow -  16 june 2017](https://www.youtube.com/watch?v=6Pf3pY3GxBM)
+* [PicoGlitcher PCB - A dirt chip fault-injection device - Matthias Kesenheimer - September 3 2024](https://mkesenheimer.github.io/blog/pico-glitcher-pcb.html)
 * [pin2pwn: How to Root an Embedded Linux Box with a Sewing Needle - Brad Dixon - Carve Systems - DEFCON 24](https://media.defcon.org/DEF%20CON%2024/DEF%20CON%2024%20presentations/DEF%20CON%2024%20-%20Brad-Dixon-Pin2Pwn-How-to-Root-An-Embedded-Linux-Box-With-A-Sewing-Needle-UPDATED.pdf)
 * [Replicant: Reproducing a Fault Injection Attack on the Trezor One - Voidstar - AUGUST 2022](https://voidstarsec.com/blog/replicant-part-1)
+* [rhme-2016 write-up Fault Injection - hydrabus](https://github.com/hydrabus/rhme-2016/tree/master/FaultInjection)
+* [Solving rhme fiesta from Riscure Hardware CTF 2016 with EM Fault Injection - Dangling Pointr - 2020, Oct 11](https://pedro-javierf.github.io/devblog/rhmefaultinjection/)
 * [Your first Glitch/Voltage Fault Injection - hextree.io](https://app.hextree.io/courses/fault-injection-introduction/fault-injection-theory)
-* [PicoGlitcher PCB - A dirt chip fault-injection device](https://mkesenheimer.github.io/blog/pico-glitcher-pcb.html)
-* [Fault Injection using Crowbars on Embedded Systems - Colin O'Flynn](https://eprint.iacr.org/2016/810.pdf)
+* [nRF54L15 Electromagnetic Fault Injection - Matthias Kesenheimer - June 17, 2025](https://blog.syss.com/posts/nrf54-emfi/)
+* [STM32L05 Voltage Glitching - Matthias Kesenheimer - June 6, 2025](https://blog.syss.com/posts/voltage-glitching-the-stm32l05-microcontroller/)

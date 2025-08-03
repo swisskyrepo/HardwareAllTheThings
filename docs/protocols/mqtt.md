@@ -1,4 +1,4 @@
-# MQTT
+# MQTT - Message Queuing Telemetry Transport
 
 ## Discovery
 

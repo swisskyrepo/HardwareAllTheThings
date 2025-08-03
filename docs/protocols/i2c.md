@@ -1,4 +1,4 @@
-# I2C
+# I2C - Inter-Integrated Circuit
 
 I2C (Inter-Integrated Circuit), pronounced "I-squared-C" or "I-two-C", is a popular communication protocol mainly used for low-speed, short-distance communication in embedded systems.
 

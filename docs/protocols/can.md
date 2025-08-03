@@ -1,4 +1,4 @@
-# CAN Bus
+# CAN - Controller Area Network
 
 The Controller Area Network (CAN) bus is a high-integrity serial communication protocol designed for real-time data exchange in embedded systems, particularly in automotive and industrial applications. It operates on a multi-master, message-oriented architecture, allowing multiple devices (nodes) to communicate on the same network without a central controller.
 

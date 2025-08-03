@@ -1,4 +1,4 @@
-# USB
+# USB - Universal Serial Bus
 
 ## USB Type 2
 

@@ -1,4 +1,4 @@
-# DNP3
+# DNP3 - Distributed Network Protocol
 
 ## Discovery
 

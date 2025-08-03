@@ -1,4 +1,4 @@
-# LoRa
+# LoRa - LoRaWAN
 
 ## LoRa with Arduino on 868.1MHZ
 
