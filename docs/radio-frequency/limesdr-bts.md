@@ -1,19 +1,19 @@
 # GSM Network: LimeSDR
 
-**DISCLAIMER**: This procedure is highly illegal basically anywhere in the world. Be sure to run this in a closed RF environment (also know as Faraday Cage)
+**DISCLAIMER**: This procedure is highly illegal in most parts of the world. Be sure to run this in a closed RF environment (also known as Faraday Cage)
 
 * [Running a GSM Station with osmo network-in-a-box (sms/audio)](#running-a-gsm-station-with-osmo-network-in-a-box)
 * Running a GSM Station with full osmo (sms/audio/data) [TODO]
 
 ## Running a GSM Station with osmo network-in-a-box
 
-For this example we will use the Osmocom GSM Stack in the NITB (Network in the box) mode. In this mode the phones connected to you BTS will be able to call each other and send SMS messages. There is also the Interconnect mode in which the BSC (Base Station Controller) connects to a ISDN or IPBX (for example Asterisk) to manage the connected phones. You can check the different modes here: [https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes](https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes)
+For this example we will use the Osmocom GSM Stack in the NITB (Network in a box) mode. In this mode the phones connected to your BTS will be able to call each other and send SMS messages. There is also the Interconnect mode in which the BSC (Base Station Controller) connects to a ISDN or IPBX (for example Asterisk) to manage the connected phones. You can check the different modes here: [https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes](https://osmocom.org/projects/openbsc/wiki/OpenBSC#Configurations-Modes)
 
-For this article I will be using a Ubuntu 18.04 LTS as operating system since there are pre-compiled packages from [LimeMicro](https://limemicro.com/) that helps a lot. It should run in any linux distribution provided that it has the required packages and / or you compile the missing ones. I might make a tutorial later about how to install from the source code but for now I will stick to the pre-compiled packages.
+For this article I will be using a Ubuntu 18.04 LTS as the operating system, since there are pre-compiled packages from LimeMicro which is very helpful. It should run in any linux distribution provided that it has the required packages and / or you compile the missing ones. I might make a tutorial later about how to install from the source code but for now I will stick to the pre-compiled packages.
 
 ## Installing the required packages
 
-The first thing we need to do is to install all required packages. LimeMicro did a nice work and gathered everything pre compiled in their PPAs. So let’s add them first:
+The first thing we need to do is to install all required packages. LimeMicro has pre-compiled everything in their PPAs. So let’s add them first:
 
 ```bash
 sudo add-apt-repository -y ppa:myriadrf/drivers
@@ -45,7 +45,7 @@ These packages are:
 
 ## Updating the LimeSDR Firmware
 
-It is a good pratice to check if your LimeSDR firmware is up to date. To check and update if needed, you only need to run:
+It is a good practice to check if your LimeSDR firmware is up to date. To check and update if needed, you only need to run:
 
 ```bash
 LimeUtil --update
@@ -55,7 +55,7 @@ It should do everything that is needed to update
 
 ## Creating the configuration files
 
-There are few files that need to be created. Let’s first start with the OpenBSC config file *openbsc.cfg*:
+There are a few files that need to be created. Let’s first start with the OpenBSC config file *openbsc.cfg*:
 
 ```ps1
 !
@@ -142,7 +142,7 @@ auth policy accept-all
 * `long name` => The Long Name of the network operator
 * `auth policy` => How we will accept the phones that are trying to connect.
 
-Be careful setting these settings specially with a **accept-all** policy. If you set to an existing mobile operator, any phone that is close to your LimeSDR will connect to it. The names of the operator (at least in a Android Device) only appears after connecting to it.
+Be careful setting these settings especially with a accept-all policy. If you set to an existing mobile operator, any phone that is close to your LimeSDR will connect to it. The names of the operator (at least in a Android Device) only appear after connecting to it.
 
 That **openbsc.cfg** file will be used by **osmo-nitb** software. The next file is **osmo-bts.cfg**
 
@@ -187,7 +187,7 @@ bts 0
   phy 0 instance 0
 ```
 
-The only importante parameter here to take care is **band**. Make sure is the same as in *openbsc.cfg* file. The next one is *osmo-trx.cfg* which will be used by *osmo-trx-lms:*
+The only important parameter to take care of here is `band`. Make sure is the same as in *openbsc.cfg* file. The next one is *osmo-trx.cfg* which will be used by *osmo-trx-lms:*
 
 ```ps1
 log stderr
@@ -218,9 +218,9 @@ There are not much to change here. If you’re using a multi-port LimeSDR (like 
 
 ## Running the software stack
 
-There are a few programs to run to get the BTS working. You should run all of them from the folder you created the configuration files.
+To get the BTS working, you need to run a few programs. You should run all of them from the folder you created the configuration files.
 
-The first one we should run is osmo-trx-lms . This one should be ran as root to enable high priority scheduling (specially needed if you’re running a small SBC like a Raspberry PI).
+The first one we should run is osmo-trx-lms . This one should be run as root to enable high priority scheduling (specially needed if you’re running a small SBC like a Raspberry PI).
 
 ```bash
 sudo osmo-trx-lms
@@ -228,7 +228,7 @@ sudo osmo-trx-lms
 
 ![OSMO TRX LMS running](../assets/limebts/1_KbNtmYsmaCMVJinWnJdhFg.jpg)
 
-The second one is the osmo-nitb which is the base station controller. This one doesn’t need to be ran as root.
+The second one is the osmo-nitb which is the base station controller. This one doesn’t need to be run as root.
 
 ```bash
 osmo-nitb
@@ -275,19 +275,13 @@ db = sqlite3.connect(HLR_DATABASE)
 c = db.cursor()
 c.execute("SELECT * FROM Subscriber")
 
-print "ID\t\tcreated\t\tIMSI\t\t\tTMSI\t\textension\n"
-while 1:
+print("ID\t\tcreated\t\tIMSI\t\t\tTMSI\t\textension\n")
+while True:
     subscriber = c.fetchone()
     if not subscriber:
         break
 
-    print "{0:1}\t{1:2}\t{2:<15}\t\t{3:<10}\t{4}".format(
-            subscriber[0],
-            subscriber[1],
-            subscriber[3],
-            subscriber[7],
-            subscriber[5]
-            )
+    print(f"{subscriber[0]}\t{subscriber[1]}\t{subscriber[3]:<15}\t\t{subscriber[7]:<10}\t{subscriber[5]}")
 
 db.close()
 ```
@@ -296,7 +290,7 @@ The IMSI field is unique to that phone / simcard combination. That’s the numbe
 
 ## Sending SMS
 
-There are two scripts I found in the internet to send SMS. They basically selects the IMSI from the sqlite database the Osmo stack creates and then connects through the telnet interface to issue the desired commands. One of them is *sms_broadcast.py*:
+There are two scripts I found on the internet to send SMS. They basically selects the IMSI from the sqlite database the Osmo stack creates and then connects through the telnet interface to issue the desired commands. One of them is *sms_broadcast.py*:
 
 ```python
 #!/usr/bin/env python
@@ -308,7 +302,7 @@ imsi = 999999999999999
 HLR_DATABASE = "hlr.sqlite3"
 
 def check_extension(extension):
-    conn.write(b"show subscriber extension %s\n" % extension)
+    conn.write(b"show subscriber extension %s\n" % extension.encode())
     res = conn.read_until(b"OpenBSC> ")
 
     if b"No subscriber found for extension" in res:
@@ -327,7 +321,7 @@ def create_subscriber(extension):
 
     conn.write(b"enable\n")
     conn.read_until(b"OpenBSC# ")
-    conn.write(b"subscriber imsi %d extension %s\n" % (imsi, extension))
+    conn.write(b"subscriber imsi %d extension %s\n" % (imsi, extension.encode()))
     conn.read_until(b"OpenBSC# ")
     conn.write(b"disable\n")
     conn.read_until(b"OpenBSC> ")
@@ -343,7 +337,7 @@ def get_users():
         yield subscriber[0]
 
 def send_sms(id, extension, message):
-    conn.write(b"subscriber id %d sms sender extension %s send %s\n" % (id, extension, message))
+    conn.write(b"subscriber id %d sms sender extension %s send %s\n" % (id, extension.encode(), message.encode()))
     res = conn.read_until(b"OpenBSC> ")
     if b"%" in res:
         print(res)
@@ -373,7 +367,7 @@ This one is pretty simple to use:
 python sms_broadcast.py "source number" "message"
 ```
 
-This will send an SMS to **all** connected devices as it was the *source number*.
+This will send an SMS to **all** connected devices as if it were from the *source number*.
 
 Another option is to target a single user:
 
@@ -388,7 +382,7 @@ import time
 imsi = 999999999999999
 
 def check_extension(extension):
-    conn.write(b"show subscriber extension %s\n" % extension)
+    conn.write(b"show subscriber extension %s\n" % extension.encode())
     res = conn.read_until(b"OpenBSC> ")
 
     if b"No subscriber found for extension" in res:
@@ -413,7 +407,7 @@ def send(extension, spam_number, message):
     conn.write(b"disable\n")
     conn.read_until(b"OpenBSC> ")
 
-    conn.write(b"subscriber extension %s sms sender extension %d send %s\n" % (extension, spam_number, message))
+    conn.write(b"subscriber extension %s sms sender extension %d send %s\n" % (extension.encode(), spam_number, message.encode()))
     res = conn.read_until(b"OpenBSC> ")
 
     if b"%" in res:

