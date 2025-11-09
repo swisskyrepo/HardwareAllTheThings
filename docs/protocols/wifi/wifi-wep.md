@@ -70,7 +70,7 @@ aireplay-ng -1 60 -e $AP_SSID -b $AP_MAC -h $ATTACKER_MAC mon0 # should see a cl
 
 ### Fragmentation attack
 
-# Atheros cards require MAC address spoofing to generate correct packets.
+> Atheros cards require MAC address spoofing to generate correct packets.
 
 ```powershell
 # attacker mac must be associated (fake auth)
