@@ -3,8 +3,8 @@
 ## Tools
 
 * [aircrack-ng/aircrack-ng](https://github.com/aircrack-ng/aircrack-ng) - WiFi security auditing tools suite
-* [kimocoder/wifite2](https://github.com/kimocoder/wifite2) - Rewrite of the popular wireless network auditor, "wifite" - original by @derv82
-* [derv82/wifite2](https://github.com/derv82/wifite2) - Rewrite of the popular wireless network auditor, "wifite"
+* [kimocoder/wifite2](https://github.com/kimocoder/wifite2) - Fork of wifite2
+* [derv82/wifite2](https://github.com/derv82/wifite2) - Rewrite of the popular wireless network auditor, "wifite". Development stopped in 2018.
 * [derv82/wifite](https://github.com/derv82/wifite) - Wifite is an automated wireless attack tool.
 
 ## Linux Wireless Basics
@@ -50,39 +50,42 @@ airmon-ng stop mon0
 
 ## Aircrack-ng Essentials
 
-```powershell
-# check and kill processes that could interfere with our monitor mode
-airmon-ng check
-airmon-ng check kill
-```powershell
-pkill dhclient; pkill wpa_supplicant; pkill dhclient3
-```
+* Check and kill processes that could interfere with our monitor mode
 
-# list AP
-airodump-ng mon0
-airodump-ng mon0 -c 3 # only on a particular channel e.g: 3
-airodump-ng mon0 -c 3 --bssid $AP_MAC -w clearcap # dump traffic
+    ```powershell
+    airmon-ng check
+    airmon-ng check kill
+    pkill dhclient
+    pkill dhclient3
+    pkill wpa_supplicant
+    ```
 
-# get our macaddress
-macchanger -s mon0 
-macchanger --show mon0
+* List access points
 
-# replay and accelerate traffic
-aireplay-ng
-    * -i interface
-    * -r file.pcap
+    ```ps1
+    airodump-ng mon0
+    airodump-ng mon0 -c 3 # only on a particular channel e.g: 3
+    airodump-ng mon0 -c 3 --bssid $AP_MAC -w clearcap # dump traffic
+    ```
 
-# check aireplay card compatibility
-aireplay-ng -9 mon0 -> test injection
-aireplay-ng -9 -i wlan1 mon0 -> test card to card injection
+* Get and set mac address
 
-# injection rate
-iwconfig wlan0 rate 1M
+    ```ps1
+    macchanger -s mon0
+    macchanger --show mon0
+    ```
 
-# Aircrack compatibility
-http://www.aircrack-ng.org/doku.php?id=compatibility_drivers#list_of_compatible_adapters
-Alfa AWUS036H / TPLink WN722
-```
+* Check aireplay card compatibility
+
+    ```ps1
+    aireplay-ng -9 mon0 -> test injection
+    aireplay-ng -9 -i wlan1 mon0 -> test card to card injection
+    ```
+
+### Aircrack compatibility
+
+* [Determine the chipset and driver of a wireless card](http://www.aircrack-ng.org/doku.php?id=compatibility_drivers#list_of_compatible_adapters)
+* Known compatible cards: Alfa AWUS036H / TPLink WN722
 
 ### Fake authentication attack
 
