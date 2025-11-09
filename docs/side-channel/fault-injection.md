@@ -5,7 +5,7 @@
 Power glitch injection is a physical attack technique used to test and exploit vulnerabilities in electronic devices by causing controlled, temporary power disturbances.
 A VCC glitch, also known as a supply voltage glitch, is a specific type of power glitch attack targeting the voltage supply (VCC) of a microcontroller or integrated circuit (IC) in electronic devices.
 
-Most of the time the goal is one of the following:
+The primary goals of this attack are often one of the following:
 
 * Re-enable debugging features (e.g: Trezor One wallet)
 * Bypass secure boot
@@ -31,7 +31,7 @@ ser.timeout = 0.3
 
 ft.configure_glitcher(
     trigger_source = faultier.TRIGGER_IN_EXT0,
-    trigger_type = faultier.TRIGGER_PULSE_POSITIVE
+    trigger_type = faultier.TRIGGER_PULSE_POSITIVE,
     glitch_output = faultier.OUT_CROWBAR
 )
 ft.glitch(delay = 1000, pulse = 1)
@@ -78,11 +78,11 @@ This technique involves momentarily disrupting or altering the clock signal of a
 
 [pin2pwn: How to Root an Embedded Linux Box with a Sewing Needle - Brad Dixon - Carve Systems - DEFCON 24](https://media.defcon.org/DEF%20CON%2024/DEF%20CON%2024%20presentations/DEF%20CON%2024%20-%20Brad-Dixon-Pin2Pwn-How-to-Root-An-Embedded-Linux-Box-With-A-Sewing-Needle-UPDATED.pdf)
 
-In the case of an external SPI flash, it is possible for an attacker to short these pins :
+An attacker can short the pins of an external SPI flash:
 
 ![SPI flash example](../assets/spi_pin2pwn.png)
 
-The MCU will not be able to get data from the external flash and then show a stacktrace, get a shell in the bootloader or worst a root shell on the embedded Linux.
+The MCU will not be able to get data from the external flash and then show a stacktrace, get a shell in the bootloader or at worst, a root shell on the embedded Linux.
 
 Here is a practical example, putting a cable between MOSI and Chip Select :
 
@@ -90,9 +90,9 @@ Here is a practical example, putting a cable between MOSI and Chip Select :
 
 ## References
 
-* [Attacking the STM32F4 with the PicoGlitcher - Matthias Kesenheimer - December 15, 2024](https://mkesenheimer.github.io/blog/glitching-the-stm32f4.html)
+* [Attacking the STM32F4 with the PicoGlitcher - Matthias Kesenheimer - October 30, 2024](https://mkesenheimer.github.io/blog/glitching-the-stm32f4.html)
 * [Fault Injection using Crowbars on Embedded Systems - Colin O'Flynn](https://eprint.iacr.org/2016/810.pdf)
-* [Glitching the Raspberry Pico with a Raspberry Pico - Matthias Kesenheimer - February 9, 2025](https://mkesenheimer.github.io/blog/glitching-the-rp2350.html)
+* [Glitching the Raspberry Pico with a Raspberry Pico - Matthias Kesenheimer - February 9, 2024](https://mkesenheimer.github.io/blog/glitching-the-rp2350.html)
 * [Hardware Power Glitch Attack (Fault Injection) - rhme2 Fiesta (FI 100) - LiveOverflow -  16 june 2017](https://www.youtube.com/watch?v=6Pf3pY3GxBM)
 * [PicoGlitcher PCB - A dirt chip fault-injection device - Matthias Kesenheimer - September 3 2024](https://mkesenheimer.github.io/blog/pico-glitcher-pcb.html)
 * [pin2pwn: How to Root an Embedded Linux Box with a Sewing Needle - Brad Dixon - Carve Systems - DEFCON 24](https://media.defcon.org/DEF%20CON%2024/DEF%20CON%2024%20presentations/DEF%20CON%2024%20-%20Brad-Dixon-Pin2Pwn-How-to-Root-An-Embedded-Linux-Box-With-A-Sewing-Needle-UPDATED.pdf)

