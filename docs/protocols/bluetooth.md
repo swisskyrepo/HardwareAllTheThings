@@ -56,7 +56,6 @@ sudo cp attrib/gatttool /usr/local/bin/
 | Connection params, MTU                                                              | `hcitool con`<br>`btmgmt con-info`                                                               | `caeruleus conn-params -b <mac>`                                       |
 | Adapter power and recovery                                                          | `btmgmt power`<br>`hciconfig reset`<br>`rfkill`                                                  | `caeruleus doctor`<br>`caeruleus adapter power cycle`                  |
 
-
 ## BLE - Enumerate services and characteristics
 
 > BLE is based on specification called General Attribute profile (GATT), that defines how communication/data transfer between client and server.
