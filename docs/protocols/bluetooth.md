@@ -2,12 +2,13 @@
 
 ## Tools
 
-* [whad-team/whad-client](https://github.com/whad-team/whad-client)
 * [bettercap/bettercap](https://github.com/bettercap/bettercap)
+* [bluez/gatttool](https://manpages.debian.org/unstable/bluez/gatttool.1.en.html)
 * [expliot_framework/expliot](https://expliot.readthedocs.io/en/latest/index.html)
 * [hackgnar/bleah](https://github.com/hackgnar/bleah)
-* [bluez/gatttool](https://manpages.debian.org/unstable/bluez/gatttool.1.en.html)
+* [praetorian-inc/caeruleus](https://github.com/praetorian-inc/caeruleus)
 * [securing/gattacker](https://github.com/securing/gattacker)
+* [whad-team/whad-client](https://github.com/whad-team/whad-client)
 
 ## Bluetooth configuration
 
@@ -39,6 +40,22 @@ sudo apt-get install libglib2.0-dev libdbus-1-dev libusb-dev libudev-dev libical
 make -j8 && sudo make install
 sudo cp attrib/gatttool /usr/local/bin/
 ```
+
+## BLE - Tools Cheatsheet
+
+| Use Case                                                                            | Previous Method                                                                                  | Using Caeruleus                                                        |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| Discovering nearby devices                                                          | `hcitool lescan`<br>`bettercap ble.recon`<br>`bluetoothctl scan on`                              | `caeruleus scan`                                                       |
+| Listing (and reading) services/characteristics                                      | `bettercap ble.enum <mac>`                                                                       | `caeruleus enumerate -b <mac> --values`                                |
+| An interactive session                                                              | `gatttool -I`<br>`bluetoothctl` (menu GATT)                                                      | `caeruleus shell -b <mac>`                                             |
+| Reading a handle                                                                    | `gatttool --char-read-hnd 0x0013`<br>`bluetoothctl` select-attribute + read                      | `caeruleus read -b <mac> -a 0x0013`                                    |
+| Writing to a handle                                                                 | `gatttool -b de:ad:be:ef:be:f1 --char-write-req -a 0x002c -n $(echo -n "some value" \| xxd -ps)` | `caeruleus write -b de:ad:be:ef:be:f1 -a 0x002c --req -s "some value"` |
+| Capturing notifications                                                             | Custom Bleak notification logger                                                                 | `caeruleus listen -b <mac> -a <handle>`                                |
+| Checking for unauth data exposure and characteristics that don’t require encryption | Custom Bleak audit scripts                                                                       | `caeruleus recon` / `caeruleus assess ...`                             |
+| Fuzzing a characteristic                                                            | Custom write fuzzers / boofuzz                                                                   | `caeruleus fuzz write -b <mac> -a <handle>`                            |
+| Connection params, MTU                                                              | `hcitool con`<br>`btmgmt con-info`                                                               | `caeruleus conn-params -b <mac>`                                       |
+| Adapter power and recovery                                                          | `btmgmt power`<br>`hciconfig reset`<br>`rfkill`                                                  | `caeruleus doctor`<br>`caeruleus adapter power cycle`                  |
+
 
 ## BLE - Enumerate services and characteristics
 
@@ -192,9 +209,10 @@ adb bugreport filename
 
 ## References
 
-* [A Practical Introduction to Bluetooth Low Energy security without any special hardware - Slawomir Jasek - 19 November 2020](https://www.smartlockpicking.com/slides/HITB_Cyberweek_2020_A_Practical_Introduction_To_BLE_Security.pdf)
-* [Denial of Pleasure: Attacking Unusual BLE Targets with a Flipper Zero - Matteo Mandolini & Luca Bongiorni](https://www.whid.ninja/blog/denial-of-pleasure-attacking-unusual-ble-targets-with-a-flipper-zero)
+* [A Practical Introduction to Bluetooth Low Energy security without any special hardware - Slawomir Jasek - November 19, 2020](https://www.smartlockpicking.com/slides/HITB_Cyberweek_2020_A_Practical_Introduction_To_BLE_Security.pdf)
 * [BLE CTF - wiki.elvis.science - Embedded Lab Vienna for IOT & Security](https://wiki.elvis.science/index.php?title=BLE_CTF)
+* [BLECTF, a "Capture The Flag" hardware platform based on Bluetooth Low Energy BLE + Write-Up - Hacker de Cabecera -  February 4, 2020](https://www.hackerdecabecera.com/2020/02/blectf-capture-flag-hardware-platafom.html)
 * [BLUETOOTH LOW ENERGY CTF - WRITE UP - ECLECTIC KOALA](https://blog.tclaverie.eu/posts/bluetooth-low-energy-ctf---write-up/)
-* [BLECTF, a "Capture The Flag" hardware platform based on Bluetooth Low Energy BLE + Write-Up - Hacker de Cabecera  febrero 04, 2020](https://www.hackerdecabecera.com/2020/02/blectf-capture-flag-hardware-platafom.html)
+* [Bluetooth Low Energy Security Testing, Consolidated: Introducing Caeruleus - Aaron Wasserman, Hunter Ver Helst, Siddhant Kalgutkar, Will McCardell - July 10, 2026](https://www.praetorian.com/blog/ble-testing-caeruleus/)
+* [Denial of Pleasure: Attacking Unusual BLE Targets with a Flipper Zero - Matteo Mandolini & Luca Bongiorni](https://www.whid.ninja/blog/denial-of-pleasure-attacking-unusual-ble-targets-with-a-flipper-zero)
 * [WHAD - documentation - Damien Cauquil, Romain Cayre - 2024](https://whad.readthedocs.io/en/stable/)
